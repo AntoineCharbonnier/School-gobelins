@@ -1,0 +1,1 @@
+Exercices = new Mongo.Collection("exercices");

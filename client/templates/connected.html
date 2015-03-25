@@ -1,0 +1,12 @@
+<template name="connected">
+  <ul>
+  {{#each connectedStudents}}
+    <!-- {{log this}} -->
+    <li>
+      <a href="/student/{{this._id}}">
+        {{ this.username }}
+      </a>
+    </li>
+  {{/each}}
+  </ul>
+</template>

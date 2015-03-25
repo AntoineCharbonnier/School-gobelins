@@ -1,0 +1,8 @@
+<template name="exercices">
+	<h4>Liste d'exercices</h4>
+	{{#each getExercices }}
+    <h5>Exercice n°{{this.number}}</h5>
+    <a href="/student/{{currentUser._id}}/{{this._id}}">Faire l'exercice</a>
+		<!-- {{> exercice}} -->
+	{{/each}}
+</template>

@@ -1,0 +1,11 @@
+<template name="home">
+    <!-- {{> exercices}} -->
+    {{#if isTeacher currentUser}}
+      {{> connected}}
+
+    {{else }}
+
+      {{ > exercices }}
+
+    {{/if}}
+</template>

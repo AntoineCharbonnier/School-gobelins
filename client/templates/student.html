@@ -1,0 +1,23 @@
+<template name="student">
+
+  <h1>{{this.username}}</h1>
+
+  {{#each this.profile.answers}}
+
+    {{#with getOriginalQuestion this.exercice_id}}
+      <h4>Exercice {{ this.number }}</h4>
+      {{ this.question }}
+      <br>
+      Bonne réponse : {{ this.answers.right}}
+      <br>
+    {{/with}}
+    <br>
+    Nombre de tentatives : {{ this.attempt }}
+    <br>
+    Durée : {{ this.time }}
+    <br>
+
+    <a href="{{../_id}}/{{this.exercice_id}}">Accéder</a>
+  {{/each }}
+  
+</template>
