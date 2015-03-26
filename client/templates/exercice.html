@@ -18,21 +18,15 @@
         {{else}}
 
           {{#if isEmptyArray this.exercice.answers.wrong }}
-
             <input id="answer" value="{{ getStudentAnswer }}" name="answer" placeholder="Ta reponse">
-
           {{else}}
-            
             <select id="answer" name="answer">
               <option disabled selected> Réponse</option>
-              {{#each sortAnswers this.exercice.answers}}
-
-                <option {{ isChecked this getStudentAnswer }}>{{this}}</option>
+                {{#each sortAnswers this.exercice.answers}}
+                  <option {{ isChecked this getStudentAnswer }}>{{this}}</option>
               
-              {{/each}}
-            
+                {{/each}}
             </select>
-
           {{/if}}
 
           <p>Commentaire du professeur : {{ getStudentComment }}</p>

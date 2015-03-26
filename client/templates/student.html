@@ -1,9 +1,9 @@
 <template name="student">
-
+  
   <h1>{{this.username}}</h1>
 
   {{#each this.profile.answers}}
-
+    {{ updateDurationStudentExercice this }}
     {{#with getOriginalQuestion this.exercice_id}}
       <h4>Exercice {{ this.number }}</h4>
       {{ this.question }}
@@ -14,7 +14,7 @@
     <br>
     Nombre de tentatives : {{ this.attempt }}
     <br>
-    Durée : {{ this.time }}
+    Durée : <span id="time">{{ this.time }}</span>
     <br>
 
     <a href="{{../_id}}/{{this.exercice_id}}">Accéder</a>

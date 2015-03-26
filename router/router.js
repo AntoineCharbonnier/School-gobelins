@@ -32,13 +32,17 @@ Router.route("/student/:id/:exercice_id",function(){
   var student = Meteor.users.findOne({
     _id : this.params.id
   });
+  var index = 0;
 
   if (student) {
     var exist = false;
     for (var i = 0; i < student.profile.answers.length; i++) {
       var current = student.profile.answers[i];
-      if (this.params.exercice_id == current.exercice_id)
-        exist = true;
+      if (this.params.exercice_id == current.exercice_id) {
+          exist = true;
+          index = i;
+      }
+        
     }
 
     if ( ! exist ) {
@@ -55,7 +59,17 @@ Router.route("/student/:id/:exercice_id",function(){
               "comment": ""
             }
           }
-        })
+        });
+    } else {
+      var answer = {};
+
+      answer["profile.answers." + index + '.isCurrent'] = true;
+
+      Meteor.users.update({
+          _id : this.params.id
+        }, {
+          $set: answer
+      });
     }
   }
   
