@@ -1,19 +1,21 @@
 Meteor.startup ->
-  #Exercices.remove {}
+  # Exercices.remove {}
   # Meteor.users.remove {}
   
-  #Exercices.insert
+  # Exercices.insert
   #  number: Exercices.find().count() + 1
   #  question: 'Divises 35 par 7.'
+  #  validated: false
   #  answers:
   #    right: 5
   #    wrong: []
   
-  #console.log 'Insert one : ', Exercices.find().fetch()
+  # console.log 'Insert one : ', Exercices.find().fetch()
   
-  #Exercices.insert
+  # Exercices.insert
   #  number: Exercices.find().count() + 1
   #  question: 'Combien fait 2 + 2 ?'
+  #  validated: false
   #  answers:
   #    right: 4
   #    wrong: [
@@ -21,24 +23,24 @@ Meteor.startup ->
   #      22
   #    ]
   
-  #console.log Exercices.find().count()
-  #console.log 'Insert two : ', Exercices.find().fetch()
+  # console.log Exercices.find().count()
+  # console.log 'Insert two : ', Exercices.find().fetch()
   
-  #Accounts.createUser
-  # username: 'titi'
-  # email: 'titi@gmail.com'
-  # password: 'titi'
-  # profile: account: 'teacher'
+  # Accounts.createUser
+  #  username: 'titi'
+  #  email: 'titi@gmail.com'
+  #  password: 'titi'
+  #  profile: account: 'teacher'
   
-  #Accounts.createUser
-  # username: 'eleve'
-  # email: 'eleve@gmail.com'
-  # password: 'eleve'
-  # profile:
-  #   account: 'student'
-  #   connected: false
-  #   currentExercice: null
-  #   answers: []
+  # Accounts.createUser
+  #  username: 'eleve'
+  #  email: 'eleve@gmail.com'
+  #  password: 'eleve'
+  #  profile:
+  #    account: 'student'
+  #    connected: false
+  #    currentExercice: null
+  #    answers: []
   
   Meteor.users.allow update: (userId, docs, fields, modifier) ->
     true

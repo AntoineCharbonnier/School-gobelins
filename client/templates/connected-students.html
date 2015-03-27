@@ -1,0 +1,14 @@
+<template name="connectedStudent">
+  <div class="connected__student">
+    <h2>Connected</h2>
+    <ul>
+    {{#each connectedStudents}}
+      <li>
+        <a href="/student/{{this._id}}">
+          {{ this.username }}
+        </a>
+      </li>
+    {{/each}}
+    </ul>
+  </div>
+</template>

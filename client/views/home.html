@@ -1,10 +1,11 @@
 <template name="home">
     <!-- {{> exercices}} -->
     {{#if isTeacher currentUser}}
-      {{> connected}}
-
-    {{else }}
-
+      {{> connectedStudent}}
+      {{> globalVision}}
+    {{else}}
+      <h1>Hi {{currentUser.username}}</h1>
+      
       {{ > exercices }}
 
     {{/if}}

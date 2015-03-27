@@ -1,6 +1,6 @@
 Template.exercice.events({
-  "change #answer": function(e) {
-    var selectValue = e.target.value;    
+  "click #validator": function(e) {
+    var selectValue = $("#answer").val();    
     var student = Template.currentData().student;
     var question = Template.currentData().exercice;
 
@@ -11,16 +11,20 @@ Template.exercice.events({
       if (current.exercice_id == question._id){
         current.answer = selectValue;
         current.attempt += 1;
-        if(current.answer == question.answers.right){
+        console.log(current.answer," ET ",question.answers.right);
+        if(current.answer == question.answers.right || parseInt(current.answer) == question.answers.right){
+          console.log("GOOOD");
           var currentTime = Date.now();
           current.time = currentTime - current.start;
           current.isCurrent = false;
+          current.validated = true;
+
           $('#next').removeClass("hide");
         }
       }
       newAnswers.push( current );
     }
-
+    console.log("ANSWERS : ",newAnswers);
     Meteor.users.update({
       _id : student._id
     }, {
@@ -54,7 +58,7 @@ Template.exercice.events({
   },
   "submit form": function(e) {
     e.preventDefault();
-
+    // block reactualisation
     return false;
   }
 });

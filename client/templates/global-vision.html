@@ -1,0 +1,18 @@
+<template name="globalVision">
+  <div class="global-vision">
+    <h2>Global details</h2>
+    <ul>
+      <li>
+        Nombre etudiants dans la classe : {{getStudentNumber}}
+      </li>
+      {{#each getExercices}}
+        <li>
+          Nombre etudiants exercice {{this.number}} : 
+          Nombre moyen d'essais : 
+          Durée moyenne : 
+        </li>
+      {{/each}}
+
+    </ul>
+  </div>
+</template>

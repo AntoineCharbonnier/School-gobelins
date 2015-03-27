@@ -1,14 +1,14 @@
 <template name="app">
-  <!-- {{#if currentUser }} -->
+  {{#if currentUser }}
 
     <button id="logout">Log out</button>
 
-  <!-- {{else}} -->
+  {{else}}
 
   <!--   {{> loginButtons}} -->
   {{> login}}
 
-  <!-- {{/if}} -->
+  {{/if}}
   
   {{> yield}}
 

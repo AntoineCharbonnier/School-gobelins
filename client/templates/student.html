@@ -1,7 +1,6 @@
 <template name="student">
   
   <h1>{{this.username}}</h1>
-
   {{#each this.profile.answers}}
     {{ updateDurationStudentExercice this }}
     {{#with getOriginalQuestion this.exercice_id}}
