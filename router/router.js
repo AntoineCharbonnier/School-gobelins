@@ -22,7 +22,6 @@ Router.route("/student/:id",function(){
   this.render("student",{
     data: data
   });
-
 });
 
 Router.route("/student/:id/:exercice_id",function(){
@@ -41,8 +40,7 @@ Router.route("/student/:id/:exercice_id",function(){
       if (this.params.exercice_id == current.exercice_id) {
           exist = true;
           index = i;
-      }
-        
+      } 
     }
 
     if ( ! exist ) {

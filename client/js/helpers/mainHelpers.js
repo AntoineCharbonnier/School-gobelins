@@ -76,7 +76,6 @@ Template.registerHelper("getStudentComment", function(param){
 });
 
 Template.registerHelper("getOriginalQuestion", function(id){
-  
   return Exercices.findOne({
     _id: id
   });

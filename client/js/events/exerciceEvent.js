@@ -58,7 +58,7 @@ Template.exercice.events({
   },
   "submit form": function(e) {
     e.preventDefault();
-    // block reactualisation
+    // bloque la reactualisation
     return false;
   }
 });

@@ -7,7 +7,8 @@
       </li>
       {{#each getExercices}}
         <li>
-          Nombre etudiants exercice {{this.number}} : 
+          Nombre etudiants qui ont validés l'exercice {{this.number}}  : {{ getNumberStudentValidExercice this._id }}
+          <br>
           Nombre moyen d'essais : 
           Durée moyenne : 
         </li>
