@@ -25,6 +25,7 @@ Template.exercice.events({
       newAnswers.push( current );
     }
     console.log("ANSWERS : ",newAnswers);
+    
     Meteor.users.update({
       _id : student._id
     }, {
@@ -33,6 +34,7 @@ Template.exercice.events({
       }
     })
   },
+  
   "keyup #comment": function(e) {
     var selectValue = e.target.value;    
     var student = Template.currentData().student;
@@ -56,6 +58,7 @@ Template.exercice.events({
       }
     })
   },
+  
   "submit form": function(e) {
     e.preventDefault();
     // bloque la reactualisation

@@ -41,6 +41,16 @@ Meteor.startup ->
   #    connected: false
   #    currentExercice: null
   #    answers: []
+
+  # Accounts.createUser
+  #  username: 'eleve2'
+  #  email: 'eleve2@gmail.com'
+  #  password: 'eleve2'
+  #  profile:
+  #    account: 'student'
+  #    connected: false
+  #    currentExercice: null
+  #    answers: []
   
   Meteor.users.allow update: (userId, docs, fields, modifier) ->
     true

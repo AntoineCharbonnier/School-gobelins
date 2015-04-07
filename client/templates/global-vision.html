@@ -9,8 +9,9 @@
         <li>
           Nombre etudiants qui ont validés l'exercice {{this.number}}  : {{ getNumberStudentValidExercice this._id }}
           <br>
-          Nombre moyen d'essais : 
-          Durée moyenne : 
+          Nombre moyen d'essais : {{ getAttemptsExercice this._id }}
+          <br>
+          Durée moyenne : {{ getDurationExercice this._id true}}
         </li>
       {{/each}}
 

@@ -43,7 +43,7 @@ Template.registerHelper("isTeacher", function(user){
 });
 
 Template.registerHelper("log", function(param){
-  console.log( param );
+  console.log("LOG : ", param );
 });
 
 
