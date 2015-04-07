@@ -1,12 +1,21 @@
 Template.student.helpers({
   "updateDurationStudentExercice": function(current) {
-    console.log("start", current);
-    console.log("test time ",current.time);
-    if(current.time == undefined){
-      console.log("im undefined");
-    }
+    console.log("CURRENT ",current);
     function timerDurationStudentExercice(){
-      if(current.isCurrent && current.time == undefined){
+      // console.log(current.time == undefined);
+      // if(current.isCurrent && current.time == undefined && !current.validated){
+      //   $('#time-'+current.exercice_id).html( Date.now() - current.start );
+      // }
+      // else{
+      //   $('#time'+current.exercice_id).html(current.time);
+        
+      // }
+      // if(!(current.time == undefined) || current.time){
+      //   console.log("EXIST");
+      //   Meteor.clearInterval(interval);
+      // }
+      if(!current.time){
+        console.log("time n existe pas");
         $('#time-'+current.exercice_id).html( Date.now() - current.start );
       }
       else{
@@ -14,7 +23,10 @@ Template.student.helpers({
       }
     }
     
-    Meteor.setInterval(timerDurationStudentExercice,0.1);
-
+    var interval = Meteor.setInterval(timerDurationStudentExercice,0.1);
+    // if(!(current.time == undefined) || current.time){
+    //   console.log("EXIST");
+    //   Meteor.clearInterval(interval);
+    // }
   }
 });
