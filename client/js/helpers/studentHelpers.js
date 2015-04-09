@@ -14,8 +14,12 @@ Template.student.helpers({
       //   console.log("EXIST");
       //   Meteor.clearInterval(interval);
       // }
-      if(!current.time){
-        console.log("time n existe pas");
+      if(current.time){
+        console.log("time  existe ");
+        $('#time-'+current.exercice_id).removeClass("is-not-defined")
+      }
+
+      if($('#time-'+current.exercice_id).hasClass("is-not-defined")){
         $('#time-'+current.exercice_id).html( Date.now() - current.start );
       }
       else{
