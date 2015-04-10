@@ -63,5 +63,40 @@ Template.exercice.events({
     e.preventDefault();
     // bloque la reactualisation
     return false;
+  },
+
+  "click #need-help": function(e){
+    var student = Template.currentData().student;
+    var question = Template.currentData().exercice;
+    var newAnswers = [];
+    for (var i = 0; i < student.profile.answers.length; i++) {
+      var current = student.profile.answers[i];
+      if (current.exercice_id == question._id){
+        current.needHelp = true;
+        // current.answer = selectValue;
+        // current.attempt += 1;
+        // console.log(current.answer," ET ",question.answers.right);
+        // if(current.answer == question.answers.right || parseInt(current.answer) == question.answers.right){
+        //   console.log("GOOOD");
+        //   var currentTime = Date.now();
+        //   current.time = currentTime - current.start;
+        //   current.isCurrent = false;
+        //   current.validated = true;
+
+        //   $('#next').removeClass("hide");
+      }
+    }
+    newAnswers.push( current );
+    console.log("ANSWERS HELP : ",newAnswers);
+
+    Meteor.users.update({
+      _id : student._id
+    }, {
+      $set: {
+        "profile.answers": newAnswers
+      }
+    })
   }
+    
+  
 });

@@ -65,5 +65,25 @@ Template.globalVision.helpers({
     else{
       return timeAverrage;
     }
+  },
+
+  "getNumberHelpExercice": function(the_exercice_id) {
+    var users = Meteor.users.find({
+      "profile.connected": true
+    }).fetch();
+    var numberHelp = 0;
+    for (var i = 0; i < users.length; i++) {
+      var current = users[i];
+      for(var j = 0; j < current.profile.answers.length; j++){
+        if (current.profile.answers[j].exercice_id == the_exercice_id){
+          if(current.profile.answers[j].needHelp){
+            numberHelp += 1;
+            console.log("HELPS  : ",numberHelp);
+          }          
+        }
+      } 
+    }
+    return numberHelp;
   }
+
 });
