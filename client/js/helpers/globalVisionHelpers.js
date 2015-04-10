@@ -1,4 +1,3 @@
-
 Template.globalVision.helpers({
   "getStudentNumber": function() {
       return Meteor.users.find({
