@@ -1,31 +1,36 @@
 Template.student.helpers({
-
   "updateDurationStudentExercice": function(current) {
-    var exist = false;
     console.log("CURRENT ",current);
-    console.log($('#time'+current.exercice_id).attr("class"));
     function timerDurationStudentExercice(){
-      if(!current.time){
-        console.log("time n existe pas");
-      }
-      else{
-        exist = true;
-        // console.log("time existe");
-      }
-      if(exist){
-        // console.log(exist);
-        $('#time'+current.exercice_id).html(current.time);
-        // $('#time'+current.exercice_id).attr("class") = "disabled";        
-      }
-      else{
-        // if($('#time-'+current.exercice_id).attr('class') == "enabled"){
-        //   $('#time-'+current.exercice_id).html( Date.now() - current.start );
-        // }
+      // console.log(current.time == undefined);
+      // if(current.isCurrent && current.time == undefined && !current.validated){
+      //   $('#time-'+current.exercice_id).html( Date.now() - current.start );
+      // }
+      // else{
+      //   $('#time'+current.exercice_id).html(current.time);
         
+      // }
+      // if(!(current.time == undefined) || current.time){
+      //   console.log("EXIST");
+      //   Meteor.clearInterval(interval);
+      // }
+      if(current.time){
+        console.log("time  existe ");
+        $('#time-'+current.exercice_id).removeClass("is-not-defined")
+      }
+
+      if($('#time-'+current.exercice_id).hasClass("is-not-defined")){
+        $('#time-'+current.exercice_id).html( Date.now() - current.start );
+      }
+      else{
+        $('#time'+current.exercice_id).html(current.time);
       }
     }
     
-    var interval = Meteor.setInterval(timerDurationStudentExercice,2000);
-    interval = null;
+    var interval = Meteor.setInterval(timerDurationStudentExercice,0.1);
+    // if(!(current.time == undefined) || current.time){
+    //   console.log("EXIST");
+    //   Meteor.clearInterval(interval);
+    // }
   }
 });
