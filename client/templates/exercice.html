@@ -1,80 +1,21 @@
 <template name="exercice">
-  {{#if this.exercice}}
+  <div class="container-exerice">
+    {{#if this.exercice}}
 
-  	<p>  
-      {{this.exercice.question}}
-    </p>
-    <form>
-      <input type="hidden" name="exercice_id" value="{{this._id}}">
+    	<p>  
+        {{this.exercice.question}}
+      </p>
+      <form>
+        <input type="hidden" name="exercice_id" value="{{this._id}}">
 
-      {{#if isTeacher currentUser}}
+        {{#if isTeacher currentUser}}
 
-          Réponse : {{ getStudentAnswer }}
-          <br>
-          <p>Ajouter un commentaire :</p>
-          <input name="comment" id="comment" value="{{ getStudentComment }}">
+          {{> exerciceViewTeacher}}
 
-      {{else}}
-
-
-        {{#if isEmptyArray this.exercice.answers.wrong }}
-          {{#if this.exercice.isAssisted }}
-            <div class="compute">
-              <p class="dividend">
-                {{ this.exercice.dividend}}
-              </p>
-
-              <p class="denominator">
-                {{ this.exercice.denominator}}
-              </p>             
-              Soustraction intermediaire : <br>
-              {{ this.exercice.dividend }} - <input id="intermediate-substraction" value="" name="susbtraction" placeholder=" ? * {{this.exercice.denominator}}">
-              
-              |<input id="intermediate-substraction-result" value="" name="susbtraction-result" placeholder=" ">
-            </div>
-          
-            <input id="answer" value="{{ getStudentAnswer }}" name="answer" placeholder="Ta reponse">
-          {{/if}}
-        
         {{else}}
-          <select id="answer" name="answer">
-            <option disabled selected> Réponse</option>
-              {{#each sortAnswers this.exercice.answers}}
-                <option {{ isChecked this getStudentAnswer }}>{{this}}</option>
-            
-              {{/each}}
-          </select>
+          {{> exerciceViewStudent}}
         {{/if}}
-
-
-        {{#if this.exercice.isAssisted}}
-          <a href="" id="validator-assisted">Validate</a>
-        {{else}}
-          <a href="" id="validator">Validate</a>
-        {{/if}}
-
-        
-        <p>Commentaire du professeur : {{ getStudentComment }}</p>
-        <a href="" id="need-help">Beosin d'aide ?</a>
-        
-
-        {{#if nextExerciceExist this.exercice.number}}
-          <a id="next" class="hide" href="/student/{{this.student._id}}/{{ getNextExercice this.exercice.number }}">
-            Exercice suivant
-          </a>
-        {{else}}
-
-          <a href="/">
-            Plus d'exercices (lien vers / )
-          </a>
-
-        {{/if}}
-
-      {{/if}}
-
-    </form>   
-  {{/if}}
-
-  
-
+      </form>   
+    {{/if}}
+  </div>
 </template>

@@ -1,4 +1,4 @@
-Template.exercice.helpers({
+Template.exerciceViewStudent.helpers({
   "isChecked": function(value, answer) {
     return answer == value ? "selected" : "";
   },
