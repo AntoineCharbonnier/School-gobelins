@@ -5,6 +5,9 @@ Meteor.startup ->
   Exercices.insert
    number: Exercices.find().count() + 1
    question: 'Divises 35 par 7.'
+   dividend: 37
+   denominator: 7
+   isAssisted: true
    validated: false
    answers:
      right: 5
