@@ -1,7 +1,7 @@
 <template name="home">
     <!-- {{> exercices}} -->
     {{#if isTeacher currentUser}}
-      {{> connectedStudent}}
+      {{> connectedStudents }}
       {{> globalVision}}
     {{else}}
       <h1>Hi {{currentUser.username}}</h1>

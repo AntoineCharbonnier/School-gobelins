@@ -18,8 +18,9 @@ Template.student.helpers({
     var interval = Meteor.setInterval(timerDurationStudentExercice,0.1);
   },
 
-  "updateNeedHelpExercice": function(needHelp){
-    if(needHelp){
+  "getNeedHelp": function(student) {
+    console.log("THIS", student);
+    if(this.needHelp){
       return "OUI";
     }
     else{

@@ -1,24 +1,29 @@
 <template name="student">
-  <h6>Student template</h6>
-  <h1>{{this.username}}</h1>
-  {{#each this.profile.answers}}
-    {{ updateDurationStudentExercice this }}
-    {{#with getOriginalQuestion this.exercice_id}}
-      <h4>Exercice {{ this.number }}</h4>
-      {{ this.question }}
+  <div class="container-student">
+    <h6>Student template</h6>
+    <h1>{{this.username}}</h1>
+    {{#each this.profile.answers}}
+      {{ updateDurationStudentExercice this }}
+      {{#with getOriginalQuestion this.exercice_id}}
+        <h4>Exercice {{ this.number }}</h4>
+        {{ this.question }}
+        <br>
+        Bonne réponse : {{ this.answers.right}}
+        <br>
+      {{/with}}
       <br>
-      Bonne réponse : {{ this.answers.right}}
+      Nombre de tentatives : {{ this.attempt }}
       <br>
-    {{/with}}
-    <br>
-    Nombre de tentatives : {{ this.attempt }}
-    <br>
+      Nombre de HELP : {{ this.numberNeedHelp }}
+      <br>
 
     Durée : <span id="time-{{this.exercice_id}}" class="is-not-defined">{{ this.time }}</span>
     <br>
-    A envoyé un HELP ? : {{ updateNeedHelpExercice this.needHelp }}
+    A envoyé un HELP ? : {{ getNeedHelp this.needHelp }}
     <br>
     <a href="{{../_id}}/{{this.exercice_id}}">Accéder</a>
-  {{/each }}
-  :
+    {{/each }}
+    :
+  </div>
+
 </template>

@@ -1,0 +1,53 @@
+<template name="exerciceViewStudent">
+  {{#if isEmptyArray this.exercice.answers.wrong }}
+    {{#if this.exercice.isAssisted }}
+      <div class="compute">
+        <p class="dividend">
+          {{ this.exercice.dividend}}
+        </p>
+
+        <p class="denominator">
+          {{ this.exercice.denominator}}
+        </p>             
+        Soustraction intermediaire : 
+        <br>
+        {{ this.exercice.dividend }} - <input id="intermediate-substraction" value="" name="susbtraction" placeholder=" ? * {{this.exercice.denominator}}">
+        
+        |<input id="intermediate-substraction-result" value="" name="susbtraction-result" placeholder=" ">
+      </div>
+    
+      <input id="answer" value="{{ getStudentAnswer }}" name="answer" placeholder="Ta reponse">
+    {{/if}}
+  
+  {{else}}
+    <select id="answer" name="answer">
+      <option disabled selected> Réponse</option>
+        {{#each sortAnswers this.exercice.answers}}
+          <option {{ isChecked this getStudentAnswer }}>{{this}}</option>
+      
+        {{/each}}
+    </select>
+  {{/if}}
+
+
+  {{#if this.exercice.isAssisted}}
+    <a href="" id="validator-assisted">Validate</a>
+  {{else}}
+    <a href="" id="validator">Validate</a>
+  {{/if}}
+
+  
+  <p>Commentaire du professeur : {{ getStudentComment }}</p>
+  <a href="" id="need-help">Beosin d'aide ?</a>
+  
+
+  {{#if nextExerciceExist this.exercice.number}}
+    <a id="next" class="hide" href="/student/{{this.student._id}}/{{ getNextExercice this.exercice.number }}">
+      Exercice suivant
+    </a>
+  {{else}}
+    <a href="/">
+      Plus d'exercices (lien vers / )
+    </a>
+  {{/if}}
+</template>

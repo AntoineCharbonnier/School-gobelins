@@ -2,13 +2,18 @@ Meteor.startup ->
   # Exercices.remove {}
   # Meteor.users.remove {}
   
+
   # Exercices.insert
   #  number: Exercices.find().count() + 1
-  #  question: 'Divises 35 par 7.'
+  #  question: 'Divises 37 par 7.'
+  #  dividend: 37
+  #  denominator: 7
+  #  isAssisted: true
   #  validated: false
   #  answers:
   #    right: 5
   #    wrong: []
+
   
   # console.log 'Insert one : ', Exercices.find().fetch()
   
@@ -53,5 +58,4 @@ Meteor.startup ->
   #    answers: []
   
   Meteor.users.allow update: (userId, docs, fields, modifier) ->
-    true
-  return
+   return true
