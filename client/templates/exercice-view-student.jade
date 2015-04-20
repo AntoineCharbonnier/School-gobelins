@@ -6,12 +6,12 @@ template(name='exerciceViewStudent')
           | {{ this.exercice.dividend}}
         p.denominator
           | {{ this.exercice.denominator}}
-        |         Soustraction intermediaire : 
+        |Soustraction intermediaire : 
         br
-        |         {{ this.exercice.dividend }} - 
+        |{{ this.exercice.dividend }} - 
         input#intermediate-substraction(value='', name='susbtraction', placeholder=' ? * {{this.exercice.denominator}}')
-        |         |
-        input#intermediate-substraction-result(value='', name='susbtraction-result', placeholder=' ')
+        |=
+        input#intermediate-substraction-result(value='', name='susbtraction-result', placeholder='le reste')
       input#answer(value='{{ getStudentAnswer }}', name='answer', placeholder='Ta reponse')
   else
     select#answer(name='answer')

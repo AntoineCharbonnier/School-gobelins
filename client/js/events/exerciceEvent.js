@@ -137,19 +137,10 @@ Template.exercice.events({
 
     var newAnswers = [];
 
-
     for (var i = 0; i < student.profile.answers.length; i++) {
       var current = student.profile.answers[i];
       if (current.exercice_id == question._id){
         current.needHelp = true;
-        // if(current.numberNeedHelp){
-        //   current.numberNeedHelp += 1;
-        // }
-        // else{
-        //   current.numberNeedHelp = 1;
-        // }
-        
-
       }
       newAnswers.push( current );
     }
@@ -164,6 +155,4 @@ Template.exercice.events({
 
     })    
   }
-    
-  
 });

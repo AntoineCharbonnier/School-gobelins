@@ -5,4 +5,7 @@ template(name='connectedStudents')
       each connectedStudents
         li
           a(href='/student/{{this._id}}')
-            | {{ this.username }}
+            if isStudentNeedHelp this
+              | {{ this.username }} /!\
+            else
+              | {{ this.username }}

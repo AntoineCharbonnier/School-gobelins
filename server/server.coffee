@@ -10,7 +10,7 @@ Meteor.startup ->
   #  denominator: 7
   #  isAssisted: true
   #  validated: false
-  #  level: easy
+  #  level: "easy"
   #  answers:
   #    right: 5
   #    wrong: []
@@ -22,7 +22,7 @@ Meteor.startup ->
   #  number: Exercices.find().count() + 1
   #  question: 'Combien fait 2 + 2 ?'
   #  validated: false
-  #  level: medium
+  #  level: "medium"
   #  answers:
   #    right: 4
   #    wrong: [
@@ -37,7 +37,7 @@ Meteor.startup ->
   #  denominator: 7
   #  isAssisted: true
   #  validated: false
-  #  level: hard
+  #  level: "hard"
   #  answers:
   #    right: 37
   #    wrong: []
