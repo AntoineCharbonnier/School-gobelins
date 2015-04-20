@@ -1,0 +1,7 @@
+template(name='app')
+  h1 Prototype Meteor.js
+  if currentUser 
+    button#logout Log out
+  else
+    +login
+  +yield

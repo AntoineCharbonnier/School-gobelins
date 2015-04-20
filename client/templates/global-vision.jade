@@ -1,0 +1,16 @@
+template(name='globalVision')
+  .container-global-vision
+    h2 Global details
+    ul
+      li
+        | Nombre etudiants dans la classe : getStudentNumber
+      each getExercices
+        li
+          | Nombre etudiants qui ont validés l'exercice {{this.number}}  : {{getNumberStudentValidExercice this._id}}
+          br
+          | Nombre moyen d'essais : {{getAttemptsExercice this._id}}
+          br
+          | Durée moyenne : {{getDurationExercice this._id true}}
+          br
+          | Nombre de HELP : {{getNumberHelpExercice this._id}}
+      

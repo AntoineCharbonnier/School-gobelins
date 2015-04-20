@@ -1,0 +1,25 @@
+template(name='student')
+  .container-student
+    h6 Student template
+    h1 {{this.username}}
+    each this.profile.answers
+      {{ updateDurationStudentExercice this }}
+      with getOriginalQuestion this.exercice_id
+        h4 Exercice {{ this.number }}
+        |{{ this.question }}
+        br
+        |Bonne réponse : {{ this.answers.right}}
+        br
+      //- |{{/with}}
+      br
+      |Nombre de tentatives : {{ this.attempt }}
+      br
+      // Nombre de HELP : {{ this.numberNeedHelp }}
+      br
+      |Durée : 
+      span.is-not-defined(id='time-{{this.exercice_id}}') {{ this.time }}
+      br
+      |A envoyé un HELP ? : {{ getNeedHelp this.needHelp }}
+      br
+      a(href='{{../_id}}/{{this.exercice_id}}') Accéder
+    |     :

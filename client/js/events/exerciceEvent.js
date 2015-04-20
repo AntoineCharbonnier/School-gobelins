@@ -142,12 +142,12 @@ Template.exercice.events({
       var current = student.profile.answers[i];
       if (current.exercice_id == question._id){
         current.needHelp = true;
-        if(current.numberNeedHelp){
-          current.numberNeedHelp += 1;
-        }
-        else{
-          current.numberNeedHelp = 1;
-        }
+        // if(current.numberNeedHelp){
+        //   current.numberNeedHelp += 1;
+        // }
+        // else{
+        //   current.numberNeedHelp = 1;
+        // }
         
 
       }

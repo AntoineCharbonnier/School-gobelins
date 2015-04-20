@@ -1,0 +1,34 @@
+template(name='exerciceViewStudent')
+  if isEmptyArray this.exercice.answers.wrong 
+    if this.exercice.isAssisted 
+      .compute
+        p.dividend
+          | {{ this.exercice.dividend}}
+        p.denominator
+          | {{ this.exercice.denominator}}
+        |         Soustraction intermediaire : 
+        br
+        |         {{ this.exercice.dividend }} - 
+        input#intermediate-substraction(value='', name='susbtraction', placeholder=' ? * {{this.exercice.denominator}}')
+        |         |
+        input#intermediate-substraction-result(value='', name='susbtraction-result', placeholder=' ')
+      input#answer(value='{{ getStudentAnswer }}', name='answer', placeholder='Ta reponse')
+  else
+    select#answer(name='answer')
+      option(disabled='', selected='')  Réponse
+      each sortAnswers this.exercice.answers
+        option({{='', ischecked='', this='', getstudentanswer='', }}='') {{this}}
+  
+  if this.exercice.isAssisted
+    a#validator-assisted(href='') Validate
+  else
+    a#validator(href='') Validate
+
+  p Commentaire du professeur : {{ getStudentComment }}
+  a#need-help(href='') Beosin d'aide ?
+  if nextExerciceExist this.exercice.number
+    a#next.hide(href='/student/{{this.student._id}}/{{ getNextExercice this.exercice.number }}')
+      | Exercice suivant
+  else
+    a(href='/')
+      | Plus d'exercices (lien vers / )

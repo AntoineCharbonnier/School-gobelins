@@ -1,0 +1,8 @@
+template(name='connectedStudents')
+  .container-connected-student
+    h2 Connected
+    ul
+      each connectedStudents
+        li
+          a(href='/student/{{this._id}}')
+            | {{ this.username }}

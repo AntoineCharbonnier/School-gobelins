@@ -1,0 +1,5 @@
+template(name='exerciceViewTeacher')
+  | Derniere Réponse de {{ this.student.username }}: {{ getStudentAnswer }}
+  br
+  p Ajouter un commentaire :
+  input#comment(name='comment', value='{{ getStudentComment }}')

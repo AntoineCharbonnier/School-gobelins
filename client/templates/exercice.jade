@@ -1,0 +1,11 @@
+template(name='exercice')
+  .container-exerice
+    if this.exercice
+      p
+        |{{this.exercice.question}}
+      form
+        input(type='hidden', name='exercice_id', value='{{this._id}}')
+        if isTeacher currentUser
+          +exerciceViewTeacher
+        else
+          +exerciceViewStudent

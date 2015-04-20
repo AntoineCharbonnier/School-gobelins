@@ -10,6 +10,7 @@ Meteor.startup ->
   #  denominator: 7
   #  isAssisted: true
   #  validated: false
+  #  level: easy
   #  answers:
   #    right: 5
   #    wrong: []
@@ -21,6 +22,7 @@ Meteor.startup ->
   #  number: Exercices.find().count() + 1
   #  question: 'Combien fait 2 + 2 ?'
   #  validated: false
+  #  level: medium
   #  answers:
   #    right: 4
   #    wrong: [
@@ -28,6 +30,18 @@ Meteor.startup ->
   #      22
   #    ]
   
+  # Exercices.insert
+  #  number: Exercices.find().count() + 1
+  #  question: 'Divises 259 par 7.'
+  #  dividend: 259
+  #  denominator: 7
+  #  isAssisted: true
+  #  validated: false
+  #  level: hard
+  #  answers:
+  #    right: 37
+  #    wrong: []
+
   # console.log Exercices.find().count()
   # console.log 'Insert two : ', Exercices.find().fetch()
   
