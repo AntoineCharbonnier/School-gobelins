@@ -1,6 +1,10 @@
-$color: #0000ff;
+$color: #ff0000;
 
-h4{
+h1{
   color: $color;
 }
 
+
+@import "client/css/base.scss";
+@import "client/css/exercice.scss";
+@import "client/css/login.scss";
