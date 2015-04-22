@@ -17,8 +17,7 @@ template(name='exerciceViewStudent')
     select#answer(name='answer')
       option(disabled='', selected='')  Réponse
       each sortAnswers this.exercice.answers
-        option({{='', ischecked='', this='', getstudentanswer='', }}='') {{this}}
-  
+        option {{ isChecked this getStudentAnswer }} {{this}}
   if this.exercice.isAssisted
     a#validator-assisted(href='') Validate
   else

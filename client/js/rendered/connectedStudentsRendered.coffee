@@ -1,0 +1,1 @@
+Template.connectedStudents.rendered = ->

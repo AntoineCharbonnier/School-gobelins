@@ -1,7 +1,14 @@
 template(name='home')
-  if isTeacher currentUser
-    +connectedStudents 
-    +globalVision
-  else
-    h1 Hi #{currentUser.username}
-    +exercices 
+  .container-home
+    +menu
+    if isTeacher currentUser
+      +connectedStudents 
+      +globalVision
+
+    else
+      h1 Hi #{currentUser.username}
+
+      +exercices
+      +waiting 
+    +classesShow
+    

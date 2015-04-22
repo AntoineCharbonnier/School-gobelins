@@ -3,7 +3,7 @@ template(name='student')
     h6 Student template
     h1 {{this.username}}
     each this.profile.answers
-      {{ updateDurationStudentExercice this }}
+      |{{ updateDurationStudentExercice this }}
       with getOriginalQuestion this.exercice_id
         h4 Exercice {{ this.number }}
         |{{ this.question }}
@@ -21,5 +21,6 @@ template(name='student')
       br
       |A envoyé un HELP ? : {{ getNeedHelp this.needHelp }}
       br
-      a(href='{{../_id}}/{{this.exercice_id}}') Accéder
+      a(href='{{../_id}}/{{this.exercice_id}}') 
+        |Accéder
     |     :

@@ -1,7 +1,15 @@
 Meteor.startup ->
   # Exercices.remove {}
   # Meteor.users.remove {}
+  # AppEvents.remove {}
   
+  # AppEvents.insert
+  #   name: "indexClasses"
+  #   indexClasses: 0
+
+  # AppEvents.insert
+  #   name: "displayer"
+  #   module: ""
 
   # Exercices.insert
   #  number: Exercices.find().count() + 1
@@ -62,6 +70,16 @@ Meteor.startup ->
   #    answers: []
 
   # Accounts.createUser
+  #  username: 'popoch'
+  #  email: 'popoch@gmail.com'
+  #  password: 'popoch'
+  #  profile:
+  #    account: 'student'
+  #    connected: false
+  #    currentExercice: null
+  #    answers: []
+
+  # Accounts.createUser
   #  username: 'eleve2'
   #  email: 'eleve2@gmail.com'
   #  password: 'eleve2'
@@ -70,6 +88,8 @@ Meteor.startup ->
   #    connected: false
   #    currentExercice: null
   #    answers: []
-  
+
+  AppEvents.allow update: (userId, docs, fields, modifier) ->
+    return true
   Meteor.users.allow update: (userId, docs, fields, modifier) ->
    return true

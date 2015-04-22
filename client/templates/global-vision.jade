@@ -3,7 +3,7 @@ template(name='globalVision')
     h2 Global details
     ul
       li
-        | Nombre etudiants dans la classe : getStudentNumber
+        | Nombre etudiants dans la classe : {{ getStudentNumber }}
       each getExercices
         li
           | Nombre etudiants qui ont validés l'exercice {{this.number}}  : {{getNumberStudentValidExercice this._id}}

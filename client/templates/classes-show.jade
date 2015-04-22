@@ -1,0 +1,11 @@
+template(name='classesShow')
+  .container-classes-show
+    h2 Classes Show
+    if isTeacher currentUser
+      a(href, id="previous")
+        |Previous page
+      a(href, id="next")
+        |Next page
+    h3 What's my INDEX : {{ getIndexClasses }}
+
+    img(src= "/gif-0{{ getIndexClasses }}.gif")

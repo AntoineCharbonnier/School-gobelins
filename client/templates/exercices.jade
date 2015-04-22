@@ -4,4 +4,3 @@ template(name='exercices')
     each getExercices
       h5 Exercice n°{{this.number}}
       a(href='/student/{{currentUser._id}}/{{this._id}}') Faire l'exercice
-      // {{> exercice}}

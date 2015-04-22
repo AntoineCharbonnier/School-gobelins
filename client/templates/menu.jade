@@ -1,0 +1,11 @@
+template(name='menu')
+  .container-men
+    h2 Menu
+    if isTeacher currentUser
+      a(href, id="display-exercice")
+        |Display Exercice
+      br
+      a(href, id="display-classes")
+        |Display Classes
+    else
+      h3 Enfant = pas l'droit menu
