@@ -4,11 +4,15 @@ template(name='home')
     if isTeacher currentUser
       +connectedStudents 
       +globalVision
+      +classesShow
 
     else
       h1 Hi #{currentUser.username}
-
-      +exercices
-      +waiting 
-    +classesShow
-    
+      if isDisplayingExerices
+        +exercices
+      if isDisplayingClasses
+        +classesShow 
+      if isDisplayingWaiting
+        +waiting  
+      //- +waiting 
+      //- +classesShow
