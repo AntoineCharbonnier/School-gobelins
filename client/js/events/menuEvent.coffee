@@ -7,7 +7,7 @@ Template.menu.events
       $set: {
         "module": "display-exercice"
       }
-    console.log "DISPLAYER TEACHER", AppEvents.findOne(name: 'displayer')    
+    # console.log "DISPLAYER TEACHER", AppEvents.findOne(name: 'displayer')    
     return
   
   'click #display-classes': (e) ->
@@ -18,7 +18,7 @@ Template.menu.events
       $set: {
         "module": "display-classes"
       }
-    console.log "DISPLAYER TEACHER", AppEvents.findOne(name: 'displayer')
+    # console.log "DISPLAYER TEACHER", AppEvents.findOne(name: 'displayer')
     return
 
   'click #display-waiting': (e) ->
@@ -29,5 +29,5 @@ Template.menu.events
       $set: {
         "module": ""
       }
-    console.log "DISPLAYER TEACHER", AppEvents.findOne(name: 'displayer')
+    # console.log "DISPLAYER TEACHER", AppEvents.findOne(name: 'displayer')
     return

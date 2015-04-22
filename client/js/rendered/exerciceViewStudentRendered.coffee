@@ -1,4 +1,4 @@
-Template.exerciceViewStudent.rendered = ->
+Template.exercices.rendered = ->
   # Meteor.defer = ->
   container = ".container-exerice"
   console.log("RENDERED EX")
@@ -11,7 +11,7 @@ Template.exerciceViewStudent.rendered = ->
   tm.play()
 
 # NOT YET
-Template.exerciceViewStudent.destroyed = ->
+Template.exercices.destroyed = ->
   # self = this
   # self.preventDefault()
   container = ".container-classes-show"
@@ -23,3 +23,10 @@ Template.exerciceViewStudent.destroyed = ->
   tm.to( container, 5.5,{autoAlpha: 0, ease: Ease.easeIn}, t+=.50)
   tm.play()
   # self.destroy()
+
+
+Template.exercices.beforeDestroyed = ->
+  # self = this
+  # self.preventDefault()
+  console.log "try destroy EX"
+  # doSomeAnimation().andThen(function() { self.destroy(); });

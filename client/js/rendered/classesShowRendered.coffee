@@ -1,7 +1,7 @@
 Template.classesShow.rendered = ->
   # Meteor.defer = ->
   container = ".container-classes-show"
-  console.log("RENDERED")
+  # console.log("RENDERED")
 
   TweenMax.set container, autoAlpha: 0
   # show()
@@ -15,7 +15,7 @@ Template.classesShow.destroyed = ->
   # self = this
   # self.preventDefault()
   container = ".container-classes-show"
-  console.log("DESTROYED")
+  # console.log("DESTROYED")
   # TweenMax.set container, autoAlpha: 0
   # show()
   t = 1
