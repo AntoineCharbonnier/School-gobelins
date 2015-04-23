@@ -20,3 +20,7 @@ Template.exerciceViewStudent.helpers
     displayerEvent = AppEvents.findOne(name: 'displayer')
     if(displayerEvent.module == "display-classes" and currentUser.profile.account == "student")
       Router.go("/")
+
+  'isMediumLevel': (exerciceLevel)->
+    if exerciceLevel == "medium"
+      return true

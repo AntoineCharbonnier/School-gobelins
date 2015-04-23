@@ -1,8 +1,17 @@
 Meteor.startup ->
+
+  # ############################################ 
+  # ### RESETS
+  # ############################################ 
+
   # Exercices.remove {}
   # Meteor.users.remove {}
   # AppEvents.remove {}
   
+  # ############################################ 
+  # ### EVENTS
+  # ############################################ 
+
   # AppEvents.insert
   #   name: "indexClasses"
   #   indexClasses: 0
@@ -11,6 +20,10 @@ Meteor.startup ->
   #   name: "displayer"
   #   module: ""
 
+  # ############################################ 
+  # ### EXERCICES
+  # ############################################ 
+
   # Exercices.insert
   #  number: Exercices.find().count() + 1
   #  question: 'Divises 37 par 7.'
@@ -18,7 +31,7 @@ Meteor.startup ->
   #  denominator: 7
   #  isAssisted: true
   #  validated: false
-  #  level: "easy"
+  #  level: "medium"
   #  answers:
   #    right: 5
   #    wrong: []
@@ -30,7 +43,7 @@ Meteor.startup ->
   #  number: Exercices.find().count() + 1
   #  question: 'Combien fait 2 + 2 ?'
   #  validated: false
-  #  level: "medium"
+  #  level: "easy"
   #  answers:
   #    right: 4
   #    wrong: [
@@ -53,6 +66,10 @@ Meteor.startup ->
   # console.log Exercices.find().count()
   # console.log 'Insert two : ', Exercices.find().fetch()
   
+  # ############################################ 
+  # ### ACCOUNTS
+  # ############################################ 
+
   # Accounts.createUser
   #  username: 'titi'
   #  email: 'titi@gmail.com'
@@ -75,7 +92,7 @@ Meteor.startup ->
   #  password: 'popoch'
   #  profile:
   #    account: 'student'
-  #    connected: false
+  #    connected: true
   #    currentExercice: null
   #    answers: []
 
@@ -85,9 +102,13 @@ Meteor.startup ->
   #  password: 'eleve2'
   #  profile:
   #    account: 'student'
-  #    connected: false
+  #    connected: true
   #    currentExercice: null
   #    answers: []
+
+
+
+
 
   AppEvents.allow update: (userId, docs, fields, modifier) ->
     return true

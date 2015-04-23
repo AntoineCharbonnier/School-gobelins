@@ -1,31 +1,39 @@
 template(name='exerciceViewStudent')
   {{ isDisplayingClasses currentUser }}
+  //- CHOIX TYPOLOGIE EXERCICE
   if isEmptyArray this.exercice.answers.wrong 
     if this.exercice.isAssisted 
-      .compute
-        p.dividend
-          | {{ this.exercice.dividend}}
-        p.denominator
-          | {{ this.exercice.denominator}}
-        |Soustraction intermediaire : 
-        br
-        |{{ this.exercice.dividend }} - 
-        input#intermediate-substraction(value='', name='susbtraction', placeholder=' ? * {{this.exercice.denominator}}')
-        |=
-        input#intermediate-substraction-result(value='', name='susbtraction-result', placeholder='le reste')
-      input#answer(value='{{ getStudentAnswer }}', name='answer', placeholder='Ta reponse')
+      if isMediumLevel this.exercice.level
+        .compute
+          p.dividend
+            | {{ this.exercice.dividend}}
+          p.denominator
+            | {{ this.exercice.denominator}}
+          |Soustraction intermediaire : 
+          br
+          |{{ this.exercice.dividend }} - 
+          input#intermediate-substraction-medium-level(value='', name='susbtraction', placeholder=' ? * {{this.exercice.denominator}}')
+          |=
+          input#intermediate-substraction-result-medium-level(value='', name='susbtraction-result', placeholder='le reste')
+    input#answer(value='{{ getStudentAnswer }}', name='answer', placeholder='Ta reponse')
+  
   else
     select#answer(name='answer')
       option(disabled='', selected='')  Réponse
       each sortAnswers this.exercice.answers
         option {{ isChecked this getStudentAnswer }} {{this}}
-  if this.exercice.isAssisted
-    a#validator-assisted(href='') Validate
+  
+  if isMediumLevel this.exercice.level
+    a#validator-medium-level(href='') Validate
+  
   else
     a#validator(href='') Validate
 
+
   p Commentaire du professeur : {{ getStudentComment }}
   a#need-help(href='') Beosin d'aide ?
+  
+
   if nextExerciceExist this.exercice.number
     a#next.hide(href='/student/{{this.student._id}}/{{ getNextExercice this.exercice.number }}')
       | Exercice suivant

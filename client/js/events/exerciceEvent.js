@@ -33,10 +33,10 @@ Template.exercice.events({
     })
   },
 
-  "click #validator-assisted": function(e) {
+  "click #validator-medium-level": function(e) {
     var endResult = $("#answer").val(); 
-    var susbstractionIntermediate = $("#intermediate-substraction").val(); 
-    var susbstractionRest = $("#intermediate-substraction-result").val();
+    var susbstractionIntermediate = $("#intermediate-substractionmedium-level").val(); 
+    var susbstractionRest = $("#intermediate-substraction-resultmedium-level").val();
 
 
     var findRest = false;
