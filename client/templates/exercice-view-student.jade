@@ -1,4 +1,5 @@
 template(name='exerciceViewStudent')
+  {{ isDisplayingClasses currentUser }}
   if isEmptyArray this.exercice.answers.wrong 
     if this.exercice.isAssisted 
       .compute

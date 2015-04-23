@@ -1,4 +1,4 @@
-Template.exerciceViewStudent.helpers
+Template.exercices.helpers
   'isChecked': (value, answer) ->
     if answer == value then 'selected' else ''
   'getNextExercice': (currentNumber) ->
@@ -16,7 +16,3 @@ Template.exerciceViewStudent.helpers
     goodResult = currentExercice.answers.right
     return
 
-  'isDisplayingClasses': (currentUser)->
-    displayerEvent = AppEvents.findOne(name: 'displayer')
-    if(displayerEvent.module == "display-classes" and currentUser.profile.account == "student")
-      Router.go("/")

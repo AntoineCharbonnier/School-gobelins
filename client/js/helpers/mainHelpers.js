@@ -79,5 +79,12 @@ Template.registerHelper("getOriginalQuestion", function(id){
   return Exercices.findOne({
     _id: id
   });
-  
 });
+
+Template.registerHelper("gotToExercices", function(user){
+  var exercices =  Exercices.findOne();
+  if(user.profile.account == "student"){
+    Router.go('/student/'+user._id+'/'+exercices._id);
+  } 
+});
+

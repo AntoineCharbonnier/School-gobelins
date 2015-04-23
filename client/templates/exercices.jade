@@ -1,6 +1,12 @@
 template(name='exercices')
   .container-exercices
-    h4 Liste d'exercices
-    each getExercices
-      h5 Exercice n°{{this.number}}
-      a(href='/student/{{currentUser._id}}/{{this._id}}') Faire l'exercice
+    //- h4 Liste d'exercices
+    //- each getExercices
+    //-   h5 Exercice n°{{this.number}}
+    //-   a(href='/student/{{currentUser._id}}/{{this._id}}') Faire l'exercice
+    h3 Go to first one
+    {{ gotToExercices currentUser }}
+    //- each getExercicesOneShot
+    //-   h5 Exercice n°{{this.number}}
+    //-   //- a(href='/student/{{currentUser._id}}/{{this._id}}') Faire l'exercice
+    //-   {{ gotToExercices currentUser._id this._id }}
