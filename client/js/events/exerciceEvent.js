@@ -34,9 +34,10 @@ Template.exercice.events({
   },
 
   "click #validator-medium-level": function(e) {
+    console.log("MEDIUM WAY");
     var endResult = $("#answer").val(); 
-    var susbstractionIntermediate = $("#intermediate-substractionmedium-level").val(); 
-    var susbstractionRest = $("#intermediate-substraction-resultmedium-level").val();
+    var susbstractionIntermediate = $("#intermediate-substraction-medium-level").val(); 
+    var susbstractionRest = $("#intermediate-substraction-result-medium-level").val();
 
 
     var findRest = false;
@@ -154,5 +155,146 @@ Template.exercice.events({
       }
 
     })    
+  },
+
+
+"keyup #first-intermediate-substraction-result-hard-level": function(e) {
+    var selectValue = e.target.value; 
+    var question = Template.currentData().exercice; 
+    console.log(selectValue);   
+    $("#first-intermediate-substraction-result-hard-level").attr("data-first-intermediate-substraction-result",selectValue);
+    var data = parseInt($("#first-intermediate-substraction-result-hard-level").attr("data-first-intermediate-substraction-result"));
+    if(!isNaN(data)){
+      var valueToDivide = (data * 10 + ( parseInt(question.dividend) % 10 ));
+      $(".second-substraction-number").html("Soit "+valueToDivide+ " diviser par "+ question.denominator + "<br>" +valueToDivide );
+    }
+  },
+
+  "click #validator-hard-level": function(e) {
+    console.log("HARD WAY");
+    var student = Template.currentData().student;
+    var question = Template.currentData().exercice;
+    
+    var endResult = $("#answer").val(); 
+    var firstSubstraction = $("#first-intermediate-substraction-hard-level").val(); 
+    var firstSubstractionRest = $("#first-intermediate-substraction-result-hard-level").val();
+    
+    var secondSubstraction = $("#second-intermediate-substraction-hard-level").val(); 
+    var secondSubstractionRest = $("#second-intermediate-substraction-result-hard-level").val();
+
+    console.log("TRUC : ",question.dividend % question.denominator, " firstSubstractionRest : ",firstSubstractionRest);
+
+
+    var firstFindRest = false;
+    var firstFindSubstraction = false;
+    var firstFindResult = false;
+
+    var secondFindRest = false;
+    var secondFindSubstraction = false;
+    var secondFindResult = false;
+
+    var firstStepValid = false;
+    var secondStepValid = false;
+
+
+
+    var newAnswers = [];
+
+    for (var i = 0; i < student.profile.answers.length; i++) {
+      var current = student.profile.answers[i];
+      if (current.exercice_id == question._id){
+        current.answer = endResult;
+        // current.attempt += 1;
+        if(parseInt(question.dividend/10) % question.denominator == firstSubstractionRest || parseInt(question.dividend/10 % question.denominator) == firstSubstractionRest ){
+          firstFindRest = true
+          console.log("firstFindRest");
+        }
+        else{
+          current.attempt += 1;
+        }
+
+        if(question.dividend/10 - (question.dividend/10 % question.denominator) == firstSubstraction  || parseInt(question.dividend/10 - (question.dividend/10% question.denominator)) == firstSubstraction){
+          firstFindSubstraction = true;
+          console.log("findSub");
+        }
+        else{
+          current.attempt += 1;
+        }
+        
+
+        // if(current.answer == question.answers.right || parseInt(current.answer) == question.answers.right){
+        //   firstFindResult = true;
+        //   console.log("firstFindResult");
+        // }
+        // else{
+        //   current.attempt += 1;
+        // }
+
+
+        if(firstFindRest && firstFindSubstraction){
+          // console.log("GOD ANSWERS");
+          // var currentTime = Date.now();
+          // current.time = currentTime - current.start;
+          // current.isCurrent = false;
+          // current.validated = true;
+
+          // $('#next').removeClass("hide");
+          firstStepValid = true;
+          console.log("first step valid");
+        }
+  
+        var data = parseInt($("#first-intermediate-substraction-result-hard-level").attr("data-first-intermediate-substraction-result"));
+        console.log("DATA : ",data);
+        
+        if(!isNaN(data)){
+          var valueToDivide = (data * 10 + ( parseInt(question.dividend) % 10 ));
+          console.log("valueToDivide", valueToDivide);
+          if(parseInt(valueToDivide) % question.denominator == secondSubstractionRest || parseInt(valueToDivide % question.denominator) == secondSubstractionRest ){
+            secondFindRest = true
+            console.log("secondFindRest");
+          }
+          else{
+            current.attempt += 1;
+          }
+
+          if(valueToDivide - (valueToDivide % question.denominator) == secondSubstraction  || parseInt(valueToDivide - (valueToDivide% question.denominator)) == secondSubstraction){
+            secondFindSubstraction = true;
+            console.log("secondfindSub");
+          }
+          else{
+            current.attempt += 1;
+          }
+
+          if(secondFindRest && secondFindSubstraction){
+            secondStepValid = true;
+            console.log("second step valid"); 
+          }
+          if(firstStepValid && secondStepValid){
+            console.log("GOD ANSWERS");
+            var currentTime = Date.now();
+            current.time = currentTime - current.start;
+            current.isCurrent = false;
+            current.validated = true;
+
+            $('#next').removeClass("hide");
+          }
+        }
+
+
+      }
+      newAnswers.push( current );
+    }
+
+
+    console.log("ANSWERS : ",newAnswers);
+    
+
+    Meteor.users.update({
+      _id : student._id
+    }, {
+      $set: {
+        "profile.answers": newAnswers
+      }
+    })
   }
 });

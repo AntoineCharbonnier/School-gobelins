@@ -24,3 +24,14 @@ Template.exerciceViewStudent.helpers
   'isMediumLevel': (exerciceLevel)->
     if exerciceLevel == "medium"
       return true
+
+  'isHardLevel': (exerciceLevel)->
+    if exerciceLevel == "hard"
+      return true
+
+  'getUnit': (number)->
+    return ( number % 10 )
+
+  'getNumberFirstStepDivision': (number)->
+    return parseInt(number / 10)
+
