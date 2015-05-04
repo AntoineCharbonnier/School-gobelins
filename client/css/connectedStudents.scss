@@ -7,8 +7,6 @@
   background-image: url(../assets/background.png);
   @include background-size(cover);
   background-position: center center;
-  // background-color: $background-color;
-  // background-color: blue;
   .background-list{
     position: absolute;
     z-index: 0;
@@ -31,6 +29,71 @@
   .list--4{
     top: 600px;
   }
+  .select-zone{
+    position: relative;
+    width: 100%;
+    height: 80px;
+    img{
+      float: left;
+      display: inline-block;
+    }
+
+    .decoration-border{
+      width: 3px;
+      height: 24px;
+      // display: inline-block;
+      margin: 0 0 0 50px;
+    }
+    .step{
+      width: 17px; 
+      height: 17px;
+    }
+    .step-one, .step-two{
+      margin: 0 0 0 20px;
+    }
+    p{
+      float: left;
+      font : normal 500 13px "MikadoMedium";
+      color: #5c5c63;
+      margin: 0 0 0 10px;
+    }
+    a{
+      float: left;
+      color: #5c5c63;
+    }
+    .number-student-selected{
+      float: left;
+      margin: 0 0 0 5px;
+    }
+    #select-all-classes{
+      color: white;
+      background-color: #f0445c;
+      height: 25px;
+      width: 250px;
+      margin: 0 0 0 20px;
+      @include border-radius(25px,25px);
+      h3{
+        margin: 3px;
+        font : normal 400 15px "Mikado";
+      }
+    }
+    #send-exercices{
+      color:  #f0445c;
+      background-color: white;
+      height: 25px;
+      width: 92px;
+      margin: 0 0 0 20px;
+      @include border-radius(25px,25px);
+      border: 1px solid #f0445c;
+      h3{
+        margin: 3px;
+        font : normal 400 15px "Mikado";
+      }
+    }
+    .points-connected{
+      margin: 0 0 0 10px;
+    }
+  }
   ul{
     position: relative;
     z-index: 10;
@@ -42,9 +105,6 @@
       height: 20%;
       float: left;
       margin: 35px 0 0 0;
-      // background-image: url(../assets/background_list.png);
-      // // @include background-size(cover);
-      // background-position: center center;
       a{
         color: $link-student-color;
         font : normal 500 12px "Mikado";
@@ -61,9 +121,9 @@
           z-index: 12;
         }
         .is-missing{
-           filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
-            filter: gray; /* IE6-9 */
-            -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+          filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+          filter: gray; /* IE6-9 */
+          -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
         }
         h6{
           margin: 15px 0 0 0;

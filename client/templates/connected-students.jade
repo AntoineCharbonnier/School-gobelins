@@ -1,6 +1,22 @@
 template(name='connectedStudents')
   .container-connected-student
-    //- h2 Connected
+    .select-zone
+      img(class="decoration-border" src="../assets/select_student/decoration.png" alt="Decoration")
+      img(class="step-one step" src="../assets/select_student/step-one.png" alt="Step-one")
+      p
+        |Séléctionnez un ou plusieurs élèves puis
+      img(class="step-two step" src="../assets/select_student/step-two.png" alt="Step-two")
+      p
+        |envoyez du contenu 
+      a(href, id="select-all-classes")
+        h3 Selectionner toute la classe
+      a(href, id="send-exercices")
+        h3 Envoyer
+      img(class="points-connected" src="../assets/is-connected-point.png" alt="Connected People")
+      h3.number-student-selected 
+        |x 23 / 24
+      .clear
+      //- return number connected x number total student
     .background-list.list--1
     .background-list.list--2
     .background-list.list--3
@@ -8,7 +24,8 @@ template(name='connectedStudents')
     ul
       each everyStudents
         li
-          a(href='/student/{{this._id}}')
+          a(href)
+            //- BEFORE FOR GO TO STUDEN PROFILE a(href='/student/{{this._id}}')
             img(id="avatar-{{ getNameWithUnderscore this.username }}" src="../assets/profile_images/{{ getNameWithUnderscore this.username }}.png" alt="Avatar de {{ this.username }}")
             if isStudentNeedHelp this
               h6 {{ this.username }} /!\
