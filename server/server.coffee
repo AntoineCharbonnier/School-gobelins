@@ -67,7 +67,7 @@ Meteor.startup ->
   console.log 'Insert two : ', Exercices.find().fetch()
   
   ############################################ 
-  ### ACCOUNTS
+  ### ACCOUNTS TEACHER
   ############################################ 
 
   Accounts.createUser
@@ -76,6 +76,12 @@ Meteor.startup ->
    password: 'PhilippeNeveu'
    profile: account: 'teacher'
   
+
+  ############################################ 
+  ### ACCOUNTS STUDENTS
+  ############################################ 
+  
+
   Accounts.createUser
    username: 'Abla Louna'
    email: 'AblaLouna@gmail.com'

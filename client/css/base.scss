@@ -18,8 +18,11 @@ html,body{
   height: 768px;
   display: table;
   position: relative;
-  top: 0;
+  top: 65px;
   left: 0;
+}
+.top--container{
+  top: 0px;
 }
 
 h1{
@@ -70,3 +73,4 @@ $top-bar-color : #c83f3c;
 $menu-selected-color : #7a2421;
 
 $background-color: #f7fafa;
+$link-student-color: #6b6b7c;

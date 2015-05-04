@@ -1,11 +1,18 @@
 template(name='connectedStudents')
   .container-connected-student
-    h2 Connected
+    //- h2 Connected
+    .background-list.list--1
+    .background-list.list--2
+    .background-list.list--3
+    .background-list.list--4
     ul
-      each connectedStudents
+      each everyStudents
         li
           a(href='/student/{{this._id}}')
+            img(id="avatar-{{ getNameWithUnderscore this.username }}" src="../assets/profile_images/{{ getNameWithUnderscore this.username }}.png" alt="Avatar de {{ this.username }}")
             if isStudentNeedHelp this
-              | {{ this.username }} /!\
+              h6 {{ this.username }} /!\
             else
-              | {{ this.username }}
+              h6 {{ this.username }}
+            if this.profile.connected
+              img(class="is-connected" id="avatar-{{ getNameWithUnderscore this.username }}-connected" src="../assets/is-connected-point.png" alt="Avatar de {{ this.username }} connected")

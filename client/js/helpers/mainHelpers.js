@@ -35,6 +35,12 @@ Template.registerHelper("connectedStudents", function(){
   }).fetch();
 });
 
+Template.registerHelper("everyStudents", function(){
+  return Meteor.users.find({
+    "profile.account": "student"
+  }, {sort: { username: 1} });
+});
+
 
 Template.registerHelper("isTeacher", function(user){
   if (null == user)
