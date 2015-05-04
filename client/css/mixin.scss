@@ -1,0 +1,29 @@
+@mixin input-placeholder-custom($color) {
+  ::-webkit-input-placeholder { /* WebKit browsers */
+    color:    $color;
+    text-align: center;
+    font : normal 500 15px "MikadoLight";
+    margin-left : 15px;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    $color;
+   text-align: center;
+   font : normal 500 15px "MikadoLight";
+   margin-left : 15px;
+   opacity:  1;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    $color;
+   text-align: center;
+   font : normal 500 15px "MikadoLight";
+   margin-left : 15px;
+   opacity:  1;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    $color;
+   text-align: center;
+   font : normal 500 15px "MikadoLight";
+   margin-left : 15px;
+  }
+}
+

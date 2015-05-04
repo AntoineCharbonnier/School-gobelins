@@ -1,8 +1,15 @@
 template(name='login')
-  .container-login
+  .container-login.container
     form
-      input(type='text', name='email', placeholder='Identifiant', value='')
+      img(src="../assets/logo/logo_blanc.svg" alt="Logo HEP")
+      p
+        |Merci de saisir vos identifiants 
+        |pour vous connecter
+      .clear
+      input(type='text', name='email', placeholder='Identifiant', value='', class='input',required)
       br
-      input(type='password', name='password', placeholder='Mot de passe', value='')
+      input(type='password', name='password', placeholder='Mot de passe', value='', class='input',required)
       br
-      input(type='submit', value='Connexion')
+      input(type='submit', value='Valider')
+    a(href, id="create-account")
+      |Créer un compte

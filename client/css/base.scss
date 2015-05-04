@@ -1,3 +1,63 @@
 .hide{
   display: none;
 }
+
+.clear{
+  clear: both;
+  display: block;
+}
+
+html,body{
+  margin: 0;
+  max-width: 1024px;
+  max-height: 768px;
+}
+
+.container{
+  width: 1024px;
+  height: 768px;
+  display: table;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+h1{
+  font : normal 700 60px "Mikado";
+  text-align : center;
+}
+h2{
+  font : normal 700 30px "Mikado";
+  text-transform: uppercase;
+  text-align : center;
+  z-index: 20;
+}
+h3{
+  font : normal 400 18px "Mikado";
+  text-align : center;
+}
+h4{
+  font : normal 400 15px "MikadoLight";
+  text-align : center;
+}
+h5{
+  font : normal 400 14px "MikadoLight";
+  text-align : center;
+}
+h6{
+  font : normal 400 12px "MikadoLight";
+  text-align : center;
+}
+p{
+  font : normal 400 12px "Mikado";
+}
+input{
+  font : normal 500 10px "Mikado";
+}
+a{
+  font : normal 700 20px "Mikado";
+  // text-transform: uppercase;
+  text-decoration : none;
+  text-align : center;
+  z-index: 20;
+}
