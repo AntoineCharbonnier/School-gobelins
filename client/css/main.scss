@@ -4,7 +4,7 @@
 @import "client/css/base.scss";
 @import "client/css/exercice.scss";
 @import "client/css/login.scss";
-
+@import "client/css/menu.scss";
 
 
 @include font-face("MikadoBlackItalic", font-files("hvd_fonts_-_mikadoblack-italic-webfont.ttf", "hvd_fonts_-_mikadoblack-italic-webfont.woff", "hvd_fonts_-_mikadoblack-italic-webfont.svg"), "hvd_fonts_-_mikadoblack-italic-webfont.eot", 500);
@@ -44,4 +44,5 @@ input[type=button]:focus {
   outline: none;
   border: 0;
 }
+
 

@@ -1,18 +1,18 @@
 template(name='home')
   .container-home.container
-    //- +menu
+    +menu
     if isTeacher currentUser
       +connectedStudents 
-      +globalVision
-      +classesShow
+      //- +globalVision
+      //- +classesShow
 
-    //- else
-    //-   h1 Hi #{currentUser.username}
-    //-   if isDisplayingExerices
-    //-     +exercices
-    //-   if isDisplayingClasses
-    //-     +classesShow 
-    //-   if isDisplayingWaiting
-    //-     +waiting
-    //-   //- +waiting 
-    //-   //- +classesShow
+    else
+      h1 Hi #{currentUser.username}
+      if isDisplayingExerices
+        +exercices
+      if isDisplayingClasses
+        +classesShow 
+      if isDisplayingWaiting
+        +waiting
+      //- +waiting 
+      //- +classesShow

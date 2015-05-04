@@ -71,15 +71,15 @@ Meteor.startup ->
   ############################################ 
 
   Accounts.createUser
-   username: 'titi'
-   email: 'titi@gmail.com'
-   password: 'titi'
+   username: 'Philippe Neveu'
+   email: 'PhilippeNeveu@gmail.com'
+   password: 'PhilippeNeveu'
    profile: account: 'teacher'
   
   Accounts.createUser
-   username: 'eleve'
-   email: 'eleve@gmail.com'
-   password: 'eleve'
+   username: 'Abla Louna'
+   email: 'AblaLouna@gmail.com'
+   password: 'AblaLouna'
    profile:
      account: 'student'
      connected: false
@@ -87,9 +87,9 @@ Meteor.startup ->
      answers: []
 
   Accounts.createUser
-   username: 'popoch'
-   email: 'popoch@gmail.com'
-   password: 'popoch'
+   username: 'Begidis Alban'
+   email: 'BegidisAlban@gmail.com'
+   password: 'BegidisAlban'
    profile:
      account: 'student'
      connected: true
@@ -97,16 +97,225 @@ Meteor.startup ->
      answers: []
 
   Accounts.createUser
-   username: 'eleve2'
-   email: 'eleve2@gmail.com'
-   password: 'eleve2'
+   username: 'Bihannic Etienne'
+   email: 'BihannicEtienne@gmail.com'
+   password: 'BihannicEtienne'
    profile:
      account: 'student'
      connected: true
      currentExercice: null
      answers: []
 
+  Accounts.createUser
+   username: 'Bouffier Anna'
+   email: 'BouffierAnna@gmail.com'
+   password: 'BouffierAnna'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
 
+  Accounts.createUser
+   username: 'Canitrot Maud'
+   email: 'CanitrotMaud@gmail.com'
+   password: 'CanitrotMaud'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Chen Villon'
+   email: 'ChenVillon@gmail.com'
+   password: 'ChenVillon'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Corbeau Lilian'
+   email: 'CorbeauLilian@gmail.com'
+   password: 'CorbeauLilian'
+   profile:
+     account: 'student'
+     connected: false
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Cortez Benjamin'
+   email: 'CortezBenjamin@gmail.com'
+   password: 'CortezBenjamin'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Denchin Amalthee'
+   email: 'DenchinAmalthee@gmail.com'
+   password: 'DenchinAmalthee'
+   profile:
+     account: 'student'
+     connected: false
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Etienne Marzhin'
+   email: 'EtienneMarzhin@gmail.com'
+   password: 'EtienneMarzhin'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Jebabli Ayat'
+   email: 'JebabliAyat@gmail.com'
+   password: 'JebabliAyat'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Many Moutou'
+   email: 'ManyMoutou@gmail.com'
+   password: 'ManyMoutou'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Mendez Roxanne'
+   email: 'MendezRoxanne@gmail.com'
+   password: 'MendezRoxanne'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Metteni William'
+   email: 'MetteniWilliam@gmail.com'
+   password: 'MetteniWilliam'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Osti Maxime'
+   email: 'OstiMaxime@gmail.com'
+   password: 'OstiMaxime'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Pepas Margot'
+   email: 'PepasMargot@gmail.com'
+   password: 'PepasMargot'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Ponsardin Hugo'
+   email: 'PonsardinHugo@gmail.com'
+   password: 'PonsardinHugo'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Raissac Erwan'
+   email: 'RaissacErwan@gmail.com'
+   password: 'RaissacErwan'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Sieng Celine'
+   email: 'SiengCeline@gmail.com'
+   password: 'SiengCeline'
+   profile:
+     account: 'student'
+     connected: false
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Sieng Emilie'
+   email: 'SiengEmilie@gmail.com'
+   password: 'SiengEmilie'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Soetaert Salma'
+   email: 'SoetaertSalma@gmail.com'
+   password: 'SoetaertSalma'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Tagehlit Ryad'
+   email: 'TagehlitRyad@gmail.com'
+   password: 'TagehlitRyad'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Valadier Clement'
+   email: 'ValadierClement@gmail.com'
+   password: 'ValadierClement'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
+  Accounts.createUser
+   username: 'Van-Moe Antoine'
+   email: 'Van-MoeAntoine@gmail.com'
+   password: 'Van-MoeAntoine'
+   profile:
+     account: 'student'
+     connected: true
+     currentExercice: null
+     answers: []
+  
 
 
 

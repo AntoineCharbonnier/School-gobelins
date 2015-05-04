@@ -1,16 +1,30 @@
 template(name='menu')
   .container-menu.container
-    h2 Menu
+    //- h2 Menu
     if isTeacher currentUser
-      a(href, id="display-exercice")
-        |Display Exercice
-      br
-      a(href, id="display-classes")
-        |Display Classes
-      br
-      a(href, id="display-waiting")
-        |Display Waiting
-      br
+      nav
+        .top--bar
+        ul
+          li
+            img(src="../assets/logo/logo_blanc.svg" alt="Logo HEP")
+          li
+            a(href, id="display-waiting")
+              |Espace préparation
+          
+          li
+            a(href, id="display-classes")
+              |Manuel scolaire
+          li
+            a(href, id="display-exercice" class="selected")
+              |Espace classe
+          //- li
+          //-   a(href, id="display-exercice")
+          //-     |BURGER MENU
+           
+        //- a(href, id="display-waiting", classe="hide")
+        //-   |Display Waiting
+        .bottom--bar
+        
             
     else
       h3 Enfant = pas l'droit menu

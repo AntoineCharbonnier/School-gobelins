@@ -1,0 +1,60 @@
+.container-menu{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 68px;
+  nav{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $red-background ;
+    .top--bar{
+      position: fixed;
+      height: 5px;
+      width: 1024px;
+      background-color: $top-bar-color;
+    }
+    .bottom--bar{
+      position: relative;
+      height: 5px;
+      width: 1024px;
+      background-color: white;
+    }
+    ul{
+      width: 100%;
+      height: 100%;
+      li{
+        width: 25%;
+        height: 100%;
+        float: left;
+      } 
+    }
+
+    img{
+      position: relative;
+      width: 105px;
+      height: 45px;
+      margin: 15px 0 0 50px;
+    }
+    a{
+      position: relative;
+      display: block;
+
+      // margin: 22px auto 0 auto;
+      height: 100%;
+      width: 100%;
+      color: white;
+      font : normal 500 18px "MikadoMedium";
+      line-height: 62px;
+      vertical-align: middle;
+      text-align: center;
+    }
+    .selected{
+      color : $menu-selected-color ;
+      border-bottom: 4px solid $menu-selected-color ;
+    }
+  }
+}
