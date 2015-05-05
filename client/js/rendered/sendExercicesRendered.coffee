@@ -1,4 +1,4 @@
-Template.connectedStudents.rendered = ->
+Template.sendExercices.rendered = ->
   users = Meteor.users.find().fetch()
   i = 0
   while i < users.length

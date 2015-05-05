@@ -1,4 +1,4 @@
-.container-connected-student{
+.container-send-exercices{
   position: relative;
   display: table-cell;
   margin: 0 auto;
@@ -77,7 +77,7 @@
         font : normal 400 15px "Mikado";
       }
     }
-    #send-exercices{
+    .send-exercices{
       color:  #f0445c;
       background-color: white;
       height: 25px;
@@ -109,8 +109,15 @@
         color: $link-student-color;
         font : normal 500 12px "Mikado";
         img{
+          position: relative;
           width: 75px;
           height: 75px;
+          left: 40px;
+        }
+        .profile-overlay{
+          position: relative;
+          top: 0px;
+          left: -38px;
         }
         .is-connected{
           position: relative;

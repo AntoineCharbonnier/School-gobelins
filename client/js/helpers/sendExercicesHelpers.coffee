@@ -1,4 +1,4 @@
-Template.connectedStudents.helpers 
+Template.sendExercices.helpers 
   'isStudentNeedHelp': (student) ->
     # console.log 'STUDENT', student
     i = 0
