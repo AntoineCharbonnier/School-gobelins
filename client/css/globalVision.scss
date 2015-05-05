@@ -1,0 +1,98 @@
+.container-global-vision{
+  .select-zone{
+    // position: relative;
+    // width: 100%;
+    // height: 80px;
+    img{
+      float: left;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+    }
+    .switch__buton{
+      margin: 0 0 0 92px;
+    }
+    .pause__button{
+      margin: 0 0 0 20px;
+    }
+    a{
+      float: left;
+      color: #5c5c63;
+    }
+    #time-is-over{
+      color: white;
+      background-color: #f0445c;
+      height: 35px;
+      width: 100px;
+      margin: 0 0 0 277px;
+      @include border-radius(25px,25px);
+      h3{
+        margin: 7px 0 0 0;
+        font : normal 400 15px "Mikado";
+      }
+    }
+    .time-container{
+      float: left;
+      position: relative;
+      margin: -15px 0 0 277px;
+      h3{
+        font : normal 400 15px "Mikado";
+        text-transform: uppercase;
+        color: #5c5c63;
+      }
+      h2{
+        font : normal 400 45px "Mikado";
+        color: #5c5c63;
+      }
+    }
+  }
+  ul{
+    li{
+      position: relative;
+      width: 16%;
+      height: 20%;
+      float: left;
+      margin: 35px 0 0 0;
+      a{
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        img{
+          @include box-shadow(rgba(185,187,189, 1) 0 0 15px);
+          position: relative;
+          width: 75px;
+          height: 75px;
+          @include border-radius(38px);
+          @include transform(translateX(-50%));
+        }
+        h6{
+          margin: 15px 0 0 0;
+        }
+      }
+    }
+  }
+  .progess__bar{
+    position: absolute;
+    bottom: 0px;
+    height: 24px;
+    width: 1024px;
+    h3{
+      width: 100%;
+      text-align: left;
+      padding: 0 0 0 25px;
+      text-transform: uppercase;
+      position: absolute;
+      z-index: 5;
+      font : normal 400 15px "Mikado";
+      color: #b4bbc7;
+      margin: 3px 0 0 0;
+    }
+    .bar{
+      position: absolute;
+      height: 100%;
+      width: 0px;
+      background-color: #d8e1e7;
+    }
+  }
+}

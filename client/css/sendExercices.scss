@@ -1,4 +1,4 @@
-.container-send-exercices{
+.container-send-exercices,.container-global-vision{
   position: relative;
   display: table-cell;
   margin: 0 auto;
@@ -21,13 +21,13 @@
     top: 150px;
   }
   .list--2{
-    top: 300px;
+    top: 320px;
   }
   .list--3{
-    top: 450px;
+    top: 490px;
   }
   .list--4{
-    top: 600px;
+    top: 660px;
   }
   .select-zone{
     position: relative;
@@ -109,6 +109,7 @@
         color: $link-student-color;
         font : normal 500 12px "Mikado";
         img{
+          @include border-radius(38px);
           position: relative;
           width: 75px;
           height: 75px;

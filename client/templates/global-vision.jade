@@ -1,16 +1,40 @@
 template(name='globalVision')
   .container-global-vision
-    h2 Global details
+    .select-zone
+      img(class="switch__buton" src="../assets/global_vision/switch.png" alt="Switch")
+      img(class="pause__button" src="../assets/global_vision/pause.png" alt="Pause")
+      .time-container
+        h3 temps écoulé
+        h2 {{getTotalDurationExercice true}}
+        .clear
+      a(href, id="time-is-over")
+        h3 Terminer
+      .clear
     ul
-      li
-        | Nombre etudiants dans la classe : {{ getStudentNumber }}
-      each getExercices
+      each everyStudents
         li
-          | Nombre etudiants qui ont validés l'exercice {{this.number}}  : {{getNumberStudentValidExercice this._id}}
-          br
-          | Nombre moyen d'essais : {{getAttemptsExercice this._id}}
-          br
-          | Durée moyenne : {{getDurationExercice this._id true}}
-          br
-          | Nombre de HELP : {{getNumberHelpExercice this._id}}
+          a(href='/student/{{this._id}}')
+            //- BEFORE FOR GO TO STUDEN PROFILE a(href='/student/{{this._id}}')
+            img(id="avatar-{{ getNameWithUnderscore this.username }}" src="../assets/profile_images/{{ getNameWithUnderscore this.username }}.png" alt="Avatar de {{ this.username }}")
+            //- img(id="avatar-{{ getNameWithUnderscore this.username }}-overlay" src="../assets/select_student/profile-overlay.png" alt="Overlay de {{ this.username }}" class="profile-overlay transparent")
+            //- if isStudentNeedHelp this
+            //-   h6 {{ this.username }} /!\
+            //- else
+            //-   h6 {{ this.username }}
+    .progess__bar
+      h3 Progression generale
+      .bar
+    //- h2 Global details
+    //- ul
+    //-   li
+    //-     | Nombre etudiants dans la classe : {{ getStudentNumber }}
+    //-   each getExercices
+    //-     li
+    //-       | Nombre etudiants qui ont validés l'exercice {{this.number}}  : {{getNumberStudentValidExercice this._id}}
+    //-       br
+    //-       | Nombre moyen d'essais : {{getAttemptsExercice this._id}}
+    //-       br
+    //-       | Durée moyenne : {{getDurationExercice this._id true}}
+    //-       br
+    //-       | Nombre de HELP : {{getNumberHelpExercice this._id}}
       
