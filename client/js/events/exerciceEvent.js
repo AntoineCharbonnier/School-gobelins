@@ -153,7 +153,6 @@ Template.exercice.events({
       $set: {
         "profile.answers": newAnswers
       }
-
     })    
   },
 

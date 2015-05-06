@@ -36,6 +36,7 @@ Meteor.startup ->
   #    right: 5
   #    wrong: []
 
+
   
   # console.log 'Insert one : ', Exercices.find().fetch()
   
@@ -51,17 +52,6 @@ Meteor.startup ->
   #      22
   #    ]
   
-  # Exercices.insert
-  #  number: Exercices.find().count() + 1
-  #  question: 'Divises 259 par 7.'
-  #  dividend: 259
-  #  denominator: 7
-  #  isAssisted: true
-  #  validated: false
-  #  level: "hard"
-  #  answers:
-  #    right: 37
-  #    wrong: []
 
   # console.log Exercices.find().count()
   # console.log 'Insert two : ', Exercices.find().fetch()
@@ -329,3 +319,16 @@ Meteor.startup ->
     return true
   Meteor.users.allow update: (userId, docs, fields, modifier) ->
    return true
+
+
+  # Exercices.insert
+  #  number: Exercices.find().count() + 1
+  #  question: 'Divises 259 par 7.'
+  #  dividend: 259
+  #  denominator: 7
+  #  isAssisted: true
+  #  validated: false
+  #  level: "hard"
+  #  answers:
+  #    right: 37
+  #    wrong: []

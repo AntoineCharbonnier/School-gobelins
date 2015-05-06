@@ -129,13 +129,46 @@ Template.globalVision.helpers({
   "isStudentNeedHelp": function(student) {
     var i;
     i = 0;
+    var image_name = student.username.replace(/\s/g,"_");
+    var avatar = $ ("#avatar-"+image_name);
+    console.log("YOY");
     while (i < student.profile.answers.length) {
       if (student.profile.answers[i].needHelp) {
-        return true;
+        // ANIMATION 
+        var t, tm;
+        t = 0;
+        tm = new TimelineMax({paused: true,repeat: -1, yoyo: true, repeatDelay: 3.0});
+        tm.to(avatar, 0.1, {x: 10,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {x: -10,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {x: 10,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {x: -10,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {x: 10,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {x: -10,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {x: 10,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {x: -10,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {x: 10,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {x: -10,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {x: 10,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {x: -10,ease: Ease.easeIn}, t+= 0.1);
+        tm.play();
+        var newAnswers = [];
+        var currentAnswers = student.profile.answers[i];
+        currentAnswers.needHelp = false;
+
+        newAnswers.push( currentAnswers );
+
+        Meteor.users.update({
+          _id : student._id
+        }, {
+          $set: {
+            "profile.answers": newAnswers
+          }
+        }) 
       }
       i++;
     }
   },
+
   "getNameWithUnderscore": function(student_Name) {
     var image_name;
     image_name = student_Name.replace(/\s/g, "_");
