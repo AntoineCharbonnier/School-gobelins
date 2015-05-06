@@ -80,29 +80,19 @@ Template.globalVision.helpers({
     var exercices = Exercices.find().fetch();
 
     var timeAverrage = 0;
-    var startTime = 99999999999999999999999;
     for (var i = 0; i < users.length; i++) {
       var current = users[i];
-      console.log("first loop");
       for(var j = 0; j < current.profile.answers.length; j++){
         for(var k = 0; k < exercices.length; k++){
-          console.log("second loop");
           if (current.profile.answers[j].exercice_id == exercices[k]._id){
-            if(current.profile.answers[j].start && current.profile.answers[j].start < startTime){
-              startTime = current.profile.answers[j].start;
-            }
             if(current.profile.answers[j].time){
               timeAverrage += current.profile.answers[j].time;
-              console.log("MY TIME : ",timeAverrage);
             }          
           }
         }
         
       } 
     }
-    console.log("TEMPS "+$(".time-container h2").html());
-
-    
     if(booleanString){
       var minutes = Math.floor(timeAverrage / 60000);
       var seconds = ((timeAverrage % 60000) / 1000).toFixed(0);
@@ -110,14 +100,7 @@ Template.globalVision.helpers({
       if(minutes < 10){
         minutes = "0"+minutes;
       }
-      if($(".time-container h2").html() == minutes+":"+seconds){
-        var minutes2 = Math.floor(startTime / 60000);
-        var seconds2 = ((startTime % 60000) / 1000).toFixed(0);
-        return minutes2 + ":" + (seconds2 < 10 ? '0' : '') + seconds2
-      }
-      else{
-        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
-      }
+      return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
     }
     else{
       return timeAverrage;

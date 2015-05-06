@@ -17,14 +17,13 @@ Template.globalVision.events
       $set: {
         "module": "display-exercice"
       }
-    console.log "DISPLAYER TEACHER", AppEvents.findOne(name: 'displayer')    
+    console.log AppEvents.findOne(name: 'displayer')
     return
   
   'click #time-is-over': (e) ->
     users = Meteor.users.find(
       'profile.connected': true
       'profile.account': 'student').fetch()
-    console.log users
     i = 0
     while i < users.length
       image_name = users[i].username.replace(/\s/g,"_")

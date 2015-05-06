@@ -17,14 +17,12 @@ Template.sendExercices.events
       $set: {
         "module": "display-exercice"
       }
-    console.log "DISPLAYER TEACHER", AppEvents.findOne(name: 'displayer')    
     return
   
   'click #select-all-classes': (e) ->
     users = Meteor.users.find(
       'profile.connected': true
       'profile.account': 'student').fetch()
-    console.log users
     i = 0
     while i < users.length
       # if student.profile.answers[i].needHelp

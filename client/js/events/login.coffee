@@ -6,5 +6,6 @@ Template.login.events 'submit form': (e) ->
       console.log 'Login successfully'
     else
       console.log 'Error attempting to log in : ', err
+      # ADD TOGGLE ANIMATION
     return
   false

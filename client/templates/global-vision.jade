@@ -5,7 +5,8 @@ template(name='globalVision')
       img(class="pause__button" src="../assets/global_vision/pause.png" alt="Pause")
       .time-container
         h3 temps écoulé
-        h2 {{getTotalDurationExercice true}}
+        //- h2(id='time').is-not-defined 00:00
+        h2(id='time').is-not-defined {{getTotalDurationExercice true}}
         .clear
       a(href, id="time-is-over")
         h3 Terminer
