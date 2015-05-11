@@ -19,6 +19,7 @@ template(name='globalVision')
             img(id="avatar-{{ getNameWithUnderscore this.username }}" src="../assets/profile_images/{{ getNameWithUnderscore this.username }}.png" alt="Avatar de {{ this.username }}")
             //- img(id="avatar-{{ getNameWithUnderscore this.username }}-overlay" src="../assets/select_student/profile-overlay.png" alt="Overlay de {{ this.username }}" class="profile-overlay transparent")
             |{{isStudentNeedHelp this}}
+            |{{updateStudentSwitchProgress this}}
             //-   h6 {{ this.username }} /!\
             //- else
             //-   h6 {{ this.username }}

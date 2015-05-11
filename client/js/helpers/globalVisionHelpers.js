@@ -137,34 +137,36 @@ Template.globalVision.helpers({
         // ANIMATION 
         var t, tm;
         t = 0;
+        //ADD MARGIN FOR NO MOVE
         tm = new TimelineMax({paused: true,repeat: -1, yoyo: true, repeatDelay: 3.0});
-        tm.to(avatar, 0.1, {x: 10,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {x: -10,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {x: 10,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {x: -10,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {x: 10,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {x: -10,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {x: 10,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {x: -10,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {x: 10,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {x: -10,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {x: 10,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {x: 0,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"45px",height:"45px",ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"74px",height:"74px",ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"45px",height:"45px",ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"74px",height:"74px",ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"45px",height:"45px",ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"74px",height:"74px",ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"45px",height:"45px",ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"74px",height:"74px",ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"45px",height:"45px",ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"74px",height:"74px",ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"45px",height:"45px",ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width: "75px",height:"75px",ease: Ease.easeIn}, t+= 0.1);
         tm.play();
         
-        // var newAnswers = [];
-        // var currentAnswers = student.profile.answers[i];
-        // currentAnswers.needHelp = false;
+        //only for test
+        var newAnswers = [];
+        var currentAnswers = student.profile.answers[i];
+        currentAnswers.needHelp = false;
 
-        // newAnswers.push( currentAnswers );
+        newAnswers.push( currentAnswers );
 
-        // Meteor.users.update({
-        //   _id : student._id
-        // }, {
-        //   $set: {
-        //     "profile.answers": newAnswers
-        //   }
-        // }) 
+        Meteor.users.update({
+          _id : student._id
+        }, {
+          $set: {
+            "profile.answers": newAnswers
+          }
+        }) 
       }
       i++;
     }
@@ -175,5 +177,37 @@ Template.globalVision.helpers({
     image_name = student_Name.replace(/\s/g, "_");
     console.log(image_name);
     return image_name;
+  },
+
+  "updateStudentSwitchProgress": function(student){
+    var image_name;
+    image_name = student.username.replace(/\s/g, "_");
+    // for (var i = 0; i <student.profile.answers.length; i++){
+    currentEx = student.profile.currentExercice;
+    var exercice = Exercices.find({"_id" : currentEx}).fetch();
+    var exercicesNumbers = Exercices.find().fetch().length;
+    // }
+    console.log("ex: :",exercice);
+    console.log("exs: :",exercicesNumbers);
+    t = 0;
+    tm = new TimelineMax({paused: true});
+
+    if(currentEx < parseInt(exercicesNumbers / 3) ){
+      // au debut
+      console.log("debut");
+      tm.to(image_name, 0.5, {transformOrigin:"50% 50%",scale: 0.3,ease: Ease.easeIn}, t+= 0.1);
+    }
+    if(parseInt(exercicesNumbers / 3) < currentEx < parseInt(exercicesNumbers * 2 / 3) ){
+      // au milieu
+      console.log("milieu");
+      tm.to(image_name, 0.5, {transformOrigin:"50% 50%",scale: 0.6,ease: Ease.easeIn}, t+= 0.1);
+    }
+    if(parseInt(exercicesNumbers * 2 / 3) < currentEx ){
+      // a la fin
+      console.log("fin");
+      tm.to(image_name, 0.5, {transformOrigin:"50% 50%",scale: 0.9,ease: Ease.easeIn}, t+= 0.1);
+    }
+    tm.play();
+
   }
 });
