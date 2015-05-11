@@ -80,23 +80,23 @@
     margin: 25px 0 0 0;
     width: 250px;
     height: 35px;
-    font : normal 500 15px "MikadoLight";
+    font : normal 500 155px "MikadoLight";
     @include input-placeholder{
-      font : normal 500 15px "MikadoLight";
+      font : normal 500 155px "MikadoLight";
       color: $text-color; 
     };
 
-    @include input-placeholder-custom(#fff);
+    @include input-placeholder-custom-big-size(#fff);
     outline: none;
     border: 0;
-    color: $text-color;
-    background-color : $input-bkg;
+    color: yellow;
+    background-color : white;
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
     box-shadow: none;
     border-radius: 20px;
-    @include box-shadow(rgba($text-color, 0.5) 0 0 2px inset);
+    @include box-shadow(rgba($text-color, 1) 0 0 20px inset);
   }
   input[type="submit"]{
     color: $red-background;
@@ -106,7 +106,7 @@
     margin: 25px 25px 0 0;
   }
 
-  @include input-placeholder-custom($text-color);
+  @include input-placeholder-custom-big-size($text-color);
 
 
 // a tester
