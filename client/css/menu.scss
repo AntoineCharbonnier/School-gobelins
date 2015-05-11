@@ -9,7 +9,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 68px;
     background-color: $red-background ;
     .top--bar{
       position: fixed;
@@ -24,9 +24,11 @@
       background-color: white;
     }
     ul{
+      position: relative; 
       width: 100%;
       height: 100%;
       li{
+        position: relative; 
         width: 25%;
         height: 100%;
         float: left;

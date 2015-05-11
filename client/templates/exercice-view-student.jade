@@ -1,5 +1,5 @@
 template(name='exerciceViewStudent')
-  {{ isDisplayingClasses currentUser }}
+  |{{ isDisplayingClasses currentUser }}
   //- CHOIX TYPOLOGIE EXERCICE
   if isEmptyArray this.exercice.answers.wrong 
     if this.exercice.isAssisted 
