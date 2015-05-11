@@ -6,6 +6,7 @@
 @import "client/css/login.scss";
 @import "client/css/menu.scss";
 @import "client/css/sendExercices.scss";
+@import "client/css/globalVision.scss";
 
 @include font-face("MikadoBlackItalic", font-files("hvd_fonts_-_mikadoblack-italic-webfont.ttf", "hvd_fonts_-_mikadoblack-italic-webfont.woff", "hvd_fonts_-_mikadoblack-italic-webfont.svg"), "hvd_fonts_-_mikadoblack-italic-webfont.eot", 500);
 
@@ -40,7 +41,7 @@
 a:focus, 
 button:focus, 
 input[type=submit]:focus, 
-input[type=button]:focus {
+input[type=button]:focus,input,input:focus {
   outline: none;
   border: 0;
 }
@@ -48,4 +49,3 @@ input[type=button]:focus {
 
 
 
-@import "client/css/globalVision.scss";

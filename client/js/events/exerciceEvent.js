@@ -16,6 +16,7 @@ Template.exercice.events({
           current.time = currentTime - current.start;
           current.isCurrent = false;
           current.validated = true;
+          current.needHelp = false;
 
           $('#next').removeClass("hide");
         }
@@ -59,7 +60,7 @@ Template.exercice.events({
           console.log("findRest");
         }
         else{
-          current.attempt += 1;
+          // current.attempt += 1;
         }
 
         if(question.dividend - (question.dividend % question.denominator) == susbstractionIntermediate  || parseInt(question.dividend - (question.dividend % question.denominator)) == susbstractionIntermediate){
@@ -67,7 +68,7 @@ Template.exercice.events({
           console.log("findSub");
         }
         else{
-          current.attempt += 1;
+          // current.attempt += 1;
         }
 
         if(current.answer == question.answers.right || parseInt(current.answer) == question.answers.right){
@@ -75,9 +76,9 @@ Template.exercice.events({
           console.log("findResult");
         }
         else{
-          current.attempt += 1;
+          // current.attempt += 1;
         }
-
+        current.attempt += 1;
 
         if(findResult && findRest && findSubstraction){
           console.log("GOD ANSWERS");
@@ -85,7 +86,7 @@ Template.exercice.events({
           current.time = currentTime - current.start;
           current.isCurrent = false;
           current.validated = true;
-
+          current.needHelp = false;
           $('#next').removeClass("hide");
         }
       }
@@ -274,7 +275,7 @@ Template.exercice.events({
             current.time = currentTime - current.start;
             current.isCurrent = false;
             current.validated = true;
-
+            current.needHelp = false;
             $('#next').removeClass("hide");
           }
         }

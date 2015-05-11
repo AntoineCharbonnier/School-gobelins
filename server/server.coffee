@@ -26,7 +26,7 @@ Meteor.startup ->
 
   # Exercices.insert
   #  number: Exercices.find().count() + 1
-  #  question: 'Divises 37 par 7.'
+  #  question: '37 : 7 ='
   #  dividend: 37
   #  denominator: 7
   #  isAssisted: true

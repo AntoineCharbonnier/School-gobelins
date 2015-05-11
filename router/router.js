@@ -12,6 +12,7 @@ Router.configure({
 
 Router.route("/","home");
 
+// Router.route("/global","globalVision");
 
 
 Router.route("/student/:id",function(){

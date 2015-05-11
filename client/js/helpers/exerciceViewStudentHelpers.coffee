@@ -35,3 +35,17 @@ Template.exerciceViewStudent.helpers
   'getNumberFirstStepDivision': (number)->
     return parseInt(number / 10)
 
+  'isNeedingAssitance': () ->
+    student = Template.currentData().student
+    question = Template.currentData().exercice
+    returned = undefined
+    i = 0
+    while i < student.profile.answers.length
+      current = student.profile.answers[i]
+      if current.exercice_id == question._id
+        if current.needhelp
+          returned = true
+        else
+          returned = false
+      i++
+    return returned

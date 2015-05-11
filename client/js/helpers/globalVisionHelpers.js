@@ -124,7 +124,7 @@ Template.globalVision.helpers({
       } 
     }
     return numberHelp;
-  },
+  },  
 
   "isStudentNeedHelp": function(student) {
     var i;
@@ -132,8 +132,8 @@ Template.globalVision.helpers({
     var image_name = student.username.replace(/\s/g,"_");
     var avatar = $ ("#avatar-"+image_name);
     console.log("YOY");
-    while (i < student.profile.answers.length) {
-      if (student.profile.answers[i].needHelp) {
+    while (i < student.profile.answers.length){
+      if(student.profile.answers[i].needHelp){
         // ANIMATION 
         var t, tm;
         t = 0;
@@ -149,21 +149,22 @@ Template.globalVision.helpers({
         tm.to(avatar, 0.1, {x: 10,ease: Ease.easeIn}, t+= 0.1);
         tm.to(avatar, 0.1, {x: -10,ease: Ease.easeIn}, t+= 0.1);
         tm.to(avatar, 0.1, {x: 10,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {x: -10,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {x: 0,ease: Ease.easeIn}, t+= 0.1);
         tm.play();
-        var newAnswers = [];
-        var currentAnswers = student.profile.answers[i];
-        currentAnswers.needHelp = false;
+        
+        // var newAnswers = [];
+        // var currentAnswers = student.profile.answers[i];
+        // currentAnswers.needHelp = false;
 
-        newAnswers.push( currentAnswers );
+        // newAnswers.push( currentAnswers );
 
-        Meteor.users.update({
-          _id : student._id
-        }, {
-          $set: {
-            "profile.answers": newAnswers
-          }
-        }) 
+        // Meteor.users.update({
+        //   _id : student._id
+        // }, {
+        //   $set: {
+        //     "profile.answers": newAnswers
+        //   }
+        // }) 
       }
       i++;
     }
