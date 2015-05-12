@@ -6,12 +6,12 @@ template(name='exerciceViewStudent')
     hr
     p.title
       | Complète ces opérations
-    p.question
-      | {{this.exercice.question}}
-    if isEmptyArray this.exercice.answers.wrong 
-      if isNeedingAssitance
-        //- if isMediumLevel this.exercice.level
-        .compute
+    .compute
+      p.question
+        | {{this.exercice.question}}
+      if isEmptyArray this.exercice.answers.wrong 
+        if isNeedingAssitance
+          //- if isMediumLevel this.exercice.level
           p.dividend
             | {{ this.exercice.dividend}}
           p.denominator
@@ -22,72 +22,86 @@ template(name='exerciceViewStudent')
           input#intermediate-substraction-medium-level(value='', name='susbtraction', placeholder=' ? * {{this.exercice.denominator}}')
           |=
           input#intermediate-substraction-result-medium-level(value='', name='susbtraction-result', placeholder='le reste')
-        
-        //- if isHardLevel this.exercice.level
-        //-   .compute
-        //-     |HARD WAY
-        //-     //- p.dividend
-        //-     //-   | {{ this.exercice.dividend}}
-        //-     //- p.denominator
-        //-     //-   | {{ this.exercice.denominator}}
-        //-     | Diviser {{ this.exercice.dividend }} par {{ this.exercice.denominator }}, revient a diviser en premier  {{ getNumberFirstStepDivision this.exercice.dividend}} par {{this.exercice.denominator}}
-        //-     | puis mettre {{ getUnit this.exercice.dividend}} en unité du reste de la premiere division multiplié par 10.
-        //-     br
-        //-     |Soustraction intermediaire : 
-        //-     br
-        //-     |{{ getNumberFirstStepDivision this.exercice.dividend }}
-        //-     br
-        //-     | - 
-        //-     input#first-intermediate-substraction-hard-level(value='', name='susbtraction', placeholder=' ? * {{this.exercice.denominator}}')
-        //-     br
-        //-     |=
-        //-     input#first-intermediate-substraction-result-hard-level(value='', name='susbtraction-result', placeholder='le reste', data-first_intermediate_substraction_result='')
-        //-     br
-        //-     |Puis on multiplie le reste de cette division par 10, en y ajoutant l'unité {{getUnit this.exercice.dividend}}
-        //-     br
-        //-     p.second-substraction-number
-        //-     | - 
-        //-     input#second-intermediate-substraction-hard-level(value='', name='susbtraction', placeholder=' ? * {{this.exercice.denominator}}')
-        //-     br
-        //-     |=
-        //-     input#second-intermediate-substraction-result-hard-level(value='', name='susbtraction-result', placeholder='le reste', data-first_intermediate_substraction_result='')
-      input#answer(value='{{ getStudentAnswer }}',type="number", name='answer', placeholder='Ta reponse', min="0", max="100",step="1")
-      .clear
+          
+          //- if isHardLevel this.exercice.level
+          //-   .compute
+          //-     |HARD WAY
+          //-     //- p.dividend
+          //-     //-   | {{ this.exercice.dividend}}
+          //-     //- p.denominator
+          //-     //-   | {{ this.exercice.denominator}}
+          //-     | Diviser {{ this.exercice.dividend }} par {{ this.exercice.denominator }}, revient a diviser en premier  {{ getNumberFirstStepDivision this.exercice.dividend}} par {{this.exercice.denominator}}
+          //-     | puis mettre {{ getUnit this.exercice.dividend}} en unité du reste de la premiere division multiplié par 10.
+          //-     br
+          //-     |Soustraction intermediaire : 
+          //-     br
+          //-     |{{ getNumberFirstStepDivision this.exercice.dividend }}
+          //-     br
+          //-     | - 
+          //-     input#first-intermediate-substraction-hard-level(value='', name='susbtraction', placeholder=' ? * {{this.exercice.denominator}}')
+          //-     br
+          //-     |=
+          //-     input#first-intermediate-substraction-result-hard-level(value='', name='susbtraction-result', placeholder='le reste', data-first_intermediate_substraction_result='')
+          //-     br
+          //-     |Puis on multiplie le reste de cette division par 10, en y ajoutant l'unité {{getUnit this.exercice.dividend}}
+          //-     br
+          //-     p.second-substraction-number
+          //-     | - 
+          //-     input#second-intermediate-substraction-hard-level(value='', name='susbtraction', placeholder=' ? * {{this.exercice.denominator}}')
+          //-     br
+          //-     |=
+          //-     input#second-intermediate-substraction-result-hard-level(value='', name='susbtraction-result', placeholder='le reste', data-first_intermediate_substraction_result='')
+        input#answer(value='{{ getStudentAnswer }}',type="number", name='answer', placeholder='Ta reponse', min="0", max="100",step="1")
+        .clear
 
-    else
-      select#answer(name='answer')
-        option(disabled='', selected='')  Réponse
-        each sortAnswers this.exercice.answers
-          option {{ isChecked this getStudentAnswer }} {{this}}
-    .buttons
-      a#need-help(href='')
-        img(src="../../assets/ui/help_button.png" alt="HELP" class="help_button")
-        img(src="../../assets/ui/help_button_text.png" alt="HELP" class="help_button_text")
-
-      if isNeedingAssitance
-        a#validator-medium-level(href='', class="validate_button")
-          img(src="../../assets/ui/validate_button.png" alt="Validate" class="validate_button__img")
       else
-        if isHardLevel this.exercice.level
-          a#validator-hard-level(href='', class="validate_button")
-          img(src="../../assets/ui/validate_button.png" alt="Validate" class="validate_button__img")    
-        else
-          a#validator(href='', class="validate_button")
-            img(src="../../assets/ui/validate_button.png" alt="Validate" class="validate_button__img")
-      .clear
-    .clue
-      h3 Indice
-      p
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        | esse cillum dolore eu fugiat nulla pariatur. 
-    //- p Commentaire du professeur : {{ getStudentComment }}
-    //- a#need-help(href='') Beosin d'aide ?
-    
+        select#answer(name='answer')
+          option(disabled='', selected='')  Réponse
+          each sortAnswers this.exercice.answers
+            option {{ isChecked this getStudentAnswer }} {{this}}
+      .buttons
+        a#need-help(href='')
+          img(src="../../assets/ui/help_button.png" alt="HELP" class="help_button")
+          img(src="../../assets/ui/help_button_text.png" alt="HELP" class="help_button_text")
 
-    if nextExerciceExist this.exercice.number
-      a#next.hide(href='/student/{{this.student._id}}/{{ getNextExercice this.exercice.number }}')
-        | Exercice suivant
-    else
-      a(href='/')
-        | Plus d'exercices (lien vers / )
+        if isNeedingAssitance
+          a#validator-medium-level(href='', class="validate_button")
+            img(src="../../assets/ui/validate_button.png" alt="Validate" class="validate_button__img")
+        else
+          if isHardLevel this.exercice.level
+            a#validator-hard-level(href='', class="validate_button")
+            img(src="../../assets/ui/validate_button.png" alt="Validate" class="validate_button__img")    
+          else
+            a#validator(href='', class="validate_button")
+              img(src="../../assets/ui/validate_button.png" alt="Validate" class="validate_button__img")
+        .clear
+      .clue
+        h3 Indice
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          | esse cillum dolore eu fugiat nulla pariatur. 
+        .clear
+      //- p Commentaire du professeur : {{ getStudentComment }}
+      //- a#need-help(href='') Beosin d'aide ?
+      .timeline-exercices
+        ul
+          li(class="",id="list-item-0")
+          li(class="",id="list-item-1")
+          li(class="",id="list-item-2")
+          li(class="",id="list-item-3")
+          li(class="",id="list-item-4")
+          li(class="",id="list-item-5")
+          li(class="",id="list-item-6")
+          li(class="",id="list-item-7")
+          li(class="",id="list-item-8")
+          li(class="",id="list-item-9")
+        //- //- start generating li
+        //- {{listNumberExercices currentUser}}
+        //- //- end 
+      if nextExerciceExist this.exercice.number
+        a#next.hide(href='/student/{{this.student._id}}/{{ getNextExercice this.exercice.number }}')
+          | Exercice suivant
+      else
+        a(href='/')
+          | Plus d'exercices (lien vers / )
 

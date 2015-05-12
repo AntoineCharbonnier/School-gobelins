@@ -49,3 +49,40 @@ Template.exerciceViewStudent.helpers
           returned = false
       i++
     return returned
+  'listNumberExercices': (student) ->
+    console.log "student",student
+    exercicesNumber = Exercices.find().fetch().length
+    
+    i = 0
+    while i < student.profile.answers.length
+      current = student.profile.answers[i]
+      if current.isCurrent == true
+        currentEx = Exercices.find({"_id":current.exercice_id}).fetch()
+        console.log "EX : ",currentEx
+      i++
+    
+    console.log "NUMBER : ", currentEx[0].number
+    currentExNumber =  currentEx[0].number
+    html = ""
+    # # $(".timeline-exercices ul li").remove()
+    # # ul = document.getElementById("test");
+    # # li = document.createElement("li");
+    # # li.appendChild(document.createTextNode("Four"));
+    # # ul.appendChild(li);
+    # j = 0
+    # # while j <= exercicesNumber
+    # #   if j < currentExNumber
+    # #   if j == currentExNumber
+    # #   if j > currentExNumber
+      
+
+
+    # #   j++
+    
+
+    console.log "HTML : ",html
+
+    # $("#timeline").html($('<div>', {class: 'spinner'}))
+
+  'listExercicesStyle': (student)->
+

@@ -33,20 +33,27 @@
       .title{
         font : normal 500 30px "MikadoMedium";
       }
-      .question{
-        width: 50%;
-        float: left;
+      .compute{
+        position: relative;
+        width: 100%;
+        margin: 150px 0 0 0;
+
+        .question{
+          width: 50%;
+          float: left;
+        }
+        #answer{
+          width: 49%;
+          float: left;
+          height: 144px;
+          margin: 0;
+        }
       }
-      #answer{
-        width: 49%;
-        float: left;
-        height: 144px;
-        margin: 0;
-      }
+      
       .buttons{
         width: 300px;
         height: 100px;
-        margin: 0 auto;
+        margin: 50px auto 0 auto;
         #need-help{
           position: relative;
           display: block;
@@ -96,6 +103,7 @@
           font : normal 500 19px "MikadoBold";
           color: #d8d8d8;
           width: 45px;
+          text-transform: uppercase;
         }
         p{
           position: relative;
@@ -105,6 +113,27 @@
           font: normal 400 19px "MikadoRegular";
           color: #404065;
           margin: 0 0 0 30px;
+        }
+      }
+      .timeline-exercices{
+        ul{
+          position: relative;
+          width: 100%;
+          height: 50px;
+          li{
+            width: 25px;
+            height: 25px;
+
+          }
+          .item-previous{
+            background: red;
+          }
+          .item-current{
+            background: blue;
+          }
+          .item-next{
+            background: green;
+          }
         }
       }
     }
