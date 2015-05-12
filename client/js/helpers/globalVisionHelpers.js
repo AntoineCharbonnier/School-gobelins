@@ -139,18 +139,18 @@ Template.globalVision.helpers({
         t = 0;
         //ADD MARGIN FOR NO MOVE
         tm = new TimelineMax({paused: true,repeat: -1, yoyo: true, repeatDelay: 3.0});
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"45px",height:"45px",ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"74px",height:"74px",ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"45px",height:"45px",ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"74px",height:"74px",ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"45px",height:"45px",ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"74px",height:"74px",ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"45px",height:"45px",ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"74px",height:"74px",ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"45px",height:"45px",ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"74px",height:"74px",ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width:"45px",height:"45px",ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",width: "75px",height:"75px",ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
+        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 1,ease: Ease.easeIn}, t+= 0.1);
         tm.play();
         
         //only for test
@@ -180,34 +180,47 @@ Template.globalVision.helpers({
   },
 
   "updateStudentSwitchProgress": function(student){
-    var image_name;
-    image_name = student.username.replace(/\s/g, "_");
+    var student_image_name;
+    student_image_name = student.username.replace(/\s/g, "_");
+    var avatar = $("#avatar-"+student_image_name);
+    console.log(student_image_name);
     // for (var i = 0; i <student.profile.answers.length; i++){
     currentEx = student.profile.currentExercice;
     var exercice = Exercices.find({"_id" : currentEx}).fetch();
     var exercicesNumbers = Exercices.find().fetch().length;
     // }
-    console.log("ex: :",exercice);
-    console.log("exs: :",exercicesNumbers);
+    // console.log("ex: :",exercice);
+    // console.log("exs: :",exercicesNumbers);
     t = 0;
-    tm = new TimelineMax({paused: true});
+    timeline = new TimelineMax({paused: true});
 
+
+    var scaleValue = 1;
+    console.log("answers ",student.profile.answers.length);
+    for(var i = 0; i < student.profile.answers.length; i++){
+      if (student.profile.answers[i].isCurrent && scaleValue > 0) {
+        scaleValue = scaleValue - 0.05 * student.profile.answers[i].attempt;
+      }
+    }
     if(currentEx < parseInt(exercicesNumbers / 3) ){
       // au debut
-      console.log("debut");
-      tm.to(image_name, 0.5, {transformOrigin:"50% 50%",scale: 0.3,ease: Ease.easeIn}, t+= 0.1);
+      // console.log("debut");
+      scaleValue = scaleValue - 0;
     }
     if(parseInt(exercicesNumbers / 3) < currentEx < parseInt(exercicesNumbers * 2 / 3) ){
       // au milieu
-      console.log("milieu");
-      tm.to(image_name, 0.5, {transformOrigin:"50% 50%",scale: 0.6,ease: Ease.easeIn}, t+= 0.1);
+      // console.log("milieu");
+      scaleValue = scaleValue - 0.3;
     }
     if(parseInt(exercicesNumbers * 2 / 3) < currentEx ){
       // a la fin
-      console.log("fin");
-      tm.to(image_name, 0.5, {transformOrigin:"50% 50%",scale: 0.9,ease: Ease.easeIn}, t+= 0.1);
+      // console.log("fin");
+      scaleValue = scaleValue - 0.6;
     }
-    tm.play();
+
+    console.log("scalevalue : ",scaleValue);
+    timeline.to(avatar, 0.5, {transformOrigin:"50% 50%",scale:scaleValue,ease: Ease.easeIn}, t+= 0.1);
+    timeline.play();
 
   }
 });
