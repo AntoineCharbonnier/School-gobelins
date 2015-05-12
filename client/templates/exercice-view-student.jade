@@ -59,20 +59,27 @@ template(name='exerciceViewStudent')
         option(disabled='', selected='')  Réponse
         each sortAnswers this.exercice.answers
           option {{ isChecked this getStudentAnswer }} {{this}}
-    
-    a#need-help(href='')
-      img(src="../../assets/ui/help_button.png" alt="HELP" class="help_button")
-      img(src="../../assets/ui/help_button_text.png" alt="HELP" class="help_button_text")
+    .buttons
+      a#need-help(href='')
+        img(src="../../assets/ui/help_button.png" alt="HELP" class="help_button")
+        img(src="../../assets/ui/help_button_text.png" alt="HELP" class="help_button_text")
 
-    if isNeedingAssitance
-      a#validator-medium-level(href='') Validate
-    else
-      if isHardLevel this.exercice.level
-        a#validator-hard-level(href='') Validate    
+      if isNeedingAssitance
+        a#validator-medium-level(href='', class="validate_button")
+          img(src="../../assets/ui/validate_button.png" alt="Validate" class="validate_button__img")
       else
-        a#validator(href='') Validate
-
-
+        if isHardLevel this.exercice.level
+          a#validator-hard-level(href='', class="validate_button")
+          img(src="../../assets/ui/validate_button.png" alt="Validate" class="validate_button__img")    
+        else
+          a#validator(href='', class="validate_button")
+            img(src="../../assets/ui/validate_button.png" alt="Validate" class="validate_button__img")
+      .clear
+    .clue
+      h3 Indice
+      p
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        | esse cillum dolore eu fugiat nulla pariatur. 
     //- p Commentaire du professeur : {{ getStudentComment }}
     //- a#need-help(href='') Beosin d'aide ?
     

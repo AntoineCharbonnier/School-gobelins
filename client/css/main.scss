@@ -1,5 +1,9 @@
 @import "compass/reset";
 @import "compass/css3";
+@import "compass/css3/font-face";
+
+
+
 @import "client/css/mixin.scss";
 @import "client/css/base.scss";
 @import "client/css/exercice.scss";
@@ -8,29 +12,8 @@
 @import "client/css/sendExercices.scss";
 @import "client/css/globalVision.scss";
 
-@include font-face("MikadoBlackItalic", font-files("hvd_fonts_-_mikadoblack-italic-webfont.ttf", "hvd_fonts_-_mikadoblack-italic-webfont.woff", "hvd_fonts_-_mikadoblack-italic-webfont.svg"), "hvd_fonts_-_mikadoblack-italic-webfont.eot", 500);
+@import "client/css/personal_fonts.scss";
 
-@include font-face("MikadoBlack", font-files("hvd_fonts_-_mikadoblack-webfont.ttf", "hvd_fonts_-_mikadoblack-webfont.woff", "hvd_fonts_-_mikadoblack-webfont.svg"), "hvd_fonts_-_mikadoblack-webfont.eot", 500);
-
-@include font-face("MikadoBoldItalic", font-files("hvd_fonts_-_mikadobold-italic-demo.ttf", "hvd_fonts_-_mikadobold-italic-demo.woff", "hvd_fonts_-_mikadobold-italic-demo.svg"), "hvd_fonts_-_mikadobold-italic-demo.eot", 500);
-
-@include font-face("MikadoBold", font-files("hvd_fonts_-_mikadobold-webfont.ttf", "hvd_fonts_-_mikadobold-webfont.woff", "hvd_fonts_-_mikadobold-webfont.svg"), "hvd_fonts_-_mikadobold-webfont.eot", 500);
-
-@include font-face("MikadoLightItalic", font-files("hvd_fonts_-_mikadolight-italic-webfont.ttf", "hvd_fonts_-_mikadolight-italic-webfont.woff", "hvd_fonts_-_mikadolight-italic-webfont.svg"), "hvd_fonts_-_mikadolight-italic-webfont.eot", 500);
-
-@include font-face("MikadoLight", font-files("hvd_fonts_-_mikadolight-webfont.ttf", "hvd_fonts_-_mikadolight-webfont.woff", "hvd_fonts_-_mikadolight-webfont.svg"), "hvd_fonts_-_mikadolight-webfont.eot", 500);
-
-@include font-face("MikadoMediumItalic", font-files("hvd_fonts_-_mikadomedium-italic-webfont.ttf", "hvd_fonts_-_mikadomedium-italic-webfont.woff", "hvd_fonts_-_mikadomedium-italic-webfont.svg"), "hvd_fonts_-_mikadomedium-italic-webfont.eot", 500);
-
-@include font-face("MikadoMedium", font-files("hvd_fonts_-_mikadomedium-webfont.ttf", "hvd_fonts_-_mikadomedium-webfont.woff", "hvd_fonts_-_mikadomedium-webfont.svg"), "hvd_fonts_-_mikadomedium-webfont.eot", 500);
-
-@include font-face("MikadoItalic", font-files("hvd_fonts_-_mikadoregular-italic-webfont.ttf", "hvd_fonts_-_mikadoregular-italic-webfont.woff", "hvd_fonts_-_mikadoregular-italic-webfont.svg"), "hvd_fonts_-_mikadoregular-italic-webfont.eot", 500);
-
-@include font-face("MikadoRegular", font-files("hvd_fonts_-_mikadoregular-webfont.ttf", "hvd_fonts_-_mikadoregular-webfont.woff", "hvd_fonts_-_mikadoregular-webfont.svg"), "hvd_fonts_-_mikadoregular-webfont.eot", 500);
-
-@include font-face("MikadoUltraItalic", font-files("hvd_fonts_-_mikadoultra-italic-webfont.ttf", "hvd_fonts_-_mikadoultra-italic-webfont.woff", "hvd_fonts_-_mikadoultra-italic-webfont.svg"), "hvd_fonts_-_mikadoultra-italic-webfont.eot", 500);
-
-@include font-face("MikadoUltra", font-files("hvd_fonts_-_mikadoultra-webfont.ttf", "hvd_fonts_-_mikadoultra-webfont.woff", "hvd_fonts_-_mikadoultra-webfont.svg"), "hvd_fonts_-_mikadoultra-webfont.eot", 500);
 
 
 // $browser-width : 100%;
@@ -45,6 +28,7 @@ input[type=button]:focus,input,input:focus {
   outline: none;
   border: 0;
 }
+
 
 
 

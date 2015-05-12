@@ -43,40 +43,80 @@
         height: 144px;
         margin: 0;
       }
-      #need-help{
+      .buttons{
+        width: 300px;
+        height: 100px;
+        margin: 0 auto;
+        #need-help{
+          position: relative;
+          display: block;
+          width: 115px;
+          height: 100px;
+          float: left;
+          // background-image: url(../assets/help_button.png);
+          // @include background-size(cover);
+          // background-position: center center;
+          img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+          }
+          .help_button{
+            width: 75px;
+            height: 75px;
+            top: 12px;
+            left: 23px;
+          }
+          .help_button_text{
+            position: absolute;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .validate_button{
+          width: 160px;
+          height: 62px;
+          float: left;
+          margin: 18px 0 0 15px;
+
+          .validate_button__img{
+            width: 160px;
+            height: 62px;
+          }
+        }
+      }
+      .clue{
         position: relative;
-        display: block;
-        width: 230px;
-        height: 200px;
-        // background-image: url(../assets/help_button.png);
-        // @include background-size(cover);
-        // background-position: center center;
-        img{
-          position: absolute;
-          width: 100%;
-          height: 100%;
+        width: 485px;
+        margin: 30px auto 0 auto;
+        h3{
+          position: relative;
+          float: left;
+          font : normal 500 19px "MikadoBold";
+          color: #d8d8d8;
+          width: 45px;
         }
-        .help_button{
-          width: 150px;
-          height: 150px;
-          top: 25px;
-          left: 160px;
-        }
-        .help_button_text{
-          width: 100%;
-          height: 100%;
+        p{
+          position: relative;
+          float: left;
+          text-align: left;
+          width: 410px;
+          font: normal 400 19px "MikadoRegular";
+          color: #404065;
+          margin: 0 0 0 30px;
         }
       }
     }
   }
-  input, select, textarea {
-    // margin:0; 
-    // padding:0;  
-    // font-family:Arial;
-    // -moz-box-sizing:border-box; /* Firefox */
-    // -webkit-box-sizing:border-box; /* Safari */
-    // box-sizing:border-box;
-  }
+  // input, select, textarea {
+  //   // margin:0; 
+  //   // padding:0;  
+  //   // font-family:Arial;
+  //   // -moz-box-sizing:border-box; /* Firefox */
+  //   // -webkit-box-sizing:border-box; /* Safari */
+  //   // box-sizing:border-box;
+  // }
   input, input:focus,input:checked,input:invalid,input:valid,input[type="text"]{
     margin: 25px 0 0 0;
     width: 250px;
@@ -99,13 +139,13 @@
     border-radius: 20px;
     @include box-shadow(rgba($text-color, 1) 0 0 20px inset);
   }
-  input[type="submit"]{
-    color: $red-background;
-    background-color : white;
-    width: 90px;
-    float: right;
-    margin: 25px 25px 0 0;
-  }
+  // input[type="submit"]{
+  //   color: $red-background;
+  //   background-color : white;
+  //   width: 90px;
+  //   float: right;
+  //   margin: 25px 25px 0 0;
+  // }
 
   @include input-placeholder-custom-big-size($text-color);
 
