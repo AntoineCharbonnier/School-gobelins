@@ -63,26 +63,24 @@ Template.exerciceViewStudent.helpers
     
     console.log "NUMBER : ", currentEx[0].number
     currentExNumber =  currentEx[0].number
-    html = ""
-    # # $(".timeline-exercices ul li").remove()
-    # # ul = document.getElementById("test");
-    # # li = document.createElement("li");
-    # # li.appendChild(document.createTextNode("Four"));
-    # # ul.appendChild(li);
-    # j = 0
-    # # while j <= exercicesNumber
-    # #   if j < currentExNumber
-    # #   if j == currentExNumber
-    # #   if j > currentExNumber
-      
+    j = 0
+    while j <= exercicesNumber
+      item = document.getElementById("list-item-"+j)
+      console.log item
+      if item 
+        if j < currentExNumber
+          item.classList.add("item-previous")
+          # $("#list-item-"+j).addClass("item-previous")
+        if j == currentExNumber
+          item.classList.add("item-current")
+          # $("#list-item-"+j).addClass("item-current")
+        if j > currentExNumber
+          item.classList.add("item-next")
+          # $("#list-item-"+j).addClass("item-next")
 
 
-    # #   j++
+      j++
     
-
-    console.log "HTML : ",html
-
-    # $("#timeline").html($('<div>', {class: 'spinner'}))
 
   'listExercicesStyle': (student)->
 
