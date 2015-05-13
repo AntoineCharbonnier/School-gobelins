@@ -54,7 +54,6 @@ Router.route("/student/:id/:exercice_id",function(){
               "answer": '',
               "attempt": 0,
               "start": Date.now(),
-              "isCurrent": true, 
               "comment": ""
             }
           }

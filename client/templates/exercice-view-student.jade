@@ -96,14 +96,13 @@ template(name='exerciceViewStudent')
           li(class="",id="list-item-9")
           li(class="",id="list-item-10")
 
-        //- //- start generating li
-        //- {{listNumberExercices currentUser}}
-        //- //- end 
-      if nextExerciceExist this.exercice.number
-        a#next.hide(href='/student/{{this.student._id}}/{{ getNextExercice this.exercice.number }}')
-          | Exercice suivant
-      else
-        a(href='/')
-          | Plus d'exercices (lien vers / )
+  if nextExerciceExist this.exercice.number
+    a#next.hide(href='/student/{{this.student._id}}/{{ getNextExercice this.exercice.number }}')
+      img(src="../../assets/ui/next_button.png" alt="Next" class="next_button__img")
+      img(src="../../assets/ui/next_button.png" alt="Next" class="next_button__img")
+      img(src="../../assets/ui/next_button.png" alt="Next" class="next_button__img")
+  else
+    a(href='/')
+      | Plus d'exercices (lien vers / )
 
-  |{{listNumberExercices currentUser}}
+  {{listNumberExercices currentUser}}

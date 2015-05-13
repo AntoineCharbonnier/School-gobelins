@@ -131,7 +131,6 @@ Template.globalVision.helpers({
     i = 0;
     var image_name = student.username.replace(/\s/g,"_");
     var avatar = $ ("#avatar-"+image_name);
-    console.log("YOY");
     while (i < student.profile.answers.length){
       if(student.profile.answers[i].needHelp){
         // ANIMATION 
@@ -175,52 +174,78 @@ Template.globalVision.helpers({
   "getNameWithUnderscore": function(student_Name) {
     var image_name;
     image_name = student_Name.replace(/\s/g, "_");
-    console.log(image_name);
     return image_name;
   },
 
-  "updateStudentSwitchProgress": function(student){
-    var student_image_name;
-    student_image_name = student.username.replace(/\s/g, "_");
-    var avatar = $("#avatar-"+student_image_name);
-    console.log(student_image_name);
-    // for (var i = 0; i <student.profile.answers.length; i++){
-    currentEx = student.profile.currentExercice;
-    var exercice = Exercices.find({"_id" : currentEx}).fetch();
-    var exercicesNumbers = Exercices.find().fetch().length;
-    // }
-    // console.log("ex: :",exercice);
-    // console.log("exs: :",exercicesNumbers);
-    t = 0;
-    timeline = new TimelineMax({paused: true});
+  "updateStudentSwitchProgress": function(){
+    var users = Meteor.users.find({
+      "profile.account": "student"
+    }).fetch();
+    console.log("users0",users[0]);
+    for(var j = 0; j < users.length; j++){
+      var student = users[i];
+      console.log(users[i]);
+      var student_image_name;
+      student_image_name = student.username.replace(/\s/g, "_");
+      var avatar = $("#avatar-"+student_image_name);
+
+      currentEx = student.profile.currentExercice;
+      var exercice = Exercices.find({"_id" : currentEx}).fetch();
+      var exercicesNumbers = Exercices.find().count();
+      
+      t = 0;
+      timeline = new TimelineMax({paused: true});
 
 
-    var scaleValue = 1;
-    console.log("answers ",student.profile.answers.length);
-    for(var i = 0; i < student.profile.answers.length; i++){
-      if (student.profile.answers[i].isCurrent && scaleValue > 0) {
-        scaleValue = scaleValue - 0.05 * student.profile.answers[i].attempt;
+      var scaleValue = 1;
+      var opacity = 1;
+      console.log("-----------------------");
+      console.log("answers ",student.profile.answers.length);
+      
+      for(var i = 0; i < student.profile.answers.length; i++){
+        // if (student.profile.answers[i].isCurrent && scaleValue > 0) {
+        //   console.log("attempt ",student.profile.answers[i].attempt);
+        //   scaleValue = scaleValue + 0.01 * student.profile.answers[i].attempt;
+        // }
       }
-    }
-    if(currentEx < parseInt(exercicesNumbers / 3) ){
-      // au debut
-      // console.log("debut");
-      scaleValue = scaleValue - 0;
-    }
-    if(parseInt(exercicesNumbers / 3) < currentEx < parseInt(exercicesNumbers * 2 / 3) ){
-      // au milieu
-      // console.log("milieu");
-      scaleValue = scaleValue - 0.3;
-    }
-    if(parseInt(exercicesNumbers * 2 / 3) < currentEx ){
+      
+      console.log("number ex : ", exercicesNumbers);
+      console.log("start : ", parseInt(exercicesNumbers / 3));
+      console.log("middle : ", parseInt(exercicesNumbers * 2 / 3));
+      
+
+      //au debut
+      if(currentEx < 3 ){
+        scaleValue = scaleValue + 0;
+        console.log("where start: ",scaleValue);
+        opacity = 1;
+      }
+      //au milieu
+      if(3 <= currentEx < 6 ){
+        scaleValue = scaleValue - 0.3;
+        console.log("where middle: ",scaleValue);
+        opacity = 0.5;
+      }
       // a la fin
-      // console.log("fin");
-      scaleValue = scaleValue - 0.6;
+      if(6 < currentEx ){
+        scaleValue = scaleValue - 0.6;
+        console.log("where end: ",scaleValue);
+        opacity = 0.25;
+      }
+      console.log("opacity",opacity);
+      console.log("scalevalue : ",scaleValue);
+      console.log("-----------------------");
+
+
+      // Meteor.users.update({
+      //   _id : student._id
+      // }, {
+      //   $set: {
+      //     "profile.scale": scaleValue
+      //   }
+      // })
+      timeline.to(avatar, 0.5, {scale: scaleValue, autoAlpha: opacity, ease: Ease.easeIn}, t+= 0.1);
+      timeline.play();
     }
-
-    console.log("scalevalue : ",scaleValue);
-    timeline.to(avatar, 0.5, {transformOrigin:"50% 50%",scale:scaleValue,ease: Ease.easeIn}, t+= 0.1);
-    timeline.play();
-
   }
 });

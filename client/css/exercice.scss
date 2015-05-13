@@ -5,17 +5,16 @@
   margin: 0 auto;
   vertical-align: middle;
   text-align: center;
-    // background-image: url(../assets/background.png);
-    // @include background-size(cover);
-    // background-position: center center;
   form{
     position: relative;
     width: 100%;
+
     .statement{
       position: relative;
       width: 100%;
       height: 100%;
       h2{
+        margin: 30px 0 0 0;
         font : normal 500 18px "MikadoMedium";
         color: grey;
       }
@@ -27,7 +26,7 @@
       p{
         position: relative;
         margin: 0 auto;
-        font : normal 500 125px "MikadoMedium";
+        font : normal 500 115px "MikadoMedium";
         color: #353f51;
       }
       .title{
@@ -36,14 +35,15 @@
       .compute{
         position: relative;
         width: 100%;
-        margin: 150px 0 0 0;
+        margin: 70px 0 0 0;
 
         .question{
           width: 50%;
           float: left;
+          margin: 0 0 0 50px;
         }
         #answer{
-          width: 49%;
+          width: 30%;
           float: left;
           height: 144px;
           margin: 0;
@@ -60,9 +60,6 @@
           width: 115px;
           height: 100px;
           float: left;
-          // background-image: url(../assets/help_button.png);
-          // @include background-size(cover);
-          // background-position: center center;
           img{
             position: absolute;
             width: 100%;
@@ -85,7 +82,7 @@
           width: 160px;
           height: 62px;
           float: left;
-          margin: 18px 0 0 15px;
+          margin: 18px 0 0 25px;
 
           .validate_button__img{
             width: 160px;
@@ -116,36 +113,58 @@
         }
       }
       .timeline-exercices{
+        margin: 25px 0 0 0;
         ul{
           position: relative;
           width: 100%;
-          height: 50px;
+          height: 25px;
           li{
-            width: 25px;
-            height: 25px;
+            width: 12px;
+            height: 20px;
             display: inline-block;
+
           }
           .item-previous{
-            background: red;
+            // background: #c9c7c7;
+            // @include border-radius(25px,25px);
+            background-image: url(../assets/ui/list-item-previous.png);
+            background-repeat: no-repeat;
+            height: 12px;
+            @include background-size(cover);
+
           }
           .item-current{
-            background: blue;
+            // background: blue;
+            background-image: url(../assets/ui/list-item-current.png);
+            background-repeat: no-repeat;
+            @include background-size(cover);
           }
           .item-next{
-            background: green;
+            // background: #ffc000;
+            // @include border-radius(25px,25px);
+            background-image: url(../assets/ui/list-item-next.png);
+            background-repeat: no-repeat;
+            height: 12px;
+            @include background-size(cover);
           }
         }
       }
     }
+    #next{
+      position: absolute;
+      z-index: 30;
+      top: 50%;
+      @include transform(translateY(-50%));
+      right: 70px;
+      // display: block;
+      .next_button__img{
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
   }
-  // input, select, textarea {
-  //   // margin:0; 
-  //   // padding:0;  
-  //   // font-family:Arial;
-  //   // -moz-box-sizing:border-box; /* Firefox */
-  //   // -webkit-box-sizing:border-box; /* Safari */
-  //   // box-sizing:border-box;
-  // }
+
   input, input:focus,input:checked,input:invalid,input:valid,input[type="text"]{
     margin: 25px 0 0 0;
     width: 250px;
@@ -168,41 +187,5 @@
     border-radius: 20px;
     @include box-shadow(rgba(245,245,245, 1) 0 0 20px inset);
   }
-  // input[type="submit"]{
-  //   color: $red-background;
-  //   background-color : white;
-  //   width: 90px;
-  //   float: right;
-  //   margin: 25px 25px 0 0;
-  // }
-
   @include input-placeholder-custom-big-size($text-color);
-
-
-// a tester
-
-//   input[type=number] {
-//     height: 30px;
-//     line-height: 30px;
-//     font-size: 16px;
-//     padding: 0 8px;
-// }
-// input[type=number]::-webkit-inner-spin-button { 
-//     -webkit-appearance: none;
-//     cursor:pointer;
-//     display:block;
-//     width:8px;
-//     color: #333;
-//     text-align:center;
-//     position:relative;
-// }    
-// input[type=number]:hover::-webkit-inner-spin-button { 
-//     background: #eee url('http://i.stack.imgur.com/YYySO.png') no-repeat 50% 50%;  
-//     width: 14px;
-//     height: 14px;
-//     padding: 4px;
-//     position: relative;
-//     right: 4px;
-//     border-radius: 28px;
-// }
 }

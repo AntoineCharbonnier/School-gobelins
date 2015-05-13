@@ -26,31 +26,94 @@ Meteor.startup ->
 
   # Exercices.insert
   #  number: Exercices.find().count() + 1
-  #  question: '37 : 7 ='
-  #  dividend: 37
-  #  denominator: 7
+  #  question: '72 : 9 ='
+  #  dividend: 72
+  #  denominator: 9
   #  isAssisted: true
   #  validated: false
   #  level: "medium"
   #  answers:
-  #    right: 5
+  #    right: 8
   #    wrong: []
 
 
-  
-  # console.log 'Insert one : ', Exercices.find().fetch()
-  
   # Exercices.insert
   #  number: Exercices.find().count() + 1
-  #  question: 'Combien fait 2 + 2 ?'
+  #  question: '66 : 6 ='
+  #  dividend: 66
+  #  denominator: 6
+  #  isAssisted: true
   #  validated: false
-  #  level: "easy"
+  #  level: "medium"
   #  answers:
-  #    right: 4
-  #    wrong: [
-  #      6
-  #      22
-  #    ]
+  #    right: 11
+  #    wrong: []
+
+
+  # Exercices.insert
+  #  number: Exercices.find().count() + 1
+  #  question: '200 : 25 ='
+  #  dividend: 200
+  #  denominator: 25
+  #  isAssisted: true
+  #  validated: false
+  #  level: "medium"
+  #  answers:
+  #    right: 8
+  #    wrong: []
+
+  # Exercices.insert
+  #  number: Exercices.find().count() + 1
+  #  question: '45 : 5 ='
+  #  dividend: 45
+  #  denominator: 5
+  #  isAssisted: true
+  #  validated: false
+  #  level: "medium"
+  #  answers:
+  #    right: 9
+  #    wrong: []
+
+  # Exercices.insert
+  #  number: Exercices.find().count() + 1
+  #  question: '270 : 3 ='
+  #  dividend: 270
+  #  denominator: 3
+  #  isAssisted: true
+  #  validated: false
+  #  level: "medium"
+  #  answers:
+  #    right: 90
+  #    wrong: []
+
+  # Exercices.insert
+  #  number: Exercices.find().count() + 1
+  #  question: '56 : 8 ='
+  #  dividend: 56
+  #  denominator: 8
+  #  isAssisted: true
+  #  validated: false
+  #  level: "medium"
+  #  answers:
+  #    right: 7
+  #    wrong: []
+
+  # Exercices.insert
+  #  number: Exercices.find().count() + 1
+  #  question: '240 : 30 ='
+  #  dividend: 240
+  #  denominator: 30
+  #  isAssisted: true
+  #  validated: false
+  #  level: "medium"
+  #  answers:
+  #    right: 8
+  #    wrong: []
+
+
+  # console.log 'Insert one : ', Exercices.find().fetch()
+  
+
   
 
   # console.log Exercices.find().count()
@@ -78,6 +141,7 @@ Meteor.startup ->
   #  password: 'AblaLouna'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: false
   #    currentExercice: null
   #    answers: []
@@ -88,6 +152,7 @@ Meteor.startup ->
   #  password: 'BegidisAlban'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -98,6 +163,7 @@ Meteor.startup ->
   #  password: 'BihannicEtienne'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -108,6 +174,7 @@ Meteor.startup ->
   #  password: 'BouffierAnna'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -118,6 +185,7 @@ Meteor.startup ->
   #  password: 'CanitrotMaud'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -128,6 +196,7 @@ Meteor.startup ->
   #  password: 'ChenVillon'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -138,6 +207,7 @@ Meteor.startup ->
   #  password: 'CorbeauLilian'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: false
   #    currentExercice: null
   #    answers: []
@@ -148,6 +218,7 @@ Meteor.startup ->
   #  password: 'CortezBenjamin'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -158,6 +229,7 @@ Meteor.startup ->
   #  password: 'DenchinAmalthee'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: false
   #    currentExercice: null
   #    answers: []
@@ -168,6 +240,7 @@ Meteor.startup ->
   #  password: 'EtienneMarzhin'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -178,6 +251,7 @@ Meteor.startup ->
   #  password: 'JebabliAyat'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -188,6 +262,7 @@ Meteor.startup ->
   #  password: 'ManyMoutou'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -198,6 +273,7 @@ Meteor.startup ->
   #  password: 'MendezRoxanne'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -208,6 +284,7 @@ Meteor.startup ->
   #  password: 'MetteniWilliam'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -218,6 +295,7 @@ Meteor.startup ->
   #  password: 'OstiMaxime'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -228,6 +306,7 @@ Meteor.startup ->
   #  password: 'PepasMargot'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -238,6 +317,7 @@ Meteor.startup ->
   #  password: 'PonsardinHugo'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -248,6 +328,7 @@ Meteor.startup ->
   #  password: 'RaissacErwan'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -258,6 +339,7 @@ Meteor.startup ->
   #  password: 'SiengCeline'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: false
   #    currentExercice: null
   #    answers: []
@@ -268,6 +350,7 @@ Meteor.startup ->
   #  password: 'SiengEmilie'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -278,6 +361,7 @@ Meteor.startup ->
   #  password: 'SoetaertSalma'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -288,6 +372,7 @@ Meteor.startup ->
   #  password: 'TagehlitRyad'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -298,6 +383,7 @@ Meteor.startup ->
   #  password: 'ValadierClement'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -308,6 +394,7 @@ Meteor.startup ->
   #  password: 'Van-MoeAntoine'
   #  profile:
   #    account: 'student'
+  #    scale: 1
   #    connected: true
   #    currentExercice: null
   #    answers: []
@@ -319,7 +406,20 @@ Meteor.startup ->
     return true
   Meteor.users.allow update: (userId, docs, fields, modifier) ->
    return true
+ 
 
+
+  # Exercices.insert
+  #  number: Exercices.find().count() + 1
+  #  question: 'Combien fait 2 + 2 ?'
+  #  validated: false
+  #  level: "easy"
+  #  answers:
+  #    right: 4
+  #    wrong: [
+  #      6
+  #      22
+  #    ]
 
   # Exercices.insert
   #  number: Exercices.find().count() + 1

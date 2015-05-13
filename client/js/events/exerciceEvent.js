@@ -1,4 +1,8 @@
 Template.exercice.events({
+  "click #next": function(e) {
+    $('#next').addClass("hide");
+  },
+
   "click #validator": function(e) {
     var selectValue = $("#answer").val();    
     var student = Template.currentData().student;
@@ -8,17 +12,44 @@ Template.exercice.events({
 
     for (var i = 0; i < student.profile.answers.length; i++) {
       var current = student.profile.answers[i];
+      console.log("current: :",current);
       if (current.exercice_id == question._id){
         current.answer = selectValue;
         current.attempt += 1;
+        current.isCurrent = true;
         if(current.answer == question.answers.right || parseInt(current.answer) == question.answers.right){
           var currentTime = Date.now();
           current.time = currentTime - current.start;
           current.isCurrent = false;
           current.validated = true;
           current.needHelp = false;
+          // current.answer[i].isCurrent = false;
 
           $('#next').removeClass("hide");
+        }
+        else{
+          $("#answer").val("0");
+          var question = $(".question");
+          var answerInput = $("#answer");
+          var t, tm;
+          t = 0;
+          //BUG IN PLACEHOLDER
+          tm = new TimelineMax({paused: true});
+          tm.to(question, 0.1, {x: -5,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(answerInput,0.1,{x: -5,ease: Ease.easeIn},t );
+          
+          tm.to(question, 0.1, {x: 5,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(answerInput,0.1,{x: 5,ease: Ease.easeIn},t );
+          
+          tm.to(question, 0.1, {x: -5,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(answerInput,0.1,{x: -5,ease: Ease.easeIn},t );
+          
+          tm.to(question, 0.1, {x: 5,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(answerInput,0.1,{x: 5,ease: Ease.easeIn},t );
+          
+          tm.to(question, 0.1, {x: 0,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(answerInput,0.1,{x: 0,ease: Ease.easeIn},t );
+          tm.play();
         }
       }
       newAnswers.push( current );
