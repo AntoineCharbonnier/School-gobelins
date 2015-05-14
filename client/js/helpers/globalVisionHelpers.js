@@ -186,7 +186,7 @@ Template.globalVision.helpers({
     //   "profile.account": "student"
     // }).fetch();
     console.log("nb user : ",users.length);
-    for(var j = 0; j < 20; j++){
+    for(var j = 0; j < parseInt(users.length); j++){
       var student = users[j];
       if(student){
         // console.log(users[j]);
