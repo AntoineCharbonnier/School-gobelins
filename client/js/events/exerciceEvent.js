@@ -17,6 +17,7 @@ Template.exercice.events({
         current.answer = selectValue;
         current.attempt += 1;
         current.isCurrent = true;
+        current.currentEx = question.number;
         if(current.answer == question.answers.right || parseInt(current.answer) == question.answers.right){
           var currentTime = Date.now();
           current.time = currentTime - current.start;

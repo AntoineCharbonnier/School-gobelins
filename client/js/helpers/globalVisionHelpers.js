@@ -179,73 +179,94 @@ Template.globalVision.helpers({
 
   "updateStudentSwitchProgress": function(){
     var users = Meteor.users.find({
-      "profile.account": "student"
-    }).fetch();
-    console.log("users0",users[0]);
-    for(var j = 0; j < users.length; j++){
-      var student = users[i];
-      console.log(users[i]);
-      var student_image_name;
-      student_image_name = student.username.replace(/\s/g, "_");
-      var avatar = $("#avatar-"+student_image_name);
+    "profile.account": "student"
+    }, {sort: { username: 1} }).fetch();
 
-      currentEx = student.profile.currentExercice;
-      var exercice = Exercices.find({"_id" : currentEx}).fetch();
-      var exercicesNumbers = Exercices.find().count();
-      
-      t = 0;
-      timeline = new TimelineMax({paused: true});
+    // var users = Meteor.users.find({
+    //   "profile.account": "student"
+    // }).fetch();
+    console.log("nb user : ",users.length);
+    for(var j = 0; j < 20; j++){
+      var student = users[j];
+      if(student){
+        // console.log(users[j]);
+        var student_image_name;
+        student_image_name = student.username.replace(/\s/g, "_");
+        var avatar = $("#avatar-"+student_image_name);
+        var currentEx = 0;
+        // currentEx = student.profile.currentExercice;
+        // if(true){
+       
+        
+        for(var i = 0; i < student.profile.answers.length; i++){
+          // console.log("currentExercice ",student.profile.answers[i].currentEx);
+          if(currentEx < student.profile.answers[i].currentEx){
+            currentEx = student.profile.answers[i].currentEx;
+          }
+          // if (student.profile.answers[i].isCurrent && scaleValue > 0) {
+          //   console.log("attempt ",student.profile.answers[i].attempt);
+          //   scaleValue = scaleValue + 0.01 * student.profile.answers[i].attempt;
+          // }
+        }
+
+        // var exercice = Exercices.find({"_id" : currentEx}).fetch();
+        // var exercicesNumbers = Exercices.find().count();
+        
+        t = 0;
+        timeline = new TimelineMax({paused: true});
 
 
-      var scaleValue = 1;
-      var opacity = 1;
-      console.log("-----------------------");
-      console.log("answers ",student.profile.answers.length);
-      
-      for(var i = 0; i < student.profile.answers.length; i++){
-        // if (student.profile.answers[i].isCurrent && scaleValue > 0) {
-        //   console.log("attempt ",student.profile.answers[i].attempt);
-        //   scaleValue = scaleValue + 0.01 * student.profile.answers[i].attempt;
+        var scaleValue = 1;
+        var opacity = 1;
+        // console.log("-----------------------");
+        // console.log("answers ",student.profile.answers.length);
+        // console.log(users[j].username);
+        // console.log("number ex : ", exercicesNumbers);
+        // console.log("start : ", parseInt(exercicesNumbers / 3));
+        // console.log("middle : ", parseInt(exercicesNumbers * 2 / 3));
+        console.log("EXercice cournat : ",currentEx);
+
+        //au debut
+        if(currentEx == 0){
+          //bug 
+        }else{
+          if(currentEx < 3 ){
+            // scaleValue = scaleValue + 0;
+            // console.log("where start: ",scaleValue);
+            opacity = 1;
+          }
+          //au milieu
+          if(3 <= currentEx < 6 ){
+            scaleValue = scaleValue - 0.3;
+            // console.log("where middle: ",scaleValue);
+            opacity = 0.5;
+          }
+          // a la fin
+          if(6 <= currentEx ){
+            scaleValue = scaleValue - 0.6;
+            // console.log("where end: ",scaleValue);
+            opacity = 0.25;
+          }
+        }
+        
+        // console.log("opacity",opacity);
+        // console.log("scalevalue : ",scaleValue);
+        // console.log("-----------------------");
+
+
+        // Meteor.users.update({
+        //   _id : student._id
+        // }, {
+        //   $set: {
+        //     "profile.scale": scaleValue
+        //   }
+        // })
+        timeline.to(avatar, 1, {scale: scaleValue, autoAlpha: opacity, ease: Ease.easeIn}, t+= 0.1);
+        timeline.play();
         // }
+        
       }
-      
-      console.log("number ex : ", exercicesNumbers);
-      console.log("start : ", parseInt(exercicesNumbers / 3));
-      console.log("middle : ", parseInt(exercicesNumbers * 2 / 3));
-      
 
-      //au debut
-      if(currentEx < 3 ){
-        scaleValue = scaleValue + 0;
-        console.log("where start: ",scaleValue);
-        opacity = 1;
-      }
-      //au milieu
-      if(3 <= currentEx < 6 ){
-        scaleValue = scaleValue - 0.3;
-        console.log("where middle: ",scaleValue);
-        opacity = 0.5;
-      }
-      // a la fin
-      if(6 < currentEx ){
-        scaleValue = scaleValue - 0.6;
-        console.log("where end: ",scaleValue);
-        opacity = 0.25;
-      }
-      console.log("opacity",opacity);
-      console.log("scalevalue : ",scaleValue);
-      console.log("-----------------------");
-
-
-      // Meteor.users.update({
-      //   _id : student._id
-      // }, {
-      //   $set: {
-      //     "profile.scale": scaleValue
-      //   }
-      // })
-      timeline.to(avatar, 0.5, {scale: scaleValue, autoAlpha: opacity, ease: Ease.easeIn}, t+= 0.1);
-      timeline.play();
     }
   }
 });
