@@ -52,10 +52,28 @@ Template.exercice.events({
           tm.to(answerInput,0.1,{x: 0,ease: Ease.easeIn},t );
           tm.play();
         }
+
       }
       newAnswers.push( current );
     }
-    console.log("ANSWERS : ",newAnswers);
+
+    // anim button validate
+    var t2, tm2;
+    t2 = 0;
+    tm2 = new TimelineMax({paused: true, onComplete: function(){
+        for(var index = 9; index > 0; index--){
+          TweenLite.set($("#validate-0"+index), {autoAlpha: 1})
+        }
+      }
+    });
+    for(var index = 9; index > 0; index--){
+      tm2.to($("#validate-0"+index), 0.05, {autoAlpha:0, ease: Ease.easeIn}, t+= 0.05);
+    }
+    tm2.play();
+
+
+
+    // console.log("ANSWERS : ",newAnswers);
     
     Meteor.users.update({
       _id : student._id

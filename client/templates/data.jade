@@ -1,0 +1,56 @@
+template(name='data')
+  .container-data
+    .summary
+      h2 Les divisions
+      h4 Exercices
+      .circle
+        .percent
+          +circlue_cut_wired
+          +circlue_cut
+          h5 {{getAllStudentsProgress}}%
+          
+      h5 De reussite
+      .separator
+        img(src="../../ui/separator.png" alt="separator")
+      .time
+        img(src="../../ui/clock.png" alt="clock")
+        p
+          |{{getAllStudentsNumberTime}} min
+        .clear
+      .attemps
+        img(src="../../ui/help_grey.png" alt="clock")
+        p
+          |{{getAllStudentsNumberAttemps}}
+        .clear
+      .buttons
+        a(href, id="create-groups" class="")
+          h3 Former les groupes
+        a(href, id="end" class="white-button")
+          h3 Terminer le dispositif    
+
+    .students
+      ul
+        each everyStudents 
+          li.box__shdaowed.red
+            .progress
+              h2 {{ getStudentProgress this }} %
+            .profile
+              img(src="../../ui/vertical-separator.png" alt="separator" class="vertical-separator")
+              img(id="avatar-{{ getNameWithUnderscore this.username }}" src="../../assets/profile_images/{{ getNameWithUnderscore this.username }}.png" alt="Avatar de ")
+              h3 {{this.username}}
+              .clear
+            .number-help.numbers
+              img(src="../../ui/number_help.png" alt="number help" class="")
+              h3 x{{getStudentNumberHelp this}}
+              .clear
+            .number-attemp.numbers
+              img(src="../../ui/number_attempt.png" alt="number attempt" class="")
+              h3 x{{getStudentNumberAttemps this}}
+              .clear
+            .time-spent
+              img(src="../../ui/time_spent.png" alt="time spent" class="")
+              h3 {{getStudentNumberTime this}}
+              .clear
+            .clear
+    .clear
+    //- {{ setSVG }}

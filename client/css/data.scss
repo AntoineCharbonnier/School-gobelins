@@ -1,0 +1,197 @@
+.container-data{
+  height: 100%;
+  display: block;
+  background: #f4f5f7;
+  .summary{
+    float: left;
+    width: 350px;
+    .separator,.time,.attemps{
+      margin: 0 auto;
+    }
+    h2{
+      margin: 50px 0 0 0;
+      font : normal 500 30px "MikadoRegular";
+      text-transform: none;
+      color: #353f51;
+    }
+    h4{
+      font : normal 400 15px "MikadoLight";
+      text-transform: none;
+      color: #353f51; 
+    }
+    h5{
+      font : normal 500 25px "MikadoRegular";
+      text-transform: uppercase;
+      color: #353f51; 
+      margin: 50px 0 0 0;
+    }
+    .circle{
+      .percent{
+        width: 160px;
+        height: 160px;
+        svg{
+          position: absolute;
+          top: 50px;
+          left: 10px;
+          @include transform(scaleX(-1));
+          stroke-dasharray: 0 500;
+          // stroke-dasharray: "0px 500px"
+        }
+        h5{
+          position: absolute;
+          margin: 0 auto;
+          left: 150px;
+          top: 200px;
+        }
+      }
+    }
+    
+    .separator{
+      position: relative;
+      width: 199px;
+      height: 28px;
+      margin: 20px auto 20px auto;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .time,.attemps{
+      width: 200px;
+      height: 35px;
+      img{
+        width: 35px;
+        height: 35px;
+        float: left;
+        margin: 0px 0px 0px 40px;
+      }
+      p{
+        float: left;
+        font : normal 500 22px "MikadoRegular";
+        margin: 10px 0px 0px 15px;
+      }
+    }
+
+    .buttons{
+      width: 240px;
+      margin: 40px auto 0 auto;
+      a{
+        display: block;
+        color: white;
+        background-color: #f0445c;
+        height: 40px;
+        width: 240px;
+        @include border-radius(25px,25px);
+        @include box-shadow(rgba(211,211,211, 1) 0 0 15px);
+        h3{
+          margin: 0;
+          padding: 10px 0 0 0;
+          font : normal 400 15px "MikadoRegular";
+        }
+      }
+      .white-button{
+        color: #d7d8d8;
+        background-color: white;
+        border: 1px solid #d7d8d8;
+        box-shadow: none;
+        margin: 30px 0 0 0;
+        h3{
+          color: #d7d8d8;
+        }
+      }
+    }
+  }
+  .students{
+    position: relative;
+    float: left;
+    width: 670px;
+    height: 100%;
+    overflow: scroll;
+    ul{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      margin: 20px 0 0 0;
+      overflow: scroll;
+      // -webkit-overflow-scrolling: scroll;
+      li{
+        position: relative;
+        width: 90%;
+        height: 70px;
+        display: block;
+        background: white;
+        .progress,.profile,.numbers,.time-spent{
+          position: relative;
+          float: left;
+          height: 100%;
+        }
+        .progress{
+          width: 87px;
+          h2{
+            width: 100%;
+            margin: 15px 0 0 0px;
+            color: #fc4174;
+            font: normal 500 25px "MikadoRegular";
+          }
+        }
+        .profile{
+          width: 175px;
+          img{
+            float: left;
+            width: 60px;
+            height: 60px;
+            margin: 6px 0 0 0;
+          }
+          .vertical-separator{
+            width: 4px;
+            height: 55px;
+          }
+          h3{
+            float: left;
+            font: normal 400 13px "MikadoRegular";
+            margin: 25px 0 0 0px;
+          }
+        }
+        .numbers{
+          width: 90px;
+          img{
+            margin: 20px 0 0 10px;
+          }
+        }
+        .number-help{
+          img{
+            width: 18px;
+            height: 17px;
+          } 
+          h3{
+            margin: -20px 0 0 0;
+          }       
+        }
+        .number-attemp{
+          background-color: #f9f9f9;
+          img{
+            width: 19px;
+            height: 16px;
+          }
+          h3{
+            margin: -20px 0 0 30px;
+          }
+        }
+        .time-spent{
+          width: 120px;
+          img{
+            width: 35px;
+            height: 35px;
+            margin: 15px 0 0 30px;
+          }
+          h3{
+            margin: -33px 0 0 80px;
+          }
+        }
+      }
+    }
+    .box__shdaowed{
+      @include box-shadow(rgba(185,187,189, 1) 0 0 15px);
+    }
+  }
+}

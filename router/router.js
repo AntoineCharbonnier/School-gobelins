@@ -11,6 +11,7 @@ Router.configure({
 // });
 
 Router.route("/","home");
+Router.route("/data","data");
 
 // Router.route("/global","globalVision");
 

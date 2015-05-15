@@ -2,10 +2,11 @@ template(name='home')
   .container-home.container
     if isTeacher currentUser
       //- +sendExercices 
-      +globalVision
+      //- +globalVision
       //- +classesShow
       //- if isDisplayingClasses
       //-   +classesShow 
+      +data
 
 
     else

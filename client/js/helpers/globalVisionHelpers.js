@@ -127,48 +127,66 @@ Template.globalVision.helpers({
   },  
 
   "isStudentNeedHelp": function(student) {
-    var i;
-    i = 0;
     var image_name = student.username.replace(/\s/g,"_");
     var avatar = $ ("#avatar-"+image_name);
-    while (i < student.profile.answers.length){
-      if(student.profile.answers[i].needHelp){
-        // ANIMATION 
-        var t, tm;
-        t = 0;
-        //ADD MARGIN FOR NO MOVE
-        tm = new TimelineMax({paused: true,repeat: -1, yoyo: true, repeatDelay: 3.0});
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
-        tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 1,ease: Ease.easeIn}, t+= 0.1);
-        tm.play();
+    var currentEx = 0;
+    var t, tm;
+    tm = new TimelineMax({paused: true,repeat: 3, yoyo: false, repeatDelay: 3.0});
+    for(var i = 0; i < student.profile.answers.length; i++){
+      if(currentEx < student.profile.answers[i].currentEx){
+        currentEx = student.profile.answers[i].currentEx;
         
-        //only for test
-        var newAnswers = [];
-        var currentAnswers = student.profile.answers[i];
-        currentAnswers.needHelp = false;
-
-        newAnswers.push( currentAnswers );
-
-        Meteor.users.update({
-          _id : student._id
-        }, {
-          $set: {
-            "profile.answers": newAnswers
-          }
-        }) 
       }
-      i++;
     }
+    console.log("currentEx h",currentEx);
+    for(var l = 0; l < student.profile.answers.length; l ++){
+      if(currentEx == student.profile.answers[l].currentEx){
+        console.log("here");
+        if(student.profile.answers[l].needHelp){
+          // ANIMATION 
+          console.log("needHelp");
+          t = 0;
+          //ADD MARGIN FOR NO MOVE
+          
+          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
+          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 1,ease: Ease.easeIn}, t+= 0.1);
+          tm.play();
+          
+          // only for test
+          var newAnswers = [];
+          var currentAnswers = student.profile.answers[l];
+          currentAnswers.needHelp = false;
+
+          newAnswers.push( currentAnswers );
+
+          Meteor.users.update({
+            _id : student._id
+          }, {
+            $set: {
+              "profile.answers": newAnswers
+            }
+          }) 
+        }
+        else{
+          tm = null;
+        }
+      }
+    }
+
+    // while (i < student.profile.answers.length){
+
+      // i++;
+    // }
   },
 
   "getNameWithUnderscore": function(student_Name) {
@@ -195,65 +213,43 @@ Template.globalVision.helpers({
         var avatar = $("#avatar-"+student_image_name);
         var currentEx = 0;
         // currentEx = student.profile.currentExercice;
-        // if(true){
        
-        
-        for(var i = 0; i < student.profile.answers.length; i++){
-          // console.log("currentExercice ",student.profile.answers[i].currentEx);
-          if(currentEx < student.profile.answers[i].currentEx){
-            currentEx = student.profile.answers[i].currentEx;
-          }
-          // if (student.profile.answers[i].isCurrent && scaleValue > 0) {
-          //   console.log("attempt ",student.profile.answers[i].attempt);
-          //   scaleValue = scaleValue + 0.01 * student.profile.answers[i].attempt;
-          // }
-        }
-
-        // var exercice = Exercices.find({"_id" : currentEx}).fetch();
-        // var exercicesNumbers = Exercices.find().count();
-        
         t = 0;
         timeline = new TimelineMax({paused: true});
 
 
         var scaleValue = 1;
         var opacity = 1;
-        // console.log("-----------------------");
-        // console.log("answers ",student.profile.answers.length);
-        // console.log(users[j].username);
-        // console.log("number ex : ", exercicesNumbers);
-        // console.log("start : ", parseInt(exercicesNumbers / 3));
-        // console.log("middle : ", parseInt(exercicesNumbers * 2 / 3));
-        console.log("EXercice cournat : ",currentEx);
+        
+        for(var i = 0; i < student.profile.answers.length; i++){
+          if(currentEx < student.profile.answers[i].currentEx){
+            currentEx = student.profile.answers[i].currentEx;
+          }
+        }
+        for(var l = 0; l < student.profile.answers.length; l ++){
+          if(currentEx == student.profile.answers[l].currentEx){
+            console.log("attempt ",student.profile.answers[l].attempt);
+            scaleValue = scaleValue + 0.05 * student.profile.answers[l].attempt;
+          }
+        }
+        console.log("Exercice courant : ",currentEx);
 
-        //au debut
         if(currentEx == 0){
           //bug 
-        }else{
+        }
+        else{
           if(currentEx < 3 ){
-            // scaleValue = scaleValue + 0;
-            // console.log("where start: ",scaleValue);
             opacity = 1;
           }
-          //au milieu
           if(3 <= currentEx < 6 ){
             scaleValue = scaleValue - 0.3;
-            // console.log("where middle: ",scaleValue);
             opacity = 0.5;
           }
-          // a la fin
           if(6 <= currentEx ){
             scaleValue = scaleValue - 0.6;
-            // console.log("where end: ",scaleValue);
             opacity = 0.25;
           }
         }
-        
-        // console.log("opacity",opacity);
-        // console.log("scalevalue : ",scaleValue);
-        // console.log("-----------------------");
-
-
         // Meteor.users.update({
         //   _id : student._id
         // }, {
@@ -263,7 +259,6 @@ Template.globalVision.helpers({
         // })
         timeline.to(avatar, 1, {scale: scaleValue, autoAlpha: opacity, ease: Ease.easeIn}, t+= 0.1);
         timeline.play();
-        // }
         
       }
 
