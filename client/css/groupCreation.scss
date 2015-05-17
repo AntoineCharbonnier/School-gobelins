@@ -1,0 +1,58 @@
+.container-group-creation{
+  height: 100%;
+  display: block;
+  .list-container{
+    width: 900px;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+    ul{
+      position: relative;
+      float: left;
+      // top: 0px;
+      height: 300px;
+      width: 300px;
+      margin: 0 auto;
+      vertical-align: middle; 
+      .background--circle{
+        position: absolute;
+        background: rgba(185,187,189, 0.5);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include box-shadow(rgba(185,187,189, 1) 0 0 15px);
+        @include border-radius(200px);
+      }
+      li{
+        position: relative;
+        width: 140px;
+        height: 140px;
+        float: left;
+        margin: 20px 0 0 10px;
+        a{
+          position: relative;
+          display: block;
+          width: 100%;
+          margin: 0;
+          height: 100%;
+          img{
+            @include box-shadow(rgba(185,187,189, 1) 0 0 15px);
+            position: relative;
+            width: 75px;
+            height: 75px;
+            margin: 0 0 0 70px;
+            @include border-radius(38px);
+            @include transform(translateX(-50%));
+          }
+          h3{
+            margin: 0;
+            width: 50%;
+            @include transform(translateX(50%));
+          }
+        }
+      }
+    }
+  }
+
+}

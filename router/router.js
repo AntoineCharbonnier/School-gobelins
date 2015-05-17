@@ -12,6 +12,7 @@ Router.configure({
 
 Router.route("/","home");
 Router.route("/data","data");
+Router.route("/groups","groupCreation");
 
 // Router.route("/global","globalVision");
 

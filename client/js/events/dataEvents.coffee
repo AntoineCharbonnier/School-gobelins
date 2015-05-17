@@ -104,5 +104,7 @@ Template.data.events
 
 
     console.log "LEs GROUPEs : ", Groups.find().fetch()
+    # Router.go('/groups')
+    Router.go "/groups" 
 
     return
