@@ -13,4 +13,11 @@ Template.data.events
     # tm.to circlue_cut, 2, strokeDasharray: "250px, 500px", ease: Ease.easeInOut, delay: t
     # tm.play()
 
+
+    users = Meteor.users.find({
+    "profile.account": "student"
+    }, {sort: { "profile.currentExercice": -1} }).fetch()
+
+    console.log("USERS : ",users);
+
     return

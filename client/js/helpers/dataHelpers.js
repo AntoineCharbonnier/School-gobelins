@@ -82,7 +82,24 @@ Template.data.helpers({
           numberTotalExCurrent+=currentEx;
         }
       }
+      var currentProfile = currentEx;
+      // console.log("new current : ",currentProfile);
+      if(!currentProfile){
+        currentProfile = 0;
+      }
+
+      Meteor.users.update({
+        _id : student._id
+      }, {
+        $set: {
+          "profile.currentExercice": currentProfile
+        }
+      });
     }
+
+
+
+
 
     var exercicesNumber = Exercices.find().fetch().length;
     // console.log("Exercice courant : ",currentEx);
