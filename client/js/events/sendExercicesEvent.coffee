@@ -9,13 +9,13 @@ Template.sendExercices.events
     tm.play()
     return
   
-  'click #display-exercice': (e) ->
+  'click #display-global-vision': (e) ->
     appEvents = AppEvents.findOne(name: 'displayer')
     AppEvents.update { 
       _id: appEvents._id 
       }, 
       $set: {
-        "module": "display-exercice"
+        "module": "display-global-vision"
       }
     return
   

@@ -33,3 +33,7 @@ Template.menu.events
       }
     console.log "DISPLAYER TEACHER", AppEvents.findOne(name: 'displayer')
     return
+
+
+  'click #logo-home': (e) ->
+    # process.exit()

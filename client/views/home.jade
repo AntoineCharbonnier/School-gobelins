@@ -1,22 +1,26 @@
 template(name='home')
   .container-home.container
     if isTeacher currentUser
-      //- +sendExercices 
-      //- +globalVision
-      //- +classesShow
-      //- if isDisplayingClasses
-      //-   +classesShow 
-      +data
-      //- +groupCreation
-
+      if isDisplayingSendExercices
+        +sendExercices
+      if isDisplayingGlobalVision
+        +globalVision 
+      if isDisplayingExerices
+        +globalVision      
+      if isDisplayingClasses
+        +classesShow 
+      if isDisplayingGroup
+        +groupCreation
+      if isDisplayingData
+        +data
 
     else
       h1 Hi #{currentUser.username}
       if isDisplayingExerices
         +exercices
+      if isDisplayingGlobalVision
+        +exercices
       if isDisplayingClasses
         +classesShow 
       if isDisplayingWaiting
         +waiting
-      //- +waiting 
-      //- +classesShow

@@ -105,6 +105,15 @@ Template.data.events
 
     console.log "LEs GROUPEs : ", Groups.find().fetch()
     # Router.go('/groups')
-    Router.go "/groups" 
+    # Router.go "/groups" 
 
+    appEvents = AppEvents.findOne(name: 'displayer')
+    AppEvents.update { 
+      _id: appEvents._id 
+      }, 
+      $set: {
+        "module": "display-group"
+      }
+    console.log "DISPLAYER", AppEvents.findOne(name: 'displayer')
+    
     return

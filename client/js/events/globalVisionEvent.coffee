@@ -21,29 +21,12 @@ Template.globalVision.events
     return
   
   'click #time-is-over': (e) ->
-    Router.go "/data"
-    # users = Meteor.users.find(
-    #   'profile.connected': true
-    #   'profile.account': 'student').fetch()
-    # i = 0
-    # while i < users.length
-    #   image_name = users[i].username.replace(/\s/g,"_")
-    #   image = $ "#avatar-#{image_name}"
-
-    #   t = 0
-    #   tm = new TimelineMax paused: true
-
-    #   tm.to( image, 2, {css: {scale: 0.5}},t+=.1)
-    #   tm.play()
-
-    #   i++
-    
-    # progressBar = $ ".container-global-vision .progess__bar .bar"
-    
-    # t2 = 0
-    # tm2 = new TimelineMax paused: true
-
-    # tm2.to( progressBar, 2, width: "600px",t2+=.1)
-    # tm2.play()
-
+    appEvents = AppEvents.findOne(name: 'displayer')
+    AppEvents.update { 
+      _id: appEvents._id 
+      }, 
+      $set: {
+        "module": "display-data"
+      }
+    conso
     return

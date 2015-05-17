@@ -6,7 +6,8 @@ template(name='menu')
       .top--bar
       ul
         li
-          img(src="../../logo/logo_blanc.svg" alt="Logo HEP")
+          a(href, id="logo-home")
+            img(src="../../logo/logo_blanc.svg" alt="Logo HEP")
         li
           if isTeacher currentUser
             a(href, id="display-waiting")
@@ -20,9 +21,9 @@ template(name='menu')
           if isTeacher currentUser
             a(href, id="display-exercice" class="selected")
               |Espace classe
-        //- li
-        //-   a(href, id="display-exercice")
-        //-     |BURGER MENU
+        li
+          a(href, id="display-exercice")
+            |BURGER MENU
          
       //- a(href, id="display-waiting", classe="hide")
       //-   |Display Waiting

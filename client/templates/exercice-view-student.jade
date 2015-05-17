@@ -136,3 +136,6 @@ template(name='exerciceViewStudent')
       | Plus d'exercices (lien vers / )
 
   |{{listNumberExercices currentUser}}
+
+  if isDisplayingData
+    |{{ gotToHome currentUser }}

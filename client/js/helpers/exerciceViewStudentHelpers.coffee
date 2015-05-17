@@ -50,7 +50,6 @@ Template.exerciceViewStudent.helpers
       i++
     return returned
   'listNumberExercices': (student) ->
-    # console.log "student",student
     exercicesNumber = Exercices.find().fetch().length
     
     i = 0
@@ -58,27 +57,23 @@ Template.exerciceViewStudent.helpers
       current = student.profile.answers[i]
       if current.isCurrent == true
         currentEx = Exercices.find({"_id":current.exercice_id}).fetch()
-        # console.log "EX : ",currentEx
       i++
     
-    # console.log "NUMBER : ", currentEx[0].number
     currentExNumber =  currentEx[0].number
     j = 0
     while j <= exercicesNumber
       item = $("#list-item-"+j)
-      # console.console.log  item
       if item 
         item.removeClass()
         if j < currentExNumber
           item.addClass("item-previous")
-          # $("#list-item-"+j).addClass("item-previous")
         if j == currentExNumber
           item.addClass("item-current")
-          # $("#list-item-"+j).addClass("item-current")
         if j > currentExNumber
           item.addClass("item-next")
-          # $("#list-item-"+j).addClass("item-next")
-
-
       j++
-    
+
+  'isDisplayingData': ->
+    displayerEvent = AppEvents.findOne(name: 'displayer')
+    if(displayerEvent.module == "display-data")
+      return true

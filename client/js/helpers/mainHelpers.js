@@ -94,3 +94,9 @@ Template.registerHelper("gotToExercices", function(user){
   } 
 });
 
+
+Template.registerHelper("gotToHome", function(user){
+  if(user.profile.account == "student"){
+    Router.go('/');
+  } 
+});
