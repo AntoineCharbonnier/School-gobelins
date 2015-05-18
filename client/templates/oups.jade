@@ -1,14 +1,13 @@
 template(name='oups')
   .container-oups
     //- h2 OUPS
-    .video--container
-      video(src="../../waiting/oups2_HD.webmhd.webm" type="video/ogg; codecs=&quot;dirac, speex&quot;", autoplay='', class="fillWidth")
-        | Sorry, your browser doesn't support embedded videos, 
-        | but don't worry, you can 
-    
+    //- .video--container
+    //-   video(src="../../waiting/oups2_HD.webmhd.webm" type="video/ogg; codecs=&quot;dirac, speex&quot;", autoplay='', class="fillWidth")
+    //-     | Sorry, your browser doesn't support embedded videos, 
+    //-     | but don't worry, you can 
+    .animation-background#anim
+      img(src="../../waiting/oups.png" class="" id="oups")
     h2 Il y a quelques zones d’ombres par ici ! on va éclaircir ça par groupe !
     h3 un peu de patience, ça charge ! 
-    .oups-loading
-      img(src="../../waiting/loading_oups.png" class="" alt="oups loading")
-
-  |{{animIMG}}
+    //- .oups-loading
+    //-   img(src="../../waiting/loading_oups.png" class="" alt="oups loading")

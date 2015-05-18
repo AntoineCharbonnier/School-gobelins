@@ -41,6 +41,10 @@
     position: relative;
     width: 1024px;
     height: 768px;
+    background-image: url(../../waiting/oups-background.jpg);
+    @include background-size(cover);
+    background-position: center center;
+    
     img{
       position: absolute;
       top: -80px;
@@ -48,12 +52,20 @@
       width: 100%;
       height: 100%;
     }
+    #oups{
+      position: relative;
+      top: 0px;
+      width: 736px;
+      height: 356px;
+      margin: 110px 0 0 100px;
+    }
   }
 
   h2{
-    position: relative;
+    position: absolute;
     top: 320px;
-    // @include transform(translateY(-50%));
+    left: 270px;
+    width: 50%;
     color: #85a9c9;
     font : normal 500 30px "MikadoMedium";
     text-transform: none;
@@ -62,11 +74,11 @@
 
   }
   h3{
-    position: relative;
-    top: 340px;
-    // @include transform(translateY(-50%));
+    position: absolute;
+    top: 400px;
+    left: 350px;
     color: #5b7084;
-    font : normal 500 25px "MikadoMedium";
+    font : normal 400 25px "MikadoMedium";
     text-transform: none;
     margin: 0 auto;
     z-index: 40;
@@ -82,5 +94,6 @@
       width: 100%;
       height: 50%;
     }
+
   }
 }
