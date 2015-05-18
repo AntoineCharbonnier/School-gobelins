@@ -1,0 +1,86 @@
+.container-oups{
+  .video{
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    display: table;
+    z-index: 20;
+    overflow: hidden;
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute; //could also be absolute
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 0;
+      background-color: rgba(0,0,0,0.5);
+    }
+  }
+  .video--container{
+    position: absolute;
+    display: table-cell;
+    vertical-align: middle; 
+    z-index: 20;
+    top:0%;
+    left:0%;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+  }
+  video{
+    position:absolute;
+    z-index:0;
+  }
+  video.fillWidth {
+    top: -80px;
+    width: 100%;
+  }
+  .animation-background{
+    position: relative;
+    width: 1024px;
+    height: 768px;
+    img{
+      position: absolute;
+      top: -80px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  h2{
+    position: relative;
+    top: 320px;
+    // @include transform(translateY(-50%));
+    color: #85a9c9;
+    font : normal 500 30px "MikadoMedium";
+    text-transform: none;
+    margin: 0 auto;
+    z-index: 40;
+
+  }
+  h3{
+    position: relative;
+    top: 340px;
+    // @include transform(translateY(-50%));
+    color: #5b7084;
+    font : normal 500 25px "MikadoMedium";
+    text-transform: none;
+    margin: 0 auto;
+    z-index: 40;
+  }
+  .oups-loading{
+    position: relative;
+    z-index: 40;
+    margin: 0 auto;
+    top: 400px;
+    width: 50%;
+    img{
+      margin: 0 auto;
+      width: 100%;
+      height: 50%;
+    }
+  }
+}

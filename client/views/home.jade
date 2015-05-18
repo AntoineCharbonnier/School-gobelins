@@ -15,12 +15,12 @@ template(name='home')
         +data
 
     else
-      h1 Hi #{currentUser.username}
       if isDisplayingExerices
         +exercices
       if isDisplayingGlobalVision
         +exercices
       if isDisplayingClasses
         +classesShow 
-      if isDisplayingWaiting
-        +waiting
+      //- if isDisplayingWaiting
+      //-   +oups
+      +oups
