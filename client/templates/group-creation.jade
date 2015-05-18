@@ -1,16 +1,5 @@
 template(name='groupCreation')
   .container-group-creation.container
-    //- .select-zone
-    //-   img(class="switch__buton" src="../assets/global_vision/switch.png" alt="Switch")
-    //-   img(class="pause__button" src="../assets/global_vision/pause.png" alt="Pause")
-    //-   .time-container
-    //-     h3 temps écoulé
-    //-     //- h2(id='time').is-not-defined 00:00
-    //-     h2(id='time').is-not-defined {{getTotalDurationExercice true}}
-    //-     .clear
-    //-   a(href, id="time-is-over")
-    //-     h3 Terminer
-    //-   .clear
     .list-container
       each groupCreationList
         ul
@@ -42,3 +31,10 @@ template(name='groupCreation')
           .clear
     .clear
     |{{updateStudentSwitchProgress}}
+    .select-zone
+      img(class="switch__buton" src="../assets/global_vision/switch.png" alt="Switch")
+      img(class="arrow__button" src="../../ui/arrow.png" alt="Arrow")
+
+      a(href, id="validate-groups")
+        h3 Valider les groupes
+      .clear

@@ -1,33 +1,37 @@
 .container-group-creation{
   height: 100%;
+  top: 0;
   display: block;
+  background-image: url(../../ui/background_wave.png);
+  @include background-size(cover);
+  background-position: center center;
   .list-container{
-    width: 900px;
-    height: 100%;
+    top: 60px;
+    width: 810px;
+    height: 550px;
     position: relative;
     margin: 0 auto;
     ul{
       position: relative;
       float: left;
-      // top: 0px;
-      height: 300px;
-      width: 300px;
+      height: 270px;
+      width: 270px;
       margin: 0 auto;
       vertical-align: middle; 
       .background--circle{
         position: absolute;
-        background: rgba(185,187,189, 0.5);
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        @include box-shadow(rgba(185,187,189, 1) 0 0 15px);
+        top: 60px;
+        left: 60px;
+        width: 150px;
+        height: 150px;
+        border: 1px solid #e5ecef;
+        @include box-shadow(rgba(243,244,245, 1) 0 0 15px, rgba(243,244,245, 1) 0 0 15px inset) ;
         @include border-radius(200px);
       }
       li{
         position: relative;
-        width: 140px;
-        height: 140px;
+        width: 110px;
+        height: 110px;
         float: left;
         margin: 20px 0 0 10px;
         a{
@@ -46,13 +50,67 @@
             @include transform(translateX(-50%));
           }
           h3{
-            margin: 0;
-            width: 50%;
-            @include transform(translateX(50%));
+            margin: 10px 0 10px 15px;
+            width: 100%;
+            font : normal 400 12px "MikadoRegular";
+            color: #6b6b7c;
           }
         }
       }
     }
+  } 
+  .select-zone{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 45px 0 0 0px;
+    img{
+      float: left;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+    }
+    .switch__buton{
+      margin: 0 0 0 150px;
+      @include transform(translateY(50%));
+    }
+    .arrow__button{
+      width: 29px;
+      height: 15px;
+      margin: 15px 0 0 20px;
+      @include transform(translateY(50%));
+    }
+    a{
+      float: left;
+      color: #5c5c63;
+      @include transform(translateY(50%));
+    }
+    #validate-groups{
+      color: white;
+      background-color: #f0445c;
+      height: 35px;
+      width: 160px;
+      margin: 0 0 0 510px;
+      @include border-radius(25px,25px);
+      h3{
+        margin: 7px 0 0 0;
+        font : normal 400 15px "Mikado";
+      }
+    }
+    .time-container{
+      float: left;
+      height: 50px;
+      position: relative;
+      margin: 0px 0 0 277px;
+      h3{
+        font : normal 400 15px "Mikado";
+        text-transform: uppercase;
+        color: #5c5c63;
+      }
+      h2{
+        font : normal 400 39px "Mikado";
+        color: #5c5c63;
+      }
+    }
   }
-
 }

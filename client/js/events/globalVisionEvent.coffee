@@ -28,5 +28,4 @@ Template.globalVision.events
       $set: {
         "module": "display-data"
       }
-    conso
     return
