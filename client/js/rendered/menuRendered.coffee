@@ -1,0 +1,1 @@
+Template.menu.rendered = ->

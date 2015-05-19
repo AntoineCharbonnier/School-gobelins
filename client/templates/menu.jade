@@ -5,7 +5,7 @@ template(name='menu')
     nav
       .top--bar
       ul
-        li
+        li.top--bar__logo
           a(href, id="logo-home")
             img(src="../../logo/logo_blanc.svg" alt="Logo HEP")
         li
@@ -21,9 +21,16 @@ template(name='menu')
           if isTeacher currentUser
             a(href, id="display-exercice" class="selected")
               |Espace classe
-        li
-          a(href, id="display-exercice")
-            |BURGER MENU
+        li.burger
+          a(href, id="display-menu")
+            +burger
+            .log-out.hide
+              img(id="avatar-Abla_Louna.png" src="../assets/profile_images/Abla_Louna.png" alt="Avatar de ")
+              .log-out__text
+                h3 Philippe Neveu
+                a(href, id="logout")
+                  |Se deconnecter
+            .clear
          
       //- a(href, id="display-waiting", classe="hide")
       //-   |Display Waiting

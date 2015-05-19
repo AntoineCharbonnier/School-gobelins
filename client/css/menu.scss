@@ -29,10 +29,60 @@
       height: 100%;
       li{
         position: relative; 
-        width: 17%;
+        width: 26%;
         height: 100%;
         float: left;
-      } 
+      }
+      .top--bar__logo{
+        width: 15%;
+      }
+      .burger{
+        width: 70px;
+        .svg--burger{
+          margin:  0 0 0 20px;
+          position: relative;
+          width: 25px;
+          top: 20px;
+          left: 0px;
+          float: left;
+        }
+        .log-out{
+          position: relative;
+          background-color: #f2f2f2;
+          top: 0;
+          left: 0;
+          float: left;
+          width: calc(100% - 25px);
+          height: 100%;
+          @include box-shadow(rgba(178,178,178, 1) 40px 0px 15px -35px inset) ;
+          img{
+            position: relative;
+            width: 60px;
+            height: 60px;
+            top: 0;
+            left: 0;
+            margin: 5px 0 0 15px;
+            float: left;
+          }
+          .log-out__text{
+            position: relative;
+            top: 0;
+            left: 0;
+            width: calc(100% - 84px);
+            float: left;
+            margin: 15px 0 0 4px;
+            h3{
+              font : normal 400 15px "MikadoRegular";
+              color: #484848;
+            }
+            a{
+              margin: 5px 0 0 0;
+              color: #132038;
+              font : normal 500 15px "MikadoBold";
+            }
+          }
+        }
+      }
     }
 
     img{
