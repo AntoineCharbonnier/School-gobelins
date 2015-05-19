@@ -47,13 +47,13 @@ Template.globalVision.helpers({
     var timeAverrage = 0;
     for (var i = 0; i < users.length; i++) {
       var current = users[i];
-      console.log("first loop");
+      // console.log("first loop");
       for(var j = 0; j < current.profile.answers.length; j++){
-        console.log("second loop");
+        // console.log("second loop");
         if (current.profile.answers[j].exercice_id == the_exercice_id){
           if(current.profile.answers[j].time){
             timeAverrage += current.profile.answers[j].time;
-            console.log("MY TIME : ",timeAverrage);
+            // console.log("MY TIME : ",timeAverrage);
           }          
         }
       } 
@@ -61,7 +61,7 @@ Template.globalVision.helpers({
     if(booleanString){
       var minutes = Math.floor(timeAverrage / 60000);
       var seconds = ((timeAverrage % 60000) / 1000).toFixed(0);
-      console.log(minutes + ":" + (seconds < 10 ? '0' : '') + seconds);
+      // console.log(minutes + ":" + (seconds < 10 ? '0' : '') + seconds);
       if(minutes < 10){
         minutes = "0"+minutes;
       }
@@ -90,13 +90,12 @@ Template.globalVision.helpers({
             }          
           }
         }
-        
       } 
     }
     if(booleanString){
       var minutes = Math.floor(timeAverrage / 60000);
       var seconds = ((timeAverrage % 60000) / 1000).toFixed(0);
-      console.log(minutes + ":" + (seconds < 10 ? '0' : '') + seconds);
+      // console.log(minutes + ":" + (seconds < 10 ? '0' : '') + seconds);
       if(minutes < 10){
         minutes = "0"+minutes;
       }
@@ -118,7 +117,7 @@ Template.globalVision.helpers({
         if (current.profile.answers[j].exercice_id == the_exercice_id){
           if(current.profile.answers[j].needHelp){
             numberHelp += 1;
-            console.log("HELPS  : ",numberHelp);
+            // console.log("HELPS  : ",numberHelp);
           }          
         }
       } 
@@ -135,16 +134,15 @@ Template.globalVision.helpers({
     for(var i = 0; i < student.profile.answers.length; i++){
       if(currentEx < student.profile.answers[i].currentEx){
         currentEx = student.profile.answers[i].currentEx;
-        
       }
     }
-    console.log("currentEx h",currentEx);
+    // console.log("currentEx h",currentEx);
     for(var l = 0; l < student.profile.answers.length; l ++){
       if(currentEx == student.profile.answers[l].currentEx){
-        console.log("here");
+        // console.log("here");
         if(student.profile.answers[l].needHelp){
           // ANIMATION 
-          console.log("needHelp");
+          // console.log("needHelp");
           t = 0;
           //ADD MARGIN FOR NO MOVE
           
@@ -163,30 +161,25 @@ Template.globalVision.helpers({
           tm.play();
           
           // only for test
-          var newAnswers = [];
-          var currentAnswers = student.profile.answers[l];
-          currentAnswers.needHelp = false;
+          // var newAnswers = [];
+          // var currentAnswers = student.profile.answers[l];
+          // currentAnswers.needHelp = false;
 
-          newAnswers.push( currentAnswers );
+          // newAnswers.push( currentAnswers );
 
-          Meteor.users.update({
-            _id : student._id
-          }, {
-            $set: {
-              "profile.answers": newAnswers
-            }
-          }) 
+          // Meteor.users.update({
+          //   _id : student._id
+          // }, {
+          //   $set: {
+          //     "profile.answers": newAnswers
+          //   }
+          // }) 
         }
         else{
           tm = null;
         }
       }
     }
-
-    // while (i < student.profile.answers.length){
-
-      // i++;
-    // }
   },
 
   "getNameWithUnderscore": function(student_Name) {
@@ -199,24 +192,16 @@ Template.globalVision.helpers({
     var users = Meteor.users.find({
     "profile.account": "student"
     }, {sort: { username: 1} }).fetch();
-
-    // var users = Meteor.users.find({
-    //   "profile.account": "student"
-    // }).fetch();
-    console.log("nb user : ",users.length);
+    // console.log("nb user : ",users.length);
     for(var j = 0; j < parseInt(users.length); j++){
       var student = users[j];
       if(student){
-        // console.log(users[j]);
         var student_image_name;
         student_image_name = student.username.replace(/\s/g, "_");
         var avatar = $("#avatar-"+student_image_name);
-        var currentEx = 0;
-        // currentEx = student.profile.currentExercice;
-       
+        var currentEx = 0;       
         t = 0;
         timeline = new TimelineMax({paused: true});
-
 
         var scaleValue = 1;
         var opacity = 1;
@@ -228,11 +213,11 @@ Template.globalVision.helpers({
         }
         for(var l = 0; l < student.profile.answers.length; l ++){
           if(currentEx == student.profile.answers[l].currentEx){
-            console.log("attempt ",student.profile.answers[l].attempt);
+            // console.log("attempt ",student.profile.answers[l].attempt);
             scaleValue = scaleValue + 0.05 * student.profile.answers[l].attempt;
           }
         }
-        console.log("Exercice courant : ",currentEx);
+        // console.log("Exercice courant : ",currentEx);
 
         if(currentEx == 0){
           //bug 
@@ -250,18 +235,9 @@ Template.globalVision.helpers({
             opacity = 0.25;
           }
         }
-        // Meteor.users.update({
-        //   _id : student._id
-        // }, {
-        //   $set: {
-        //     "profile.scale": scaleValue
-        //   }
-        // })
         timeline.to(avatar, 1, {scale: scaleValue, autoAlpha: opacity, ease: Ease.easeIn}, t+= 0.1);
         timeline.play();
-        
       }
-
     }
   }
 });

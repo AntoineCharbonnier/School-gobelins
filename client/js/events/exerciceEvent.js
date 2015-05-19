@@ -12,7 +12,7 @@ Template.exercice.events({
 
     for (var i = 0; i < student.profile.answers.length; i++) {
       var current = student.profile.answers[i];
-      console.log("current: :",current);
+      // console.log("current: :",current);
       if (current.exercice_id == question._id){
         current.answer = selectValue;
         current.attempt += 1;
@@ -52,11 +52,9 @@ Template.exercice.events({
           tm.to(answerInput,0.1,{x: 0,ease: Ease.easeIn},t );
           tm.play();
         }
-
       }
       newAnswers.push( current );
     }
-
     // anim button validate
     var t2, tm2;
     t2 = 0;
@@ -70,10 +68,6 @@ Template.exercice.events({
       tm2.to($("#validate-0"+index), 0.05, {autoAlpha:0, ease: Ease.easeIn}, t+= 0.05);
     }
     tm2.play();
-
-
-
-    // console.log("ANSWERS : ",newAnswers);
     
     Meteor.users.update({
       _id : student._id
@@ -85,53 +79,45 @@ Template.exercice.events({
   },
 
   "click #validator-medium-level": function(e) {
-    console.log("MEDIUM WAY");
+    // console.log("MEDIUM WAY");
     var endResult = $("#answer").val(); 
     var susbstractionIntermediate = $("#intermediate-substraction-medium-level").val(); 
     var susbstractionRest = $("#intermediate-substraction-result-medium-level").val();
-
-
     var findRest = false;
     var findSubstraction = false;
     var findResult = false;
-
     var student = Template.currentData().student;
     var question = Template.currentData().exercice;
-
     var newAnswers = [];
 
     for (var i = 0; i < student.profile.answers.length; i++) {
       var current = student.profile.answers[i];
       if (current.exercice_id == question._id){
         current.answer = endResult;
-        // current.attempt += 1;
         if(question.dividend % question.denominator == susbstractionRest || parseInt(question.dividend % question.denominator) == susbstractionRest ){
           findRest = true
-          console.log("findRest");
+          // console.log("findRest");
         }
         else{
-          // current.attempt += 1;
         }
 
         if(question.dividend - (question.dividend % question.denominator) == susbstractionIntermediate  || parseInt(question.dividend - (question.dividend % question.denominator)) == susbstractionIntermediate){
           findSubstraction = true;
-          console.log("findSub");
+          // console.log("findSub");
         }
         else{
-          // current.attempt += 1;
         }
 
         if(current.answer == question.answers.right || parseInt(current.answer) == question.answers.right){
           findResult = true;
-          console.log("findResult");
+          // console.log("findResult");
         }
         else{
-          // current.attempt += 1;
         }
         current.attempt += 1;
 
         if(findResult && findRest && findSubstraction){
-          console.log("GOD ANSWERS");
+          // console.log("GOD ANSWERS");
           var currentTime = Date.now();
           current.time = currentTime - current.start;
           current.isCurrent = false;
@@ -142,7 +128,7 @@ Template.exercice.events({
       }
       newAnswers.push( current );
     }
-    console.log("ANSWERS : ",newAnswers);
+    // console.log("ANSWERS : ",newAnswers);
     
     Meteor.users.update({
       _id : student._id
@@ -196,7 +182,7 @@ Template.exercice.events({
       }
       newAnswers.push( current );
     }
-    console.log("ANSWERS HELP : ",newAnswers);
+    // console.log("ANSWERS HELP : ",newAnswers);
     
     Meteor.users.update({
       _id : student._id
@@ -208,10 +194,10 @@ Template.exercice.events({
   },
 
 
-"keyup #first-intermediate-substraction-result-hard-level": function(e) {
+  "keyup #first-intermediate-substraction-result-hard-level": function(e) {
     var selectValue = e.target.value; 
     var question = Template.currentData().exercice; 
-    console.log(selectValue);   
+    // console.log(selectValue);   
     $("#first-intermediate-substraction-result-hard-level").attr("data-first-intermediate-substraction-result",selectValue);
     var data = parseInt($("#first-intermediate-substraction-result-hard-level").attr("data-first-intermediate-substraction-result"));
     if(!isNaN(data)){
@@ -221,7 +207,7 @@ Template.exercice.events({
   },
 
   "click #validator-hard-level": function(e) {
-    console.log("HARD WAY");
+    // console.log("HARD WAY");
     var student = Template.currentData().student;
     var question = Template.currentData().exercice;
     
@@ -232,8 +218,7 @@ Template.exercice.events({
     var secondSubstraction = $("#second-intermediate-substraction-hard-level").val(); 
     var secondSubstractionRest = $("#second-intermediate-substraction-result-hard-level").val();
 
-    console.log("TRUC : ",question.dividend % question.denominator, " firstSubstractionRest : ",firstSubstractionRest);
-
+    // console.log("TRUC : ",question.dividend % question.denominator, " firstSubstractionRest : ",firstSubstractionRest);
 
     var firstFindRest = false;
     var firstFindSubstraction = false;
@@ -245,9 +230,6 @@ Template.exercice.events({
 
     var firstStepValid = false;
     var secondStepValid = false;
-
-
-
     var newAnswers = [];
 
     for (var i = 0; i < student.profile.answers.length; i++) {
@@ -257,7 +239,7 @@ Template.exercice.events({
         // current.attempt += 1;
         if(parseInt(question.dividend/10) % question.denominator == firstSubstractionRest || parseInt(question.dividend/10 % question.denominator) == firstSubstractionRest ){
           firstFindRest = true
-          console.log("firstFindRest");
+          // console.log("firstFindRest");
         }
         else{
           current.attempt += 1;
@@ -265,43 +247,26 @@ Template.exercice.events({
 
         if(question.dividend/10 - (question.dividend/10 % question.denominator) == firstSubstraction  || parseInt(question.dividend/10 - (question.dividend/10% question.denominator)) == firstSubstraction){
           firstFindSubstraction = true;
-          console.log("findSub");
+          // console.log("findSub");
         }
         else{
           current.attempt += 1;
         }
-        
-
-        // if(current.answer == question.answers.right || parseInt(current.answer) == question.answers.right){
-        //   firstFindResult = true;
-        //   console.log("firstFindResult");
-        // }
-        // else{
-        //   current.attempt += 1;
-        // }
-
 
         if(firstFindRest && firstFindSubstraction){
-          // console.log("GOD ANSWERS");
-          // var currentTime = Date.now();
-          // current.time = currentTime - current.start;
-          // current.isCurrent = false;
-          // current.validated = true;
-
-          // $('#next').removeClass("hide");
           firstStepValid = true;
-          console.log("first step valid");
+          // console.log("first step valid");
         }
   
         var data = parseInt($("#first-intermediate-substraction-result-hard-level").attr("data-first-intermediate-substraction-result"));
-        console.log("DATA : ",data);
+        // console.log("DATA : ",data);
         
         if(!isNaN(data)){
           var valueToDivide = (data * 10 + ( parseInt(question.dividend) % 10 ));
-          console.log("valueToDivide", valueToDivide);
+          // console.log("valueToDivide", valueToDivide);
           if(parseInt(valueToDivide) % question.denominator == secondSubstractionRest || parseInt(valueToDivide % question.denominator) == secondSubstractionRest ){
             secondFindRest = true
-            console.log("secondFindRest");
+            // console.log("secondFindRest");
           }
           else{
             current.attempt += 1;
@@ -309,7 +274,7 @@ Template.exercice.events({
 
           if(valueToDivide - (valueToDivide % question.denominator) == secondSubstraction  || parseInt(valueToDivide - (valueToDivide% question.denominator)) == secondSubstraction){
             secondFindSubstraction = true;
-            console.log("secondfindSub");
+            // console.log("secondfindSub");
           }
           else{
             current.attempt += 1;
@@ -317,10 +282,10 @@ Template.exercice.events({
 
           if(secondFindRest && secondFindSubstraction){
             secondStepValid = true;
-            console.log("second step valid"); 
+            // console.log("second step valid"); 
           }
           if(firstStepValid && secondStepValid){
-            console.log("GOD ANSWERS");
+            // console.log("GOD ANSWERS");
             var currentTime = Date.now();
             current.time = currentTime - current.start;
             current.isCurrent = false;
@@ -334,10 +299,6 @@ Template.exercice.events({
       }
       newAnswers.push( current );
     }
-
-
-    console.log("ANSWERS : ",newAnswers);
-    
 
     Meteor.users.update({
       _id : student._id

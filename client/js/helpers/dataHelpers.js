@@ -23,7 +23,7 @@ Template.data.helpers({
       }
     }
     var exercicesNumber = Exercices.find().fetch().length;
-    console.log("Exercice courant : ",currentEx);
+    // console.log("Exercice courant : ",currentEx);
     return parseInt((currentEx/exercicesNumber)*100)
   },
   "getStudentNumberHelp": function(student){
@@ -31,6 +31,7 @@ Template.data.helpers({
     var numberHelp = 0;
     for (var i = 0; i < exercicesNumber.length; i++) {
       for(var j = 0; j < student.profile.answers.length; j++){
+        // console.log("answers : ",student.profile.answers[j]);
         if(student.profile.answers[j].needHelp){
           numberHelp += 1;
         }          
@@ -41,13 +42,13 @@ Template.data.helpers({
   "getStudentNumberAttemps": function(student){
     var exercicesNumber = Exercices.find().fetch();
     var numberAttemp = 0;
-    for (var i = 0; i < exercicesNumber.length; i++) {
+    // for (var i = 0; i < exercicesNumber.length; i++) {
       for(var j = 0; j < student.profile.answers.length; j++){
         if(student.profile.answers[j].attempt){
           numberAttemp += student.profile.answers[j].attempt;
         }          
       } 
-    }
+    // }
     return numberAttemp;
   },
   "getStudentNumberTime": function(student){
@@ -83,7 +84,6 @@ Template.data.helpers({
         }
       }
       var currentProfile = currentEx;
-      // console.log("new current : ",currentProfile);
       if(!currentProfile){
         currentProfile = 0;
       }
@@ -96,19 +96,11 @@ Template.data.helpers({
         }
       });
     }
-
-
-
-
-
     var exercicesNumber = Exercices.find().fetch().length;
-    // console.log("Exercice courant : ",currentEx);
     var returned = (numberTotalExCurrent/(exercicesNumber*users.length))*100;
     
     var circlue_cut = $(".circlue_cut") ;
     var circlue_cut_wired = $(".circlue_cut_wired") ;
-    // TweenMax.set circlue_cut, strokeDasharray: "0px, 500px"
-    // TweenMax.set circlue_cut_wired, strokeDasharray: "0px, 500px"
     
     var t = 0;
     var tm = new TimelineMax({paused: true});
@@ -163,4 +155,24 @@ Template.data.helpers({
     }
     return minutes;
   },
+  "getAllStudentsNumberHelp": function(){
+    var users = Meteor.users.find({
+    "profile.account": "student"
+    }, {sort: { username: 1} }).fetch();
+    
+    var exercicesNumber = Exercices.find().fetch();
+    var numberHelp = 0;
+    for(var k = 0; k < users.length; k ++){
+      var student = users[k];
+      for (var i = 0; i < exercicesNumber.length; i++) {
+        for(var j = 0; j < student.profile.answers.length; j++){
+          if(student.profile.answers[j].needHelp){
+            numberHelp += 1;
+          }          
+        } 
+      }
+    }
+
+    return numberHelp;
+  }
 });
