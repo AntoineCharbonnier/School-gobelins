@@ -10,7 +10,7 @@ Template.sendExercices.helpers
   
   'getNameWithUnderscore': (student_Name) ->
     image_name = student_Name.replace(/\s/g,"_")
-    console.log image_name
+    # console.log image_name
     return image_name
 
   # 'isConnected': (student) ->

@@ -1,4 +1,4 @@
-Template.sendExercices.rendered = ->
+Template.globalVision.rendered = ->
   users = Meteor.users.find().fetch()
 
 
@@ -7,10 +7,10 @@ Template.sendExercices.rendered = ->
   timeline = new TimelineMax paused: true
   settersLI = new TimelineMax paused: true
 
-  container = $ ".container-send-exercices"
-  li_img = $ ".container-send-exercices ul li img"
-  li_h6 = $ ".container-send-exercices ul li h6"
-  select_zone = $ ".container-send-exercices .select-zone"
+  container = $ ".container-global-vision"
+  li_img = $ ".container-global-vision ul li img"
+  # li_h6 = $ ".container-global-vision ul li h6"
+  select_zone = $ ".container-global-vision .select-zone"
 
 
   middleX = container.width()/2
@@ -19,14 +19,14 @@ Template.sendExercices.rendered = ->
 
   # console.log "X #{middleX}  Y #{middleY}"
 
-  TweenMax.set [li_h6,select_zone], autoAlpha: 0
+  TweenMax.set select_zone, autoAlpha: 0
 
   setTimeout ()=>
     li_img.each (index)->
       TweenMax.set $(this)[0],autoAlpha: 0, x: middleX-$(this)[0].getBoundingClientRect().left, y: middleY-$(this)[0].getBoundingClientRect().top
       timeline.to( $(this)[0], 2, {autoAlpha: 1, x: middleX-$(this)[0].getBoundingClientRect().left, y: middleY-$(this)[0].getBoundingClientRect().top,ease: Back.easeOut}, delay)
     delay+=.5
-    timeline.to( li_h6, 2, {autoAlpha: 1,ease: Back.easeOut}, delay+=.5)
+    # timeline.to( li_h6, 2, {autoAlpha: 1,ease: Back.easeOut}, delay+=.5)
     timeline.to( select_zone, 2, {autoAlpha: 1,ease: Back.easeOut}, delay+=.5)
 
     i = 0

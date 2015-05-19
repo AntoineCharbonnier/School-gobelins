@@ -15,12 +15,17 @@ html, body{
 }
 
 .hide{
-  display: none;
+  display: none !important;
 }
 
 .transparent{
   opacity: 0;
 }
+
+.boxed{
+  @include box-shadow(rgba(0,211,0, 1) 0 0 15px);
+}
+
 .clear{
   clear: both;
   display: block;

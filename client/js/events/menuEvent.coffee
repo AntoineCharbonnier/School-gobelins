@@ -18,7 +18,6 @@ Template.menu.events
       $set: {
         "module": "display-classes"
       }
-    # console.log "EVENT : "
     
     console.log "DISPLAYER TEACHER", AppEvents.findOne(name: 'displayer')
     return
@@ -116,7 +115,6 @@ Template.menu.events
         ease: Sine.easeInOut, 
         delay: t
 
-      # TweenLite.to li, .2, width: "266.5px", delay: t
       TweenLite.to li, .2, width: "192px", delay: t
       TweenLite.to burger, .2, width: "25%", delay: t
       TweenLite.to SVGburger, .2, margin: "0", delay: t

@@ -5,7 +5,8 @@ Template.sendExercices.events
     t = 0
     tm = new TimelineMax paused: true
 
-    tm.to( image, 2, {className:"-=transparent", autoAlpha: 1},t+=.1)
+    tm.to( image, 2, {scale: 1,className:"-=transparent", autoAlpha: 1},t+=.1)
+    tm.to( image, 2, {className:"+=boxed"},t+=.1)
     tm.play()
     return
   
@@ -33,7 +34,8 @@ Template.sendExercices.events
       t = 0
       tm = new TimelineMax paused: true
 
-      tm.to( image, 2, {className:"-=transparent", autoAlpha: 1},t+=.1)
+      tm.to( image, 2, {scale: 1,className:"-=transparent", autoAlpha: 1},t+=.1)
+      tm.to( image, 2, {className:"+=boxed"},t+=.1)
       tm.play()
 
       i++
