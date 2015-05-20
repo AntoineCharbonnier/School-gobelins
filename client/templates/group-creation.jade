@@ -1,32 +1,28 @@
 template(name='groupCreation')
-  .container-group-creation.container
+  .container-group-creation.hide.container
     .list-container
       each groupCreationList
-        ul
+        ul(class="{{this.name}}")
           .background--circle
           li.user1
             a(href)
               h3 {{ this.user1.username }}
               //- BEFORE FOR GO TO STUDEN PROFILE a(href='/student/{{this._id}}')
               img(id="avatar-{{ getNameWithUnderscore this.user1.username }}" src="../assets/profile_images/{{ getNameWithUnderscore this.user1.username }}.png" alt="Avatar de {{ this.user1.username }}")
-              //- img(id="avatar-{{ getNameWithUnderscore this.user.username }}-overlay" src="../assets/select_student/profile-overlay.png" alt="Overlay de {{ this.user.username }}" class="profile-overlay transparent")
           li.user2
             a(href)
               h3 {{ this.user2.username }}
               //- BEFORE FOR GO TO STUDEN PROFILE a(href='/student/{{this._id}}')
               img(id="avatar-{{ getNameWithUnderscore this.user2.username }}" src="../assets/profile_images/{{ getNameWithUnderscore this.user2.username }}.png" alt="Avatar de {{ this.user2.username }}")
-              //- img(id="avatar-{{ getNameWithUnderscore this.user.username }}-overlay" src="../assets/select_student/profile-overlay.png" alt="Overlay de {{ this.user.username }}" class="profile-overlay transparent")
           li.user3
             a(href)
               //- BEFORE FOR GO TO STUDEN PROFILE a(href='/student/{{this._id}}')
               img(id="avatar-{{ getNameWithUnderscore this.user3.username }}" src="../assets/profile_images/{{ getNameWithUnderscore this.user3.username }}.png" alt="Avatar de {{ this.user3.username }}")
-              //- img(id="avatar-{{ getNameWithUnderscore this.user.username }}-overlay" src="../assets/select_student/profile-overlay.png" alt="Overlay de {{ this.user.username }}" class="profile-overlay transparent")
               h3 {{ this.user3.username }}
           li.user4
             a(href)
               //- BEFORE FOR GO TO STUDEN PROFILE a(href='/student/{{this._id}}')
               img(id="avatar-{{ getNameWithUnderscore this.user4.username }}" src="../assets/profile_images/{{ getNameWithUnderscore this.user4.username }}.png" alt="Avatar de {{ this.user4.username }}")
-              //- img(id="avatar-{{ getNameWithUnderscore this.user.username }}-overlay" src="../assets/select_student/profile-overlay.png" alt="Overlay de {{ this.user.username }}" class="profile-overlay transparent")
               h3 {{ this.user4.username }}
           .clear
     .clear

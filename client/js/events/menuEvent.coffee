@@ -116,7 +116,7 @@ Template.menu.events
         delay: t
 
       TweenLite.to li, .2, width: "192px", delay: t
-      TweenLite.to burger, .2, width: "25%", delay: t
+      TweenLite.to burger, .2, width: "25%", delay: t+=.5
       TweenLite.to SVGburger, .2, margin: "0", delay: t
       TweenLite.to logOut, .2, className: "-=hide", delay: t
       TweenLite.to burgerH2, .2, autoAlpha: 1, delay: t
