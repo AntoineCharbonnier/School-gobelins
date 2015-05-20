@@ -1,6 +1,8 @@
 .container-global-vision{
   height: 100%;
   display: block;
+  background-image: none;
+  background-color: #f6f9f9;
   .select-zone{
     position: relative;
     width: 100%;
@@ -103,6 +105,80 @@
       height: 25px;
       width: 0px;
       background-color: #d8e1e7;
+    }
+  }
+  .pop-up{
+    position: absolute;
+    top: 90px;
+    left: 0;
+    z-index: 10000;
+    background-color: #f6f9f9;
+    width: 100%;
+    height: calc(100% - 90px);
+    .frame{
+      position: relative;
+      width: 725px;
+      height: 530px;
+      left: 50px;
+      top: 30px;
+      background-color: white;
+      @include box-shadow(rgba(185,187,189, 1) 0 0 105px);
+      @include border-radius(20px);
+      .pop-up__top-content{
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        img{
+          position: relative;
+          float: left;
+          top: 0;
+          left: 0;
+          width: 85px;
+          height: 85px;
+          margin: 20px 0 0 40px;
+        }
+        h2{
+          position: relative;
+          float: left;
+          font : normal 400 18px "MikadoRegular";
+          text-transform: none;
+          color: #6b6b7c;
+          width: 90px;
+          text-align: center;
+          margin: 50px 0 0 20px;
+        }
+        a{
+          position: relative;
+          float: left;
+          color: white;
+          background-color: #f0445c;
+          height: 20px;
+          width: 120px;
+          margin: 50px 0 0 30px; 
+          @include border-radius(25px,25px);
+          h3{
+            margin: 1px 0 0 0;
+            font : normal 400 15px "MikadoRegular";
+          }
+        }
+        #good{
+          color: #4df5a9;
+          background-color: white;
+          border: 1px solid #4df5a9;
+        }
+        #not-good{
+          color: #f4386d;
+          background-color: white;
+          border: 1px solid #f4386d;
+        }
+        #close{
+          color: #6b6b7c;
+          border: none;
+          background-color: white;
+        }
+      }
     }
   }
 }

@@ -99,15 +99,23 @@ Template.data.helpers({
     var exercicesNumber = Exercices.find().fetch().length;
     var returned = (numberTotalExCurrent/(exercicesNumber*users.length))*100;
     
-    var circlue_cut = $(".circlue_cut") ;
-    var circlue_cut_wired = $(".circlue_cut_wired") ;
-    
-    var t = 0;
-    var tm = new TimelineMax({paused: true});
-    var rotationValue = Math.round((Math.round(returned)*500/100));
-    tm.to(circlue_cut_wired, 2, {strokeDasharray: "500px, 500px", ease: Ease.easeInOut, delay: t+=2});
-    tm.to(circlue_cut, 2, {strokeDasharray: rotationValue+"px, 500px", ease: Ease.easeInOut, delay: t});
-    tm.play();
+
+    setTimeout(function(){
+      var circlue_cut = $(".circlue_cut") ;
+      var circlue_cut_wired = $(".circlue_cut_wired") ;
+      console.log(circlue_cut);
+      console.log(circlue_cut_wired);
+      var t = 0;
+      var tm = new TimelineMax({paused: true});
+      var rotationValue = Math.round((Math.round(returned)*500/100));
+      console.log(rotationValue);
+      tm.to(circlue_cut_wired, 0.5, {strokeDasharray: "500px, 500px", ease: Ease.easeInOut, delay: t+=0.1});
+      tm.to(circlue_cut, 0.8, {strokeDasharray: rotationValue+"px, 500px", ease: Ease.easeInOut, delay: t});
+      tm.play();      
+    }, 1000);
+
+
+
 
     return Math.round(returned);
   },

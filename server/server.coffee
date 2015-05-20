@@ -136,6 +136,12 @@ Meteor.startup ->
   #  password: 'PhilippeNeveu'
   #  profile: account: 'teacher'
   
+  # Accounts.createUser
+  #  username: 'Admin admin'
+  #  email: 'admin@gmail.com'
+  #  password: 'admin'
+  #  profile: account: 'teacher'
+  
 
   # ############################################ 
   # ### ACCOUNTS STUDENTS

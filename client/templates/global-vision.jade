@@ -5,38 +5,44 @@ template(name='globalVision')
       img(class="pause__button" src="../assets/global_vision/pause.png" alt="Pause")
       .time-container
         h3 temps écoulé
-        //- h2(id='time').is-not-defined 00:00
         h2(id='time').is-not-defined {{getTotalDurationExercice true}}
         .clear
       a(href, id="time-is-over")
         h3 Terminer
       .clear
     ul
-      each everyStudents 
+      each everyStudents
         li
-          a(href='/student/{{this._id}}')
+          a(href,id="{{ this._id }}")
             //- BEFORE FOR GO TO STUDEN PROFILE a(href='/student/{{this._id}}')
-            img(id="avatar-{{ getNameWithUnderscore this.username }}" src="../assets/profile_images/{{ getNameWithUnderscore this.username }}.png" alt="Avatar de {{ this.username }}")
+            img(id="avatar-{{ getNameWithUnderscore this.username }}" src="../../profile_images/{{ getNameWithUnderscore this.username }}.png" alt="Avatar de {{ this.username }}")
             //- img(id="avatar-{{ getNameWithUnderscore this.username }}-overlay" src="../assets/select_student/profile-overlay.png" alt="Overlay de {{ this.username }}" class="profile-overlay transparent")
             |{{isStudentNeedHelp this}}
-            //-   h6 {{ this.username }} /!\
-            //- else
-            //-   h6 {{ this.username }}
     .progess__bar
       h3 Progression generale
       .bar
     |{{updateStudentSwitchProgress}}
-    //- h2 Global details
-    //- ul
-    //-   li
-    //-     | Nombre etudiants dans la classe : {{ getStudentNumber }}
-    //-   each getExercices
-    //-     li
-    //-       | Nombre etudiants qui ont validés l'exercice {{this.number}}  : {{getNumberStudentValidExercice this._id}}
-    //-       br
-    //-       | Nombre moyen d'essais : {{getAttemptsExercice this._id}}
-    //-       br
-    //-       | Durée moyenne : {{getDurationExercice this._id true}}
-    //-       br
-    //-       | Nombre de HELP : {{getNumberHelpExercice this._id}}
-      
+
+    .pop-up
+      .pop-up__overlay
+      .frame
+        .pop-up__top-content
+          img(id="" src="../../profile_images/Abla_Louna.png" alt="Avatar de")
+          h2 Abla Louna
+          a(href, id="good")
+            h3 Resolu
+          a(href, id="not-good")
+            h3 Non resolu
+          a(href, id="close")
+            h3 Fermer
+          .clear
+        .pop-up__content
+          .exercice-list
+            h6 Progression
+            h4 20%
+            h6 Exerice
+            ul
+              li
+
+          .exercice-view
+          

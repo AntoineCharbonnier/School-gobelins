@@ -13,3 +13,6 @@ Template.menu.helpers
   #   displayerEvent = AppEvents.findOne(name: 'displayer')
   #   if(displayerEvent.module == "")
   #     return true
+  'getNameWithUnderscore': (student_Name)->
+    image_name = student_Name.replace(/\s/g, "_")
+    return image_name

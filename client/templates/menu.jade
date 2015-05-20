@@ -23,9 +23,9 @@ template(name='menu')
           a(href, id="display-menu")
             +burger
             .log-out.hide
-              img(id="avatar-Abla_Louna.png" src="../assets/profile_images/Abla_Louna.png" alt="Avatar de ")
+              img(id="avatar-Abla_Louna.png" src="../../profile_images/{{getNameWithUnderscore currentUser.username}}.png" alt="Avatar de ")
               .log-out__text
-                h3 Philippe Neveu
+                h3 {{ currentUser.username }}
                 a(href, id="logout")
                   |Se deconnecter
               .clear
