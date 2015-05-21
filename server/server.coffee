@@ -8,6 +8,7 @@ Meteor.startup ->
   # Meteor.users.remove {}
   # AppEvents.remove {}
   # Groups.remove {}
+  # PopupEvents.remove {}
   
   # ############################################ 
   # ### EVENTS
@@ -20,6 +21,21 @@ Meteor.startup ->
   # AppEvents.insert
   #   name: "displayer"
   #   module: "display-send-exercice"
+
+
+
+  # ############################################ 
+  # ### POPUP
+  # ############################################ 
+
+  # PopupEvents.insert
+  #   name: "student"
+  #   user_id : ""
+  
+  
+
+
+
 
 
   # ############################################ 
@@ -423,7 +439,8 @@ Meteor.startup ->
    return true
   Groups.allow insert: (userId, docs, fields, modifier) ->
    return true
-
+  PopupEvents.allow update: (userId, docs, fields, modifier) ->
+   return true
 
   # Exercices.insert
   #  number: Exercices.find().count() + 1

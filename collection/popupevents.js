@@ -1,0 +1,1 @@
+PopupEvents = new Mongo.Collection("popupevents");

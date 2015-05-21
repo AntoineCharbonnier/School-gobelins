@@ -53,7 +53,6 @@ Template.globalVision.helpers({
         if (current.profile.answers[j].exercice_id == the_exercice_id){
           if(current.profile.answers[j].time){
             timeAverrage += current.profile.answers[j].time;
-            // console.log("MY TIME : ",timeAverrage);
           }          
         }
       } 
@@ -61,7 +60,6 @@ Template.globalVision.helpers({
     if(booleanString){
       var minutes = Math.floor(timeAverrage / 60000);
       var seconds = ((timeAverrage % 60000) / 1000).toFixed(0);
-      // console.log(minutes + ":" + (seconds < 10 ? '0' : '') + seconds);
       if(minutes < 10){
         minutes = "0"+minutes;
       }
@@ -95,7 +93,6 @@ Template.globalVision.helpers({
     if(booleanString){
       var minutes = Math.floor(timeAverrage / 60000);
       var seconds = ((timeAverrage % 60000) / 1000).toFixed(0);
-      // console.log(minutes + ":" + (seconds < 10 ? '0' : '') + seconds);
       if(minutes < 10){
         minutes = "0"+minutes;
       }
@@ -117,7 +114,6 @@ Template.globalVision.helpers({
         if (current.profile.answers[j].exercice_id == the_exercice_id){
           if(current.profile.answers[j].needHelp){
             numberHelp += 1;
-            // console.log("HELPS  : ",numberHelp);
           }          
         }
       } 
@@ -136,15 +132,10 @@ Template.globalVision.helpers({
         currentEx = student.profile.answers[i].currentEx;
       }
     }
-    // console.log("currentEx h",currentEx);
     for(var l = 0; l < student.profile.answers.length; l ++){
       if(currentEx == student.profile.answers[l].currentEx){
-        // console.log("here");
         if(student.profile.answers[l].needHelp){
-          // ANIMATION 
-          // console.log("needHelp");
           t = 0;
-          //ADD MARGIN FOR NO MOVE
           
           tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
           tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
@@ -192,7 +183,6 @@ Template.globalVision.helpers({
     var users = Meteor.users.find({
     "profile.account": "student"
     }, {sort: { username: 1} }).fetch();
-    // console.log("nb user : ",users.length);
     for(var j = 0; j < parseInt(users.length); j++){
       var student = users[j];
       if(student){
@@ -202,7 +192,6 @@ Template.globalVision.helpers({
         var currentEx = 0;       
         t = 0;
         timeline = new TimelineMax({paused: true});
-
         var scaleValue = 1;
         var opacity = 1;
         
@@ -217,8 +206,6 @@ Template.globalVision.helpers({
             scaleValue = scaleValue + 0.05 * student.profile.answers[l].attempt;
           }
         }
-        // console.log("Exercice courant : ",currentEx);
-
         if(currentEx == 0){
           //bug 
         }
@@ -239,5 +226,233 @@ Template.globalVision.helpers({
         timeline.play();
       }
     }
-  }
+  },
+
+
+  "popupGetNameWithUnderscore": function(){
+    var popUp = PopupEvents.findOne({name: 'student'});
+    // console.log(popUp);
+    if(popUp){
+      var user = Meteor.users.find({
+      "_id": popUp.user_id
+      }).fetch();
+      // console.log(user);
+      var image_name;
+      image_name = user[0].username.replace(/\s/g, "_");
+      return image_name;      
+    }
+    else{
+      return "";
+    }
+  },
+  "popupGetName": function(){
+    var popUp = PopupEvents.findOne({name: 'student'});
+    // console.log(popUp);
+    if(popUp){
+      var user = Meteor.users.find({
+      "_id": popUp.user_id
+      }).fetch();
+      // console.log(user);
+      return user[0].username;      
+    }
+    
+  },
+
+  "popupGetStudentProgress":function(){
+    var popUp = PopupEvents.findOne({name: 'student'});
+    // console.log(popUp);
+    if(popUp){
+      var user = Meteor.users.find({
+      "_id": popUp.user_id
+      }).fetch();
+      // console.log(user[0].profile);
+      var currentEx = 0;
+      for(var i = 0; i < user[0].profile.answers.length; i++){
+        if(currentEx < user[0].profile.answers[i].currentEx){
+          currentEx = user[0].profile.answers[i].currentEx;
+        }
+      }
+      var exercicesNumber = Exercices.find().fetch().length;
+      // console.log("Exercice courant : ",currentEx);
+      // console.log(parseInt((currentEx/exercicesNumber)*100));
+      return parseInt((currentEx/exercicesNumber)*100);
+      }
+    else{
+      return "";
+    }
+  },
+
+  "popupExerciceTimeline":function(){
+    var current, currentEx, currentExNumber, i, item, j;
+    var exercicesNumber = Exercices.find().fetch().length;
+    var popUp = PopupEvents.findOne({name: 'student'});
+    currentExNumber = 0;
+    i = 0;
+    if(popUp){
+      var user = Meteor.users.find({
+      "_id": popUp.user_id
+      }).fetch();
+
+      var student = user[0];
+      while (i < student.profile.answers.length) {
+        current = student.profile.answers[i];
+        if (current.isCurrent == true) {
+          currentEx = Exercices.find({
+            "_id": current.exercice_id
+          }).fetch();
+          if(currentExNumber < currentEx[0].number){
+            currentExNumber = currentEx[0].number;
+          }
+        }
+        i++;
+      }
+      if (this.number < currentExNumber) {
+        // console.log("previous");
+        return "previous";
+      }
+      if (this.number == currentExNumber) {
+        // console.log("current");
+        return "current";
+      }
+      if (this.number > currentExNumber) {
+        // console.log("next");
+        return "next";
+      }
+    }
+  },
+
+  "popupgetStatementExercice":function(){
+    var current, currentEx, currentExNumber, i, item, j;
+    var exercicesNumber = Exercices.find().fetch().length;
+    var popUp = PopupEvents.findOne({name: 'student'});
+    currentExNumber = 0;
+    i = 0;
+    if(popUp){
+      var user = Meteor.users.find({
+      "_id": popUp.user_id
+      }).fetch();
+
+      var student = user[0];
+      while (i < student.profile.answers.length) {
+        current = student.profile.answers[i];
+        if (current.isCurrent == true) {
+          currentEx = Exercices.find({
+            "_id": current.exercice_id
+          }).fetch();
+          if(currentExNumber < currentEx[0].number){
+            currentExNumber = currentEx[0].number;
+          }
+        }
+        i++;
+      }
+    var exercice = Exercices.find({"number": currentExNumber}).fetch();
+    if(exercice[0].question){
+      return exercice[0].question;
+    }
+    }
+  },
+
+  "popupgetGoodAnswerExercice":function(){
+    var current, currentEx, currentExNumber, i, item, j;
+    var exercicesNumber = Exercices.find().fetch().length;
+    var popUp = PopupEvents.findOne({name: 'student'});
+    currentExNumber = 0;
+    i = 0;
+    if(popUp){
+      var user = Meteor.users.find({
+      "_id": popUp.user_id
+      }).fetch();
+
+      var student = user[0];
+      while (i < student.profile.answers.length) {
+        current = student.profile.answers[i];
+        if (current.isCurrent == true) {
+          currentEx = Exercices.find({
+            "_id": current.exercice_id
+          }).fetch();
+          if(currentExNumber < currentEx[0].number){
+            currentExNumber = currentEx[0].number;
+          }
+        }
+        i++;
+      }
+      var exercice = Exercices.find({"number": currentExNumber}).fetch();
+      if(exercice[0].answers.right){
+        return exercice[0].answers.right;
+      }
+    }
+  },
+ 
+  "popupGetStudentAnswerExercice":function(){
+    var current, currentEx, currentExNumber, i, item, j;
+    var exercicesNumber = Exercices.find().fetch().length;
+    var popUp = PopupEvents.findOne({name: 'student'});
+    currentExNumber = 0;
+    i = 0;
+    if(popUp){
+      var user = Meteor.users.find({
+      "_id": popUp.user_id
+      }).fetch();
+
+      var student = user[0];
+      while (i < student.profile.answers.length) {
+        current = student.profile.answers[i];
+        if (current.isCurrent == true) {
+          currentEx = Exercices.find({
+            "_id": current.exercice_id
+          }).fetch();
+          if(currentExNumber < currentEx[0].number){
+            currentExNumber = currentEx[0].number;
+          }
+        }
+        i++;
+      }
+      console.log(currentExNumber);
+      console.log(user[0].profile.answers[currentExNumber-1]);
+      if(user[0].profile.answers[currentExNumber-1].answer == ""){
+        return "N'a pas encore repondu";
+      }
+      else{
+        return user[0].profile.answers[currentExNumber-1].answer;
+      }
+    }
+  },
+
+  "popupGetAttemps":function(){
+    var current, currentEx, currentExNumber, i, item, j;
+    var exercicesNumber = Exercices.find().fetch().length;
+    var popUp = PopupEvents.findOne({name: 'student'});
+    currentExNumber = 0;
+    i = 0;
+    if(popUp){
+      var user = Meteor.users.find({
+      "_id": popUp.user_id
+      }).fetch();
+
+      var student = user[0];
+      while (i < student.profile.answers.length) {
+        current = student.profile.answers[i];
+        if (current.isCurrent == true) {
+          currentEx = Exercices.find({
+            "_id": current.exercice_id
+          }).fetch();
+          if(currentExNumber < currentEx[0].number){
+            currentExNumber = currentEx[0].number;
+          }
+        }
+        i++;
+      }
+      console.log(currentExNumber);
+      console.log(user[0].profile.answers[currentExNumber-1]);
+      
+      if(user[0].profile.answers[currentExNumber-1].attempt){
+        return user[0].profile.answers[currentExNumber-1].attempt;
+      }
+      else{
+        return 0;
+      }
+      
+    }
+  }  
+
 });

@@ -10,7 +10,7 @@ template(name='globalVision')
       a(href, id="time-is-over")
         h3 Terminer
       .clear
-    ul
+    ul.global
       each everyStudents
         li
           a(href,id="{{ this._id }}")
@@ -23,12 +23,12 @@ template(name='globalVision')
       .bar
     |{{updateStudentSwitchProgress}}
 
-    .pop-up
+    .pop-up.hide
       .pop-up__overlay
       .frame
         .pop-up__top-content
-          img(id="" src="../../profile_images/Abla_Louna.png" alt="Avatar de")
-          h2 Abla Louna
+          img(id="" src="../../profile_images/{{popupGetNameWithUnderscore}}.png" alt="Avatar de")
+          h2 {{popupGetName}}
           a(href, id="good")
             h3 Resolu
           a(href, id="not-good")
@@ -39,10 +39,26 @@ template(name='globalVision')
         .pop-up__content
           .exercice-list
             h6 Progression
-            h4 20%
+            h4 {{popupGetStudentProgress}}%
             h6 Exerice
             ul
-              li
+              each getExercices
+                li
+                  h5(class="exercice-{{popupExerciceTimeline}}") {{this.number}}
 
           .exercice-view
+            .exercice-view__content
+              h2 {{popupgetStatementExercice}}
+              h4 {{popupGetStudentAnswerExercice}}
+              //- h5 x3
+              //- img(src="../../ui/number_help.png" alt="number help" class="help")
+              h6 x{{popupGetAttemps}}
+              img(src="../../ui/number_attempt.png" alt="number attempt" class="attemps")
+          .clear
           
+      .students-list
+        ul
+          each everyStudents
+            li(id="{{ this._id }}")
+              img(id="" src="../../profile_images/{{ getNameWithUnderscore this.username }}.png" alt="Avatar de {{ this.username }}")
+      .clear

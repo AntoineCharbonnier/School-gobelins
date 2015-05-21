@@ -8,7 +8,7 @@ Template.globalVision.rendered = ->
   settersLI = new TimelineMax paused: true
 
   container = $ ".container-global-vision"
-  li_img = $ ".container-global-vision ul li img"
+  li_img = $ ".container-global-vision ul.global li img"
   # li_h6 = $ ".container-global-vision ul li h6"
   select_zone = $ ".container-global-vision .select-zone"
 

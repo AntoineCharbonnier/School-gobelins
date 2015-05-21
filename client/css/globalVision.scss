@@ -122,6 +122,7 @@
       left: 50px;
       top: 30px;
       background-color: white;
+      float: left;
       @include box-shadow(rgba(185,187,189, 1) 0 0 105px);
       @include border-radius(20px);
       .pop-up__top-content{
@@ -137,7 +138,9 @@
           left: 0;
           width: 85px;
           height: 85px;
-          margin: 20px 0 0 40px;
+          margin: 15px 0 0 40px;
+          @include box-shadow(rgba(254,251,251, 1) 0 0 1px);
+          @include border-radius(20px);
         }
         h2{
           position: relative;
@@ -147,7 +150,7 @@
           color: #6b6b7c;
           width: 90px;
           text-align: center;
-          margin: 50px 0 0 20px;
+          margin: 40px 0 0 20px;
         }
         a{
           position: relative;
@@ -177,6 +180,148 @@
           color: #6b6b7c;
           border: none;
           background-color: white;
+        }
+      }
+      .pop-up__content{
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        .exercice-list{
+          position: relative;
+          float: left;
+          width: 150px;
+          height: calc(100% - 100px);
+          h4{
+            font : normal 400 30px "MikadoMedium";
+            color: #e4e4e5;
+          }
+          h6{
+            font : normal 400 10px "MikadoRegular";
+            color: #90909b;
+          }
+          ul{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            li{
+              position: relative;
+              width: 100%;
+              height: 10px;
+              margin: 30px 0 0 0;
+              h5{
+                font : normal 400 15px "MikadoRegular";
+                width: 20px;
+                margin: 0 auto;
+              }
+              .exercice-previous{
+                color: #0ee7b0;
+                @include border-radius(25px);
+                border: 1px solid #0ee7b0;
+              }
+              .exercice-next{
+                color: #ea5652;
+                @include border-radius(25px);
+                border: 2px solid #ea5652;
+
+              }
+              .exercice-current{
+                color: #bfbfbf;
+                @include border-radius(25px);
+                @include box-shadow(rgba(191,191,191, 1) 0 0 10px);
+                border: 1px solid #bfbfbf;
+              }
+            }
+          }
+        }
+        .exercice-view{
+          position: relative;
+          float: left;
+          width: 575px;
+          height: calc(100% - 100px);
+          .exercice-view__content{
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 528px;
+            height: 362px;
+            background-color: #e5e5e5;
+            h2{
+              font: 500 35px "MikadoMedium";
+              color: #353F51; 
+              float: left;
+              width: 50%;
+              margin:  100px 0 0 0;
+            }
+            h4{
+              font: 500 35px "MikadoMedium";
+              color: #ffc103; 
+              float: left;
+              width: 50%;
+              margin:  100px 0 0 0;
+            }
+            h5{
+              font: 500 35px "MikadoMedium";
+              color: #353F51;
+              float: left;
+              margin: 30px 0 0 120px;
+
+            }
+            h6{
+              font: 500 35px "MikadoMedium";
+              color: #353F51;
+              float: left;
+              margin: 30px 0 0 80px;
+
+            }
+            img{
+              float: left;
+
+            }
+            .attemps{
+              margin: 35px 0 0 10px;
+            }
+          }
+        }
+      }
+    }
+    .students-list{
+      float: left;
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 280px;
+      height: 100%;
+      ul{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+        li{
+          position: relative;
+          cursor: pointer;
+          display: block;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 75px;
+          margin: 0 0 -10px 0;
+          &:first-child{
+            margin: 25px 0 -10px 0;
+          }
+          img{
+            @include box-shadow(rgba(185,187,189, 1) 0 0 15px);
+            position: relative;
+            width: 75px;
+            height: 75px;
+            margin: 0 0 0 90px;
+            @include border-radius(38px);
+            @include transform(translateX(-50%));
+          }
         }
       }
     }
