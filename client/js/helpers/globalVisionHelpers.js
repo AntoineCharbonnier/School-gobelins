@@ -47,9 +47,7 @@ Template.globalVision.helpers({
     var timeAverrage = 0;
     for (var i = 0; i < users.length; i++) {
       var current = users[i];
-      // console.log("first loop");
       for(var j = 0; j < current.profile.answers.length; j++){
-        // console.log("second loop");
         if (current.profile.answers[j].exercice_id == the_exercice_id){
           if(current.profile.answers[j].time){
             timeAverrage += current.profile.answers[j].time;
@@ -202,7 +200,6 @@ Template.globalVision.helpers({
         }
         for(var l = 0; l < student.profile.answers.length; l ++){
           if(currentEx == student.profile.answers[l].currentEx){
-            // console.log("attempt ",student.profile.answers[l].attempt);
             scaleValue = scaleValue + 0.05 * student.profile.answers[l].attempt;
           }
         }
@@ -231,15 +228,15 @@ Template.globalVision.helpers({
 
   "popupGetNameWithUnderscore": function(){
     var popUp = PopupEvents.findOne({name: 'student'});
-    // console.log(popUp);
     if(popUp){
       var user = Meteor.users.find({
-      "_id": popUp.user_id
+        "_id": popUp.user_id
       }).fetch();
-      // console.log(user);
-      var image_name;
-      image_name = user[0].username.replace(/\s/g, "_");
-      return image_name;      
+      if(user[0]){
+        var image_name;
+        image_name = user[0].username.replace(/\s/g, "_");
+        return image_name;      
+      }
     }
     else{
       return "";
@@ -247,35 +244,33 @@ Template.globalVision.helpers({
   },
   "popupGetName": function(){
     var popUp = PopupEvents.findOne({name: 'student'});
-    // console.log(popUp);
     if(popUp){
       var user = Meteor.users.find({
       "_id": popUp.user_id
       }).fetch();
-      // console.log(user);
-      return user[0].username;      
+      if(user[0]){
+        return user[0].username;    
+      }
     }
-    
   },
 
   "popupGetStudentProgress":function(){
     var popUp = PopupEvents.findOne({name: 'student'});
-    // console.log(popUp);
     if(popUp){
       var user = Meteor.users.find({
       "_id": popUp.user_id
       }).fetch();
-      // console.log(user[0].profile);
-      var currentEx = 0;
-      for(var i = 0; i < user[0].profile.answers.length; i++){
-        if(currentEx < user[0].profile.answers[i].currentEx){
-          currentEx = user[0].profile.answers[i].currentEx;
+      if(user[0]){
+        var currentEx = 0;
+        for(var i = 0; i < user[0].profile.answers.length; i++){
+          if(currentEx < user[0].profile.answers[i].currentEx){
+            currentEx = user[0].profile.answers[i].currentEx;
+          }
         }
+        var exercicesNumber = Exercices.find().fetch().length;
+        return parseInt((currentEx/exercicesNumber)*100);        
       }
-      var exercicesNumber = Exercices.find().fetch().length;
-      // console.log("Exercice courant : ",currentEx);
-      // console.log(parseInt((currentEx/exercicesNumber)*100));
-      return parseInt((currentEx/exercicesNumber)*100);
+
       }
     else{
       return "";
@@ -306,16 +301,13 @@ Template.globalVision.helpers({
         }
         i++;
       }
-      if (this.number < currentExNumber) {
-        // console.log("previous");
+      if (this.number < currentExNumber) {  
         return "previous";
       }
       if (this.number == currentExNumber) {
-        // console.log("current");
         return "current";
       }
       if (this.number > currentExNumber) {
-        // console.log("next");
         return "next";
       }
     }
@@ -331,24 +323,25 @@ Template.globalVision.helpers({
       var user = Meteor.users.find({
       "_id": popUp.user_id
       }).fetch();
-
-      var student = user[0];
-      while (i < student.profile.answers.length) {
-        current = student.profile.answers[i];
-        if (current.isCurrent == true) {
-          currentEx = Exercices.find({
-            "_id": current.exercice_id
-          }).fetch();
-          if(currentExNumber < currentEx[0].number){
-            currentExNumber = currentEx[0].number;
+      if(user[0]){
+        var student = user[0];
+        while (i < student.profile.answers.length) {
+          current = student.profile.answers[i];
+          if (current.isCurrent == true) {
+            currentEx = Exercices.find({
+              "_id": current.exercice_id
+            }).fetch();
+            if(currentExNumber < currentEx[0].number){
+              currentExNumber = currentEx[0].number;
+            }
           }
+          i++;
         }
-        i++;
+        var exercice = Exercices.find({"number": currentExNumber}).fetch();
+        if(exercice[0]){
+          return exercice[0].question;
+        }
       }
-    var exercice = Exercices.find({"number": currentExNumber}).fetch();
-    if(exercice[0].question){
-      return exercice[0].question;
-    }
     }
   },
 
@@ -391,29 +384,33 @@ Template.globalVision.helpers({
     i = 0;
     if(popUp){
       var user = Meteor.users.find({
-      "_id": popUp.user_id
+        "_id": popUp.user_id
       }).fetch();
+      if(user[0]){
+        var student = user[0];
+        if(student.profile){
+          while (i < student.profile.answers.length) {
+            current = student.profile.answers[i];
+            if (current.isCurrent == true) {
+              currentEx = Exercices.find({
+                "_id": current.exercice_id
+              }).fetch();
+              if(currentExNumber < currentEx[0].number){
+                currentExNumber = currentEx[0].number;
+              }
+            }
+            i++;
+          }          
+        }
 
-      var student = user[0];
-      while (i < student.profile.answers.length) {
-        current = student.profile.answers[i];
-        if (current.isCurrent == true) {
-          currentEx = Exercices.find({
-            "_id": current.exercice_id
-          }).fetch();
-          if(currentExNumber < currentEx[0].number){
-            currentExNumber = currentEx[0].number;
+        if(user[0].profile.answers[currentExNumber-1]){
+          if(user[0].profile.answers[currentExNumber-1].answer == ""){
+            return "Pas encore de réponse !";
+          }
+          else{
+            return user[0].profile.answers[currentExNumber-1].answer;
           }
         }
-        i++;
-      }
-      console.log(currentExNumber);
-      console.log(user[0].profile.answers[currentExNumber-1]);
-      if(user[0].profile.answers[currentExNumber-1].answer == ""){
-        return "N'a pas encore repondu";
-      }
-      else{
-        return user[0].profile.answers[currentExNumber-1].answer;
       }
     }
   },
@@ -426,32 +423,32 @@ Template.globalVision.helpers({
     i = 0;
     if(popUp){
       var user = Meteor.users.find({
-      "_id": popUp.user_id
+        "_id": popUp.user_id
       }).fetch();
 
       var student = user[0];
-      while (i < student.profile.answers.length) {
-        current = student.profile.answers[i];
-        if (current.isCurrent == true) {
-          currentEx = Exercices.find({
-            "_id": current.exercice_id
-          }).fetch();
-          if(currentExNumber < currentEx[0].number){
-            currentExNumber = currentEx[0].number;
+      if(user[0]){
+        while (i < student.profile.answers.length) {
+          current = student.profile.answers[i];
+          if (current.isCurrent == true) {
+            currentEx = Exercices.find({
+              "_id": current.exercice_id
+            }).fetch();
+            if(currentExNumber < currentEx[0].number){
+              currentExNumber = currentEx[0].number;
+            }
           }
+          i++;
         }
-        i++;
+        if(user[0].profile.answers[currentExNumber-1]){
+          if(user[0].profile.answers[currentExNumber-1].attempt){
+            return user[0].profile.answers[currentExNumber-1].attempt;
+          }
+          else{
+            return 0;
+          }        
+        }
       }
-      console.log(currentExNumber);
-      console.log(user[0].profile.answers[currentExNumber-1]);
-      
-      if(user[0].profile.answers[currentExNumber-1].attempt){
-        return user[0].profile.answers[currentExNumber-1].attempt;
-      }
-      else{
-        return 0;
-      }
-      
     }
   }  
 
