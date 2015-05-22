@@ -179,8 +179,10 @@ Template.globalVision.helpers({
 
   "updateStudentSwitchProgress": function(){
     var users = Meteor.users.find({
-    "profile.account": "student"
+    "profile.account": "student",
+    "username": "Abla Louna"
     }, {sort: { username: 1} }).fetch();
+    console.log("users : ",users);
     for(var j = 0; j < parseInt(users.length); j++){
       var student = users[j];
       if(student){
@@ -223,6 +225,56 @@ Template.globalVision.helpers({
         timeline.play();
       }
     }
+
+
+
+    // FAKING DATA /!\
+    // FAKING DATA /!\
+    // FAKING DATA /!\
+    // FAKING DATA /!\
+    // FAKING DATA /!\
+    var users = Meteor.users.find({
+      "profile.account": "student"
+    }, {sort: { username: 1} }).fetch();
+
+    for(var j = 0; j < parseInt(users.length); j++){
+      scaleValue = opacity = 1;
+      var student = users[j];
+      if(student){
+        if(student.username != "Abla Louna"){
+          var student_image_name;
+          student_image_name = student.username.replace(/\s/g, "_");
+          var avatar = $("#avatar-"+student_image_name);
+          t = 0;
+          timeline = new TimelineMax({paused: true});
+          // setTimeout(function(){
+
+          // },1000);
+          // setInterval(function () {
+          if(currentEx == 0){
+            // scaleValue = Math.random() * (1.4 - 0.5) + 0.5;
+          }
+          else{
+            if(currentEx < 3 ){
+              scaleValue = Math.random() * (1.4 - 0.8) + 0.8;
+            }
+            if(3 <= currentEx < 6 ){
+              scaleValue = Math.random() * (1 - 0.5) + 0.5;
+            }
+            if(6 <= currentEx ){
+              scaleValue = Math.random() * (0.8 - 0.5) + 0.5;
+            }
+          }          
+          opacity = scaleValue;
+
+          timeline.to(avatar, 13, {scale: scaleValue, autoAlpha: opacity, ease: Ease.easeIn}, t+= 0.1);
+          timeline.play();
+
+          // }, 300);
+        }
+      }
+    }
+
   },
 
 
@@ -288,27 +340,30 @@ Template.globalVision.helpers({
       "_id": popUp.user_id
       }).fetch();
 
-      var student = user[0];
-      while (i < student.profile.answers.length) {
-        current = student.profile.answers[i];
-        if (current.isCurrent == true) {
-          currentEx = Exercices.find({
-            "_id": current.exercice_id
-          }).fetch();
-          if(currentExNumber < currentEx[0].number){
-            currentExNumber = currentEx[0].number;
+      
+      if(user[0]){
+        var student = user[0];
+        while (i < student.profile.answers.length) {
+          current = student.profile.answers[i];
+          if (current.isCurrent == true) {
+            currentEx = Exercices.find({
+              "_id": current.exercice_id
+            }).fetch();
+            if(currentExNumber < currentEx[0].number){
+              currentExNumber = currentEx[0].number;
+            }
           }
+          i++;
         }
-        i++;
-      }
-      if (this.number < currentExNumber) {  
-        return "previous";
-      }
-      if (this.number == currentExNumber) {
-        return "current";
-      }
-      if (this.number > currentExNumber) {
-        return "next";
+        if (this.number < currentExNumber) {  
+          return "previous";
+        }
+        if (this.number == currentExNumber) {
+          return "current";
+        }
+        if (this.number > currentExNumber) {
+          return "next";
+        } 
       }
     }
   },
