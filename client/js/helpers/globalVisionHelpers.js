@@ -152,8 +152,8 @@ Template.globalVision.helpers({
           t = 0;
           for(var index = 0; index < 65; index++){
 
-            tm.to($("#help_anim_"+index), 0.05, {autoAlpha:1, ease: Ease.easeIn}, t+= 0.05);
-            tm.to($("#help_anim_"+index), 0.05, {autoAlpha:0, ease: Ease.easeIn}, t+= 0.05);
+            tm.to($("#help_anim_"+index), 0.015, {autoAlpha:1, ease: Ease.easeIn}, t+= 0.015);
+            tm.to($("#help_anim_"+index), 0.015, {autoAlpha:0, ease: Ease.easeIn}, t+= 0.015);
           }
 
           tm.play();

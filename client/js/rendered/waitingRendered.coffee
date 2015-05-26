@@ -20,3 +20,6 @@ Template.waiting.rendered = ->
   tm2.to( h3, .4, {autoAlpha: 1,y: 0,ease: Back.easeOut}, t2+=.2)
   
   tm2.play()
+
+
+

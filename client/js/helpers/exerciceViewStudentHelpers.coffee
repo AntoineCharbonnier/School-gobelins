@@ -75,6 +75,7 @@ Template.exerciceViewStudent.helpers
             item.toggleClass("item-next")
         j++
     , 1000
+    return ""
 
   'isDisplayingData': ->
     displayerEvent = AppEvents.findOne(name: 'displayer')

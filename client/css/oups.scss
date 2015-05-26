@@ -7,6 +7,7 @@
     z-index: 20;
     overflow: hidden;
     position: relative;
+    background-color: #0d1e2d;
     &:before {
       content: "";
       position: absolute; //could also be absolute
@@ -41,9 +42,10 @@
     position: relative;
     width: 1024px;
     height: 768px;
-    background-image: url(../../waiting/oups-background.jpg);
-    @include background-size(cover);
-    background-position: center center;
+    background-color: #0d1e2d;
+    // background-image: url(../../waiting/oups-background.jpg);
+    // @include background-size(cover);
+    // background-position: center center;
     
     img{
       position: absolute;
@@ -67,7 +69,7 @@
     left: 270px;
     width: 50%;
     color: #85a9c9;
-    font : normal 500 30px "MikadoMedium";
+    font : normal 700 25px "MikadoLight";
     text-transform: none;
     margin: 0 auto;
     z-index: 40;
@@ -78,7 +80,7 @@
     top: 400px;
     left: 350px;
     color: #5b7084;
-    font : normal 400 25px "MikadoMedium";
+    font : normal 700 25px "MikadoLight";
     text-transform: none;
     margin: 0 auto;
     z-index: 40;
