@@ -149,7 +149,6 @@ Meteor.startup ->
    password: 'admin'
    profile: account: 'teacher'
   
-
   ############################################ 
   ### ACCOUNTS STUDENTS
   ############################################ 

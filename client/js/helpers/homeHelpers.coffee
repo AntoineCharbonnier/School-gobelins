@@ -33,5 +33,10 @@ Template.home.helpers
 
   'isDisplayingWaiting': ->
     displayerEvent = AppEvents.findOne(name: 'displayer')
-    if(displayerEvent.module == "" || displayerEvent.module == "display-group" || displayerEvent.module == "display-send-exercices" || displayerEvent.module == "display-data")
+    if(displayerEvent.module == "display-group" || displayerEvent.module == "display-data")
+      return true
+  
+  'isDisplayingNothing': ->
+    displayerEvent = AppEvents.findOne(name: 'displayer')
+    if(displayerEvent.module == "" || displayerEvent.module == "display-send-exercices"  )
       return true

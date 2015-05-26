@@ -1,0 +1,11 @@
+template(name='groupsStudent')
+  .container-groups-students
+    .animation-background#anim
+      .stars
+        img(src="../../ui/oups.png" id="bg-oups")
+    h2 Il y a quelques zones d’ombres par ici ! on va éclaircir ça par groupe !
+    h3 un peu de patience, ça charge ! 
+    each inMyGroups
+      img(src="../../profile_images/{{ getNameWithUnderscore this.username }}.png")
+    //- img(src="../../profile_images/{{ getNameWithUnderscore this.username }}.png")
+    //- img(src="../../profile_images/{{ getNameWithUnderscore this.username }}.png")

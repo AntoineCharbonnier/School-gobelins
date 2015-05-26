@@ -23,6 +23,5 @@ template(name='home')
         +classesShow 
       if isDisplayingWaiting
         +oups
-      //- else
-      //-   +waiting
-      //- +oups
+      if isDisplayingSendExercices
+        +waiting
