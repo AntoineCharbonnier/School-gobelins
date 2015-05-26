@@ -13,6 +13,7 @@
       position: relative;
       width: 100%;
       height: 100%;
+      top: 40px;
       h2{
         margin: 30px 0 0 0;
         font : normal 500 18px "MikadoMedium";
@@ -43,9 +44,9 @@
           margin: 0 0 0 50px;
         }
         #answer{
-          width: 30%;
+          width: 200px;
           float: left;
-          height: 144px;
+          height: 100px;
           margin: 0;
         }
       }
@@ -173,7 +174,7 @@
     margin: 25px 0 0 0;
     width: 250px;
     height: 35px;
-    font : normal 500 155px "MikadoLight";
+    font : normal 500 45px "MikadoLight";
     @include input-placeholder{
       font : normal 500 155px "MikadoLight";
       color: $text-color; 

@@ -3,5 +3,5 @@ Template.classesShow.helpers
     appEvents = AppEvents.findOne(name: 'indexClasses')
     if appEvents
       # console.log 'APP EVENTS', appEvents
-      return appEvents.indexClasses
+      return parseInt(appEvents.indexClasses)+1
     return

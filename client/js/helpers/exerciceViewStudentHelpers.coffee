@@ -50,28 +50,31 @@ Template.exerciceViewStudent.helpers
       i++
     return returned
   'listNumberExercices': (student) ->
-    exercicesNumber = Exercices.find().fetch().length
     
-    i = 0
-    while i < student.profile.answers.length
-      current = student.profile.answers[i]
-      if current.isCurrent == true
-        currentEx = Exercices.find({"_id":current.exercice_id}).fetch()
-      i++
-    
-    currentExNumber =  currentEx[0].number
-    j = 0
-    while j <= exercicesNumber
-      item = $("#list-item-"+j)
-      if item 
-        item.removeClass()
-        if j < currentExNumber
-          item.addClass("item-previous")
-        if j == currentExNumber
-          item.addClass("item-current")
-        if j > currentExNumber
-          item.addClass("item-next")
-      j++
+    setTimeout ()=>
+      exercicesNumber = Exercices.find().count()
+      i = 0
+      while i < student.profile.answers.length
+        current = student.profile.answers[i]
+        if current.isCurrent == true
+          currentEx = Exercices.find({"_id":current.exercice_id}).fetch()
+        i++
+      
+      currentExNumber =  currentEx[0].number
+      j = 0
+      while j <= exercicesNumber
+        item = $(".container-exerice form .statement .timeline-exercices ul li#list-item-"+j)
+        # console.log item
+        if item 
+          # item.removeClass()
+          if j < currentExNumber
+            item.toggleClass("item-previous")
+          if j == currentExNumber
+            item.toggleClass("item-current")
+          if j > currentExNumber
+            item.toggleClass("item-next")
+        j++
+    , 1000
 
   'isDisplayingData': ->
     displayerEvent = AppEvents.findOne(name: 'displayer')

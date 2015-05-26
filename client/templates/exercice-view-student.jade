@@ -51,7 +51,7 @@ template(name='exerciceViewStudent')
           //-     br
           //-     |=
           //-     input#second-intermediate-substraction-result-hard-level(value='', name='susbtraction-result', placeholder='le reste', data-first_intermediate_substraction_result='')
-        input#answer(value='{{ getStudentAnswer }}',type="number", name='answer', placeholder='Ta reponse', min="0", max="100",step="1")
+        input#answer(value='{{ getStudentAnswer }}' name='answer' placeholder='Ta reponse' type="number" min="0" inputmode="numeric" pattern="[0-9]*")
         .clear
 
       else
@@ -61,8 +61,22 @@ template(name='exerciceViewStudent')
             option {{ isChecked this getStudentAnswer }} {{this}}
       .buttons
         a#need-help(href='')
-          img(src="../../assets/ui/help_button.png" alt="HELP" class="help_button")
-          img(src="../../assets/ui/help_button_text.png" alt="HELP" class="help_button_text")
+          //- img(src="../../assets/ui/help_button.png" alt="HELP" class="help_button")
+          //- img(src="../../assets/ui/help_button_text.png" alt="HELP" class="help_button_text")
+          img(src="../../Help_ON/Help_ON_38.png" alt="HELP" class="help_button_anim" id="need-help-1")
+          img(src="../../Help_ON/Help_ON_37.png" alt="HELP" class="help_button_anim" id="need-help-2")
+          img(src="../../Help_ON/Help_ON_36.png" alt="HELP" class="help_button_anim" id="need-help-3")
+          img(src="../../Help_ON/Help_ON_35.png" alt="HELP" class="help_button_anim" id="need-help-4")
+          img(src="../../Help_ON/Help_ON_34.png" alt="HELP" class="help_button_anim" id="need-help-5")
+          img(src="../../Help_ON/Help_ON_33.png" alt="HELP" class="help_button_anim" id="need-help-6")
+          img(src="../../Help_ON/Help_ON_32.png" alt="HELP" class="help_button_anim" id="need-help-7")
+          img(src="../../Help_ON/Help_ON_31.png" alt="HELP" class="help_button_anim" id="need-help-8")
+          img(src="../../Help_ON/Help_ON_30.png" alt="HELP" class="help_button_anim" id="need-help-9")
+          img(src="../../Help_ON/Help_ON_29.png" alt="HELP" class="help_button_anim" id="need-help-10")
+          img(src="../../Help_ON/Help_ON_28.png" alt="HELP" class="help_button_anim" id="need-help-11")
+          img(src="../../Help_ON/Help_ON_27.png" alt="HELP" class="help_button_anim" id="need-help-12")
+
+
 
         if isNeedingAssitance
           a#validator-medium-level(href='', class="validate_button")
@@ -131,9 +145,9 @@ template(name='exerciceViewStudent')
       img(src="../../assets/ui/next_button.png" alt="Next" class="next_button__img")
       img(src="../../assets/ui/next_button.png" alt="Next" class="next_button__img")
       img(src="../../assets/ui/next_button.png" alt="Next" class="next_button__img")
-  else
-    a(href='/')
-      | Plus d'exercices (lien vers / )
+  //- else
+  //-   a(href='/')
+  //-     | Plus d'exercices (lien vers / )
 
   |{{listNumberExercices currentUser}}
 

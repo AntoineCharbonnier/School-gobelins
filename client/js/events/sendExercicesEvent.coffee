@@ -16,7 +16,7 @@ Template.sendExercices.events
       _id: appEvents._id 
       }, 
       $set: {
-        "module": "display-global-vision"
+        "module": "display-classes"
       }
     return
   

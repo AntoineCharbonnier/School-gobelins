@@ -8,7 +8,8 @@ Template.globalVision.rendered = ->
   settersLI = new TimelineMax paused: true
 
   container = $ ".container-global-vision"
-  li_img = $ ".container-global-vision ul.global li img"
+  li_img = $ ".container-global-vision ul.global li img.avatarUI"
+  li_img_help_anim_teacher = $ ".container-global-vision ul.global li img.help_anim_teacher"
   # li_h6 = $ ".container-global-vision ul li h6"
   select_zone = $ ".container-global-vision .select-zone"
 
@@ -20,14 +21,18 @@ Template.globalVision.rendered = ->
   # console.log "X #{middleX}  Y #{middleY}"
 
   TweenMax.set select_zone, autoAlpha: 0
+  TweenMax.set container, autoAlpha: 0
+  TweenMax.set li_img_help_anim_teacher, autoAlpha: 0
 
   setTimeout ()=>
+    timeline.to( container, .5, {autoAlpha: 1,ease: Back.easeOut}, delay+=.5)
     li_img.each (index)->
       TweenMax.set $(this)[0],autoAlpha: 0, x: middleX-$(this)[0].getBoundingClientRect().left, y: middleY-$(this)[0].getBoundingClientRect().top
       timeline.to( $(this)[0], 2, {autoAlpha: 1, x: middleX-$(this)[0].getBoundingClientRect().left, y: middleY-$(this)[0].getBoundingClientRect().top,ease: Back.easeOut}, delay)
     delay+=.5
     # timeline.to( li_h6, 2, {autoAlpha: 1,ease: Back.easeOut}, delay+=.5)
     timeline.to( select_zone, 2, {autoAlpha: 1,ease: Back.easeOut}, delay+=.5)
+    timeline.to( li_img_help_anim_teacher, .1, {autoAlpha: 0,ease: Back.easeOut}, delay+=.1)
 
     i = 0
     while i < users.length

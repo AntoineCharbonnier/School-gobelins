@@ -15,7 +15,7 @@ Template.oups.rendered = ->
   
   i= 0
   while i < 20
-    tm2.to( img, .1, {autoAlpha: 0.5,ease: Ease.easeIn}, t2+=.1)
+    # tm2.to( img, .1, {autoAlpha: 0.5,ease: Ease.easeIn}, t2+=.1)
     tm2.to( img, .1, { autoAlpha: 1,ease: Ease.easeIn}, t2+=.1)
     i++
 
@@ -24,13 +24,13 @@ Template.oups.rendered = ->
   j = 0
   while j < 10
     tm2.to( img, .1, { autoAlpha: 1,ease: Ease.easeIn}, t2+=.1)
-    tm2.to( img, .1, {autoAlpha: 0.5,ease: Ease.easeIn}, t2+=.1)
+    # tm2.to( img, .1, {autoAlpha: 0.5,ease: Ease.easeIn}, t2+=.1)
     j++
 
   k = 0
   while k < 10
     tm2.to( img, .2, { autoAlpha: 1,ease: Ease.easeIn}, t2+=.2)
-    tm2.to( img, .2, {autoAlpha: 0.5,ease: Ease.easeIn}, t2+=.2)
+    # tm2.to( img, .2, {autoAlpha: 0.5,ease: Ease.easeIn}, t2+=.2)
     k++    
 
   tm2.to( img, .2, { autoAlpha: 1,ease: Ease.easeIn}, t2+=.2)

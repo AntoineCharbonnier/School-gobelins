@@ -182,6 +182,22 @@ Template.exercice.events({
       }
       newAnswers.push( current );
     }
+
+
+    var t2, tm2;
+    t2 = 0;
+    tm2 = new TimelineMax({paused: true, onComplete: function(){
+      //Reset animation (bug)
+        // for(var index = 12; index > 0; index--){
+        //   TweenLite.set($("#need-help-"+index), {autoAlpha: 1})
+        // }
+      }
+    });
+    for(var index = 12; index > 1; index--){
+      tm2.to($("#need-help-"+index), 0.05, {autoAlpha:0, ease: Ease.easeIn}, t2+= 0.05);
+    }
+    tm2.play();
+
     // console.log("ANSWERS HELP : ",newAnswers);
     
     Meteor.users.update({

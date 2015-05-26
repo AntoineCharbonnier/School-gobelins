@@ -1,0 +1,53 @@
+.container-waiting{
+  position: relative;
+  display: table-cell;
+  margin: 0 auto;
+  vertical-align: middle;
+  text-align: center;
+  background-image: url(../../waiting/oups-background.jpg);
+  @include background-size(cover);
+  background-position: center center;
+  .background{
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 1024px;
+    height: 768px;
+    img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 768px;
+      width: 1024px;
+    }
+  }
+  .doodle{
+    position: relative;
+    top: 0;
+    left: 0;
+    img{
+      position: relative;
+      width: 320px;
+      height: 230px;
+      margin: 0 auto;
+    }
+    h1{
+      font: 500 30px "MikadoBold";
+      color: #C5E5F0;
+      width: 510px;
+      margin: 0 auto;
+    }
+    p{
+      font: 500 15px "MikadoRegular";
+      color: #e6e6e6;
+      width: 510px;
+      margin: 40px auto 40px auto;
+    }
+    h3{
+      font: 500 15px "MikadoMedium";
+      color: #e6e6e6;
+      width: 510px;
+      margin: 0 auto;
+    }
+  }
+}

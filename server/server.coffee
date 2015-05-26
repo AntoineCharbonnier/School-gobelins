@@ -22,8 +22,6 @@ Meteor.startup ->
     name: "displayer"
     module: "display-send-exercice"
 
-
-
   ############################################ 
   ### POPUP
   ############################################ 
@@ -31,12 +29,6 @@ Meteor.startup ->
   PopupEvents.insert
     name: "student"
     user_id : ""
-  
-  
-
-
-
-
 
   ############################################ 
   ### GROUPS

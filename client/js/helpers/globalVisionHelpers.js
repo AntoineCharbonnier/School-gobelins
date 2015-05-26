@@ -94,10 +94,24 @@ Template.globalVision.helpers({
       if(minutes < 10){
         minutes = "0"+minutes;
       }
-      return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
+      var theText = ""+ minutes + ":" + (seconds < 10 ? '0' : '') + seconds+""
+      t = 1
+      // console.log("text : ",theText);
+      // tm = new TimelineMax paused: true#, repeat: -1, yoyo: true, repeatDelay: 3.0
+      tm = new TimelineMax({paused: true});
+      tm.to($("#time"), 3,{autoAlpha: 1, scrambleText:{text:theText, chars:"0123456789", revealDelay:0.5, tweenLength:false, ease:Linear.easeNone}},t+=.3);
+      tm.play()
+      // return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
     }
     else{
-      return timeAverrage;
+      var theText = timeAverrage
+      t = 1
+      // console.log("text : ",theText);
+      // tm = new TimelineMax paused: true#, repeat: -1, yoyo: true, repeatDelay: 3.0
+      tm = new TimelineMax({paused: true});
+      tm.to($("#time"), 3,{autoAlpha: 1, scrambleText:{text:theText, chars:"0123456789", revealDelay:0.5, tweenLength:false, ease:Linear.easeNone}},t+=.3);
+      tm.play()
+      // return timeAverrage;
     }
   },
 
@@ -124,6 +138,7 @@ Template.globalVision.helpers({
     var avatar = $ ("#avatar-"+image_name);
     var currentEx = 0;
     var t, tm;
+
     tm = new TimelineMax({paused: true,repeat: 3, yoyo: false, repeatDelay: 3.0});
     for(var i = 0; i < student.profile.answers.length; i++){
       if(currentEx < student.profile.answers[i].currentEx){
@@ -133,20 +148,14 @@ Template.globalVision.helpers({
     for(var l = 0; l < student.profile.answers.length; l ++){
       if(currentEx == student.profile.answers[l].currentEx){
         if(student.profile.answers[l].needHelp){
+          console.log("need help");
           t = 0;
-          
-          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
-          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
-          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
-          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
-          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
-          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
-          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
-          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
-          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
-          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.8,ease: Ease.easeIn}, t+= 0.1);
-          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 0.5,ease: Ease.easeIn}, t+= 0.1);
-          tm.to(avatar, 0.1, {transformOrigin:"50% 50%",scale: 1,ease: Ease.easeIn}, t+= 0.1);
+          for(var index = 0; index < 65; index++){
+
+            tm.to($("#help_anim_"+index), 0.05, {autoAlpha:1, ease: Ease.easeIn}, t+= 0.05);
+            tm.to($("#help_anim_"+index), 0.05, {autoAlpha:0, ease: Ease.easeIn}, t+= 0.05);
+          }
+
           tm.play();
           
           // only for test
@@ -205,22 +214,23 @@ Template.globalVision.helpers({
             scaleValue = scaleValue + 0.05 * student.profile.answers[l].attempt;
           }
         }
-        if(currentEx == 0){
-          //bug 
-        }
-        else{
-          if(currentEx < 3 ){
-            opacity = 1;
-          }
-          if(3 <= currentEx < 6 ){
-            scaleValue = scaleValue - 0.3;
-            opacity = 0.5;
-          }
-          if(6 <= currentEx ){
-            scaleValue = scaleValue - 0.6;
-            opacity = 0.25;
-          }
-        }
+        // if(currentEx == 0){
+        //   //bug 
+        // }
+        // else{
+        //   if(currentEx < 3 ){
+        //     opacity = 1;
+        //   }
+        //   if(3 <= currentEx < 6 ){
+        //     scaleValue = scaleValue - 0.3;
+        //     opacity = 0.5;
+        //   }
+        //   if(6 <= currentEx ){
+        //     scaleValue = scaleValue - 0.6;
+        //     opacity = 0.25;
+        //   }
+        // }
+        opacity = scaleValue;
         timeline.to(avatar, 1, {scale: scaleValue, autoAlpha: opacity, ease: Ease.easeIn}, t+= 0.1);
         timeline.play();
       }
@@ -505,6 +515,44 @@ Template.globalVision.helpers({
         }
       }
     }
-  }  
+  },
+  "fakeTimer":function(){
 
+  },
+  "getAllStudentsProgress": function(){
+    var numberTotalExCurrent = 0;
+    var users = Meteor.users.find({
+    "profile.account": "student"
+    }, {sort: { username: 1} }).fetch();
+    
+    for(var l = 0; l < users.length; l ++){
+      var student = users[l];
+      var currentEx = 0;
+      for(var i = 0; i < student.profile.answers.length; i++){
+        if(currentEx < student.profile.answers[i].currentEx){
+          currentEx = student.profile.answers[i].currentEx;
+          numberTotalExCurrent+=currentEx;
+        }
+      }
+    }
+    var exercicesNumber = Exercices.find().fetch().length;
+    var returned = (numberTotalExCurrent/(exercicesNumber*users.length))*100;
+    
+
+    setTimeout(function(){
+      var bar = $(".bar") ;
+      var t = 0;
+      var tm = new TimelineMax({paused: true});
+      var progressValue = (returned)*100/1024;
+      // console.log("progress",progressValue);
+
+      tm.to(bar, 0.8, {width: progressValue*50+"px", ease: Ease.easeInOut, delay: t});
+      tm.play();      
+    }, 1000);
+
+
+  
+
+    // return Math.round(returned);
+  }
 });

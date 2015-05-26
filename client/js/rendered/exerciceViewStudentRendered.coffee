@@ -3,26 +3,26 @@ Template.exerciceViewStudent.rendered = ->
   container = $ ".container-exerice"
   # console.log("RENDERED EX")
 
-  title = $ ".container-exerice form .statement p.title"
+  # title = $ ".container-exerice form .statement p.title"
 
-  question = $ ".container-exerice form .statement .compute .question"
-  mySplitTextQuestion = new SplitText(question, {type:"words,chars"})
-  charsQuestion = mySplitTextQuestion.chars
+  # question = $ ".container-exerice form .statement .compute .question"
+  # mySplitTextQuestion = new SplitText(question, {type:"words,chars"})
+  # charsQuestion = mySplitTextQuestion.chars
 
-  console.log charsQuestion
+  # # console.log charsQuestion
 
-  TweenMax.set container, autoAlpha: 0
-  TweenMax.set question, perspective: 400
+  # TweenMax.set container, autoAlpha: 0
+  # TweenMax.set question, perspective: 400
 
-  t = 1
-  tm = new TimelineMax paused: true#, repeat: -1, yoyo: true, repeatDelay: 3.0
+  # t = 1
+  # tm = new TimelineMax paused: true#, repeat: -1, yoyo: true, repeatDelay: 3.0
   
 
-  tm.to( container, .1,{autoAlpha: 1, ease: Ease.easeIn}, t+=.50)
-  tm.to(title, 1,autoAlpha: 1, scrambleText:{text:"Complète ces opérations", chars:"Come on boy !", revealDelay:0.5, tweenLength:false, ease:Linear.easeNone},t+=.3)
-  tm.staggerFrom(charsQuestion, 0.8,opacity: 0,scale: 0,y: 80,rotationX: 180,transformOrigin: "0% 50% -50",ease: Back.easeOut, 0.01, t+=.8)
+  # tm.to( container, .1,{autoAlpha: 1, ease: Ease.easeIn}, t+=.50)
+  # tm.to(title, 1,autoAlpha: 1, scrambleText:{text:"Complète ces opérations", chars:"Come on boy !", revealDelay:0.5, tweenLength:false, ease:Linear.easeNone},t+=.3)
+  # tm.staggerFrom(charsQuestion, 0.8,opacity: 0,scale: 0,y: 80,rotationX: 180,transformOrigin: "0% 50% -50",ease: Back.easeOut, 0.01, t+=.8)
 
-  tm.play()
+  # tm.play()
 
 
 

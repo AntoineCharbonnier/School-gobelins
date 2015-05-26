@@ -36,7 +36,7 @@
       @include border-radius(25px,25px);
       h3{
         margin: 7px 0 0 0;
-        font : normal 400 15px "Mikado";
+        font : normal 400 15px "MikadoRegular";
       }
     }
     .time-container{
@@ -45,7 +45,7 @@
       position: relative;
       margin: 0px 0 0 277px;
       h3{
-        font : normal 400 15px "Mikado";
+        font: normal 500 20px "MikadoRegular";
         text-transform: uppercase;
         color: #5c5c63;
       }
@@ -77,6 +77,15 @@
           height: 75px;
           @include border-radius(38px);
           @include transform(translateX(-50%));
+        }
+        .help_anim_teacher{
+          position: absolute;
+          top: -40px;
+          left: -1px;
+          box-shadow: none;
+          width: 165px !important;
+          height: 165px !important;
+          transform: none;
         }
         h6{
           margin: 15px 0 0 0;

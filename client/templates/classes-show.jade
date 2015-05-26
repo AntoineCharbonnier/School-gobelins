@@ -2,8 +2,8 @@ template(name='classesShow')
   .container-classes-show
     if isTeacher currentUser
       a(href, id="previous")
-        |Previous page
+        img(src="../../ui/Fleche_export.png" alt="Previous" class="previous" id="")  
       a(href, id="next")
-        |Next page
+        img(src="../../ui/Fleche_export.png" alt="Next" class="previous" id="")  
 
     img(src= "/Cours_01_0{{ getIndexClasses }}.gif")
