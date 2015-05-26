@@ -23,7 +23,7 @@ Template.globalVision.gestures
     exercicesNumber = Exercices.find().fetch().length
 
     progressPX = (parseInt(currentEx / exercicesNumber * 100))*390/100
-
+    console.log progressPX
     timeline = new TimelineMax paused: true
     timeline.to(image, 1, {scale: 1.5, autoAlpha: 1.5, ease: Ease.easeIn}, t+= 0.1);
     timeline.to(image, 1, {scale: 1.5, autoAlpha: 1.5, ease: Ease.easeIn}, t+= 0.1);

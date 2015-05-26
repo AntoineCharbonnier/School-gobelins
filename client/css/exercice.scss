@@ -16,8 +16,9 @@
       top: 40px;
       h2{
         margin: 30px 0 0 0;
-        font : normal 500 18px "MikadoMedium";
+        font : normal 400 18px "MikadoMedium";
         color: grey;
+        text-transform: none;
       }
       hr{
         margin: 10px auto;
@@ -130,8 +131,6 @@
 
           }
           .item-previous{
-            // background: #c9c7c7;
-            // @include border-radius(25px,25px);
             background-image: url(../assets/ui/list-item-previous.png);
             background-repeat: no-repeat;
             height: 12px;
@@ -139,14 +138,11 @@
 
           }
           .item-current{
-            // background: blue;
             background-image: url(../assets/ui/list-item-current.png);
             background-repeat: no-repeat;
             @include background-size(cover);
           }
           .item-next{
-            // background: #ffc000;
-            // @include border-radius(25px,25px);
             background-image: url(../assets/ui/list-item-next.png);
             background-repeat: no-repeat;
             height: 12px;
@@ -161,7 +157,6 @@
       top: 50%;
       @include transform(translateY(-50%));
       right: 70px;
-      // display: block;
       .next_button__img{
         position: absolute;
         top: 0;
