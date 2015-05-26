@@ -14,10 +14,10 @@ Template.waiting.rendered = ->
 
   tm2.to( container, .5, {autoAlpha: 1,ease: Ease.easeIn}, t2+=.5)
   tm2.to( [h1,p,h3], .1, {autoAlpha: 0,ease: Ease.easeIn}, t2+=.1)
-  tm2.to( img, .4, {autoAlpha: 1,y: 0,ease: Back.easeOut}, t2+=.2)
-  tm2.to( h1, .4, {autoAlpha: 1,y: 0,ease: Back.easeOut}, t2+=.2)
-  tm2.to( p, .4, {autoAlpha: 1,y: 0,ease: Back.easeOut}, t2+=.2)
-  tm2.to( h3, .4, {autoAlpha: 1,y: 0,ease: Back.easeOut}, t2+=.2)
+  tm2.to( img, .8, {autoAlpha: 1,y: 0,ease: Back.easeOut}, t2+=.6)
+  tm2.to( h1, .8, {autoAlpha: 1,y: 0,ease: Back.easeOut}, t2+=.6)
+  tm2.to( p, .8, {autoAlpha: 1,y: 0,ease: Back.easeOut}, t2+=.6)
+  tm2.to( h3, .8, {autoAlpha: 1,y: 0,ease: Back.easeOut}, t2+=.6)
   
   tm2.play()
 
