@@ -8,6 +8,8 @@
   @include background-size(cover);
   background-position: center center;
   form{
+    position: relative;
+    left: 170px;  
     width: 300px;
     height: 386px;
     margin: 0 640px 0 auto;
