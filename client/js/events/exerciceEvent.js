@@ -12,19 +12,17 @@ Template.exercice.events({
 
     for (var i = 0; i < student.profile.answers.length; i++) {
       var current = student.profile.answers[i];
-      // console.log("current: :",current);
       if (current.exercice_id == question._id){
-        current.answer = selectValue;
-        current.attempt += 1;
+        current.answer    = selectValue;
+        current.attempt   += 1;
         current.isCurrent = true;
         current.currentEx = question.number;
         if(current.answer == question.answers.right || parseInt(current.answer) == question.answers.right){
-          var currentTime = Date.now();
-          current.time = currentTime - current.start;
+          var currentTime   = Date.now();
+          current.time      = currentTime - current.start;
           current.isCurrent = false;
           current.validated = true;
-          current.needHelp = false;
-          // current.answer[i].isCurrent = false;
+          current.needHelp  = false;
 
           $('#next').removeClass("hide");
         }
@@ -80,15 +78,15 @@ Template.exercice.events({
 
   "click #validator-medium-level": function(e) {
     // console.log("MEDIUM WAY");
-    var endResult = $("#answer").val(); 
+    var endResult                 = $("#answer").val(); 
     var susbstractionIntermediate = $("#intermediate-substraction-medium-level").val(); 
-    var susbstractionRest = $("#intermediate-substraction-result-medium-level").val();
-    var findRest = false;
-    var findSubstraction = false;
-    var findResult = false;
-    var student = Template.currentData().student;
-    var question = Template.currentData().exercice;
-    var newAnswers = [];
+    var susbstractionRest         = $("#intermediate-substraction-result-medium-level").val();
+    var findRest                  = false;
+    var findSubstraction          = false;
+    var findResult                = false;
+    var student                   = Template.currentData().student;
+    var question                  = Template.currentData().exercice;
+    var newAnswers                = [];
 
     for (var i = 0; i < student.profile.answers.length; i++) {
       var current = student.profile.answers[i];
@@ -170,7 +168,7 @@ Template.exercice.events({
   },
 
   "click #need-help": function(e) {
-    var student = Template.currentData().student;
+    var student  = Template.currentData().student;
     var question = Template.currentData().exercice;
 
     var newAnswers = [];
@@ -197,8 +195,6 @@ Template.exercice.events({
       tm2.to($("#need-help-"+index), 0.05, {autoAlpha:0, ease: Ease.easeIn}, t2+= 0.05);
     }
     tm2.play();
-
-    // console.log("ANSWERS HELP : ",newAnswers);
     
     Meteor.users.update({
       _id : student._id
@@ -212,8 +208,7 @@ Template.exercice.events({
 
   "keyup #first-intermediate-substraction-result-hard-level": function(e) {
     var selectValue = e.target.value; 
-    var question = Template.currentData().exercice; 
-    // console.log(selectValue);   
+    var question    = Template.currentData().exercice; 
     $("#first-intermediate-substraction-result-hard-level").attr("data-first-intermediate-substraction-result",selectValue);
     var data = parseInt($("#first-intermediate-substraction-result-hard-level").attr("data-first-intermediate-substraction-result"));
     if(!isNaN(data)){
@@ -224,29 +219,28 @@ Template.exercice.events({
 
   "click #validator-hard-level": function(e) {
     // console.log("HARD WAY");
-    var student = Template.currentData().student;
-    var question = Template.currentData().exercice;
+    var student                = Template.currentData().student;
+    var question               = Template.currentData().exercice;
     
-    var endResult = $("#answer").val(); 
-    var firstSubstraction = $("#first-intermediate-substraction-hard-level").val(); 
-    var firstSubstractionRest = $("#first-intermediate-substraction-result-hard-level").val();
+    var endResult              = $("#answer").val(); 
+    var firstSubstraction      = $("#first-intermediate-substraction-hard-level").val(); 
+    var firstSubstractionRest  = $("#first-intermediate-substraction-result-hard-level").val();
     
-    var secondSubstraction = $("#second-intermediate-substraction-hard-level").val(); 
+    var secondSubstraction     = $("#second-intermediate-substraction-hard-level").val(); 
     var secondSubstractionRest = $("#second-intermediate-substraction-result-hard-level").val();
-
-    // console.log("TRUC : ",question.dividend % question.denominator, " firstSubstractionRest : ",firstSubstractionRest);
-
-    var firstFindRest = false;
-    var firstFindSubstraction = false;
-    var firstFindResult = false;
-
-    var secondFindRest = false;
+    
+    
+    var firstFindRest          = false;
+    var firstFindSubstraction  = false;
+    var firstFindResult        = false;
+    
+    var secondFindRest         = false;
     var secondFindSubstraction = false;
-    var secondFindResult = false;
-
-    var firstStepValid = false;
-    var secondStepValid = false;
-    var newAnswers = [];
+    var secondFindResult       = false;
+    
+    var firstStepValid         = false;
+    var secondStepValid        = false;
+    var newAnswers             = [];
 
     for (var i = 0; i < student.profile.answers.length; i++) {
       var current = student.profile.answers[i];
@@ -310,8 +304,6 @@ Template.exercice.events({
             $('#next').removeClass("hide");
           }
         }
-
-
       }
       newAnswers.push( current );
     }

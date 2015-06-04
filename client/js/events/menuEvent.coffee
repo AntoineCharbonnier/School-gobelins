@@ -33,7 +33,6 @@ Template.menu.events
     console.log "DISPLAYER TEACHER", AppEvents.findOne(name: 'displayer')
     return
 
-
   'click #logo-home': (e) ->
     # process.exit()
 
@@ -47,15 +46,12 @@ Template.menu.events
     line3     = $ ".svg--burger .line-3"
     line4     = $ ".svg--burger .line-4"
 
-
-    console.log "mouseover"
     return if prevent
     TweenLite.to line1, .2, y: 3, transformOrigin: "50% 50%"
     TweenLite.to line3, .2, y: -3, transformOrigin: "50% 50%"
 
 
   'mouseleave #display-menu': (e)->
-    
     prevent   = no
     reversed  = no
     btn       = $ '#display-menu'
@@ -70,9 +66,7 @@ Template.menu.events
     TweenLite.to line1, .2, y: 0, transformOrigin: "50% 50%"
     TweenLite.to line3, .2, y: 0, transformOrigin: "50% 50%"
 
-
   'click #display-menu': (e)->
-
     if(!$("#display-menu").hasClass("cross"))
       prevent     = no
       reversed    = no
@@ -82,7 +76,6 @@ Template.menu.events
       line2       = $ ".svg--burger .line-2"
       line3       = $ ".svg--burger .line-3"
       line4       = $ ".svg--burger .line-4"
-      
       
       li          = $ ".container-menu nav ul li" 
       logOut      = $ ".log-out"
@@ -127,7 +120,6 @@ Template.menu.events
       $("#display-menu").addClass("cross")
       return
     
-
   'click .cross': (e)->
     prevent   = no
     reversed  = no

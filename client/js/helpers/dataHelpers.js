@@ -1,7 +1,7 @@
 Template.data.helpers({
   'setSVG': function() {
     var circlue_cut, circlue_cut_wired;
-    circlue_cut = $(".circlue_cut");
+    circlue_cut       = $(".circlue_cut");
     circlue_cut_wired = $(".circlue_cut_wired");
     TweenMax.set(circlue_cut, {
       strokeDasharray: "0px, 500px"
@@ -10,11 +10,13 @@ Template.data.helpers({
       strokeDasharray: "0px, 500px"
     });
   },
+
   'getNameWithUnderscore': function(student_Name) {
     var image_name;
     image_name = student_Name.replace(/\s/g, "_");
     return image_name;
   },
+
   "getStudentProgress": function(student){
     var currentEx = 0;
     for(var i = 0; i < student.profile.answers.length; i++){
@@ -23,15 +25,14 @@ Template.data.helpers({
       }
     }
     var exercicesNumber = Exercices.find().fetch().length;
-    // console.log("Exercice courant : ",currentEx);
     return parseInt((currentEx/exercicesNumber)*100)
   },
+
   "getStudentNumberHelp": function(student){
     var exercicesNumber = Exercices.find().fetch();
     var numberHelp = 0;
     for (var i = 0; i < exercicesNumber.length; i++) {
       for(var j = 0; j < student.profile.answers.length; j++){
-        // console.log("answers : ",student.profile.answers[j]);
         if(student.profile.answers[j].needHelp){
           numberHelp += 1;
         }          
@@ -39,18 +40,18 @@ Template.data.helpers({
     }
     return numberHelp;
   },
+
   "getStudentNumberAttemps": function(student){
     var exercicesNumber = Exercices.find().fetch();
-    var numberAttemp = 0;
-    // for (var i = 0; i < exercicesNumber.length; i++) {
+    var numberAttemp    = 0;
       for(var j = 0; j < student.profile.answers.length; j++){
         if(student.profile.answers[j].attempt){
           numberAttemp += student.profile.answers[j].attempt;
         }          
       } 
-    // }
     return numberAttemp;
   },
+
   "getStudentNumberTime": function(student){
     var exercicesNumber = Exercices.find().fetch();
     var time = 0;
@@ -68,9 +69,10 @@ Template.data.helpers({
     }
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
   },
+
   "getAllStudentsProgress": function(){
     var numberTotalExCurrent = 0;
-    var users = Meteor.users.find({
+    var users                = Meteor.users.find({
     "profile.account": "student"
     }, {sort: { username: 1} }).fetch();
     
@@ -79,8 +81,8 @@ Template.data.helpers({
       var currentEx = 0;
       for(var i = 0; i < student.profile.answers.length; i++){
         if(currentEx < student.profile.answers[i].currentEx){
-          currentEx = student.profile.answers[i].currentEx;
-          numberTotalExCurrent+=currentEx;
+          currentEx            = student.profile.answers[i].currentEx;
+          numberTotalExCurrent +=currentEx;
         }
       }
       var currentProfile = currentEx;
@@ -97,35 +99,29 @@ Template.data.helpers({
       });
     }
     var exercicesNumber = Exercices.find().fetch().length;
-    var returned = (numberTotalExCurrent/(exercicesNumber*users.length))*100;
+    var returned        = (numberTotalExCurrent/(exercicesNumber*users.length))*100;
     
 
     setTimeout(function(){
-      var circlue_cut = $(".circlue_cut") ;
+      var circlue_cut       = $(".circlue_cut") ;
       var circlue_cut_wired = $(".circlue_cut_wired") ;
-      console.log(circlue_cut);
-      console.log(circlue_cut_wired);
-      var t = 0;
-      var tm = new TimelineMax({paused: true});
+      var t                 = 0;
+      var tm                = new TimelineMax({paused: true});
       var rotationValue = Math.round((Math.round(returned)*500/100));
-      console.log(rotationValue);
       tm.to(circlue_cut_wired, 0.5, {strokeDasharray: "500px, 500px", ease: Ease.easeInOut, delay: t+=0.1});
       tm.to(circlue_cut, 0.8, {strokeDasharray: rotationValue+"px, 500px", ease: Ease.easeInOut, delay: t});
       tm.play();      
     }, 1000);
-
-
-
-
     return Math.round(returned);
   },
+
   "getAllStudentsNumberAttemps": function(){
     var users = Meteor.users.find({
     "profile.account": "student"
     }, {sort: { username: 1} }).fetch();
     
     var exercicesNumber = Exercices.find().fetch();
-    var numberAttemp = 0;
+    var numberAttemp    = 0;
     for(var k = 0; k < users.length; k ++){
       var student = users[k];
       for (var i = 0; i < exercicesNumber.length; i++) {
@@ -136,16 +132,16 @@ Template.data.helpers({
         } 
       }
     }
-
     return numberAttemp;
   },
+
   "getAllStudentsNumberTime": function(){
     var users = Meteor.users.find({
     "profile.account": "student"
     }, {sort: { username: 1} }).fetch();
 
     var exercicesNumber = Exercices.find().fetch();
-    var time = 0;
+    var time            = 0;
     for(var k = 0; k < users.length; k ++){
       var student = users[k];
       for (var i = 0; i < exercicesNumber.length; i++) {
@@ -163,13 +159,14 @@ Template.data.helpers({
     }
     return minutes;
   },
+
   "getAllStudentsNumberHelp": function(){
     var users = Meteor.users.find({
     "profile.account": "student"
     }, {sort: { username: 1} }).fetch();
     
     var exercicesNumber = Exercices.find().fetch();
-    var numberHelp = 0;
+    var numberHelp      = 0;
     for(var k = 0; k < users.length; k ++){
       var student = users[k];
       for (var i = 0; i < exercicesNumber.length; i++) {
@@ -180,7 +177,6 @@ Template.data.helpers({
         } 
       }
     }
-
     return numberHelp;
   }
 });

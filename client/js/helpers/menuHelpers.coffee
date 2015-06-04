@@ -7,10 +7,6 @@ Template.menu.helpers
       image_name = student_Name.replace(/\s/g, "_")
       return image_name
 
-
-
-
-
   'isDisplayingSelected': ->
     displayerEvent = AppEvents.findOne(name: 'displayer')
     DM = displayerEvent.module
@@ -32,23 +28,6 @@ Template.menu.helpers
 
     tm.play()
     return ""
-
-
-
-  # 'isDisplayingClasses': ->
-  #   displayerEvent = AppEvents.findOne(name: 'displayer')
-  #   if(displayerEvent.module == "display-classes")
-  #     console.log "YOOOOOOO"
-  #     t = 0
-  #     previouslySelected = $ ".selected"
-  #     goingToBeSelected  = $ "#display-classes"
-
-  #     tm = new TimelineMax paused: true
-  #     tm.to( previouslySelected, .3, {className: "-=selected"},t+=.1)
-  #     tm.to( goingToBeSelected, .3, {className: "+=selected"},t+=.1)
-
-  #     tm.play()
-  #     return ""
 
 # JE SAIS PAS ENCORE
 

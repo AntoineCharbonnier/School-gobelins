@@ -1,10 +1,10 @@
 Template.groupCreation.helpers({
   "isStudentNeedHelp": function(student) {
     var image_name = student.username.replace(/\s/g,"_");
-    var avatar = $ ("#avatar-"+image_name);
-    var currentEx = 0;
+    var avatar     = $ ("#avatar-"+image_name);
+    var currentEx  = 0;
     var t, tm;
-    tm = new TimelineMax({paused: true,repeat: 3, yoyo: false, repeatDelay: 3.0});
+    tm             = new TimelineMax({paused: true,repeat: 3, yoyo: false, repeatDelay: 3.0});
   },
 
   "getNameWithUnderscore": function(student_Name) {

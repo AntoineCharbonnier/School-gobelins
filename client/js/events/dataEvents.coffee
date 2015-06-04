@@ -22,8 +22,6 @@ Template.data.events
       l++
       i = i + 4
 
-    console.log "LEs GROUPEs : ", Groups.find().fetch()
-
     appEvents = AppEvents.findOne(name: 'displayer')
     AppEvents.update { 
       _id: appEvents._id 

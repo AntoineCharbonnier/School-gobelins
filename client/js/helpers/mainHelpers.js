@@ -6,7 +6,6 @@ Template.registerHelper("isEmptyArray", function(array){
 	return array.length < 1;
 });
 
-
 Template.registerHelper("sortAnswers", function(answers){
   var together = answers.wrong;
   together.push( answers.right );
@@ -41,7 +40,6 @@ Template.registerHelper("everyStudents", function(){
   }, {sort: { username: 1} });
 });
 
-
 Template.registerHelper("isTeacher", function(user){
   if (null == user)
     return false;
@@ -51,7 +49,6 @@ Template.registerHelper("isTeacher", function(user){
 Template.registerHelper("log", function(param){
   console.log("LOG : ", param );
 });
-
 
 Template.registerHelper("getStudentAnswer", function(param){
   var student = Template.currentData().student;
@@ -64,7 +61,6 @@ Template.registerHelper("getStudentAnswer", function(param){
           return current.answer;
     }
   }
-  
 });
 
 Template.registerHelper("getStudentComment", function(param){
@@ -78,7 +74,6 @@ Template.registerHelper("getStudentComment", function(param){
           return current.comment;
     }
   }
-  
 });
 
 Template.registerHelper("getOriginalQuestion", function(id){
@@ -93,7 +88,6 @@ Template.registerHelper("gotToExercices", function(user){
     Router.go('/student/'+user._id+'/'+exercices._id);
   } 
 });
-
 
 Template.registerHelper("gotToHome", function(user){
   if(user.profile.account == "student"){

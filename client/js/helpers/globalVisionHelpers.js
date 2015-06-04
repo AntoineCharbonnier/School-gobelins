@@ -4,6 +4,7 @@ Template.globalVision.helpers({
         "profile.connected": true
       }).fetch().length;
   },
+
   "getNumberStudentValidExercice": function(the_exercice_id) {
     var users = Meteor.users.find({
       "profile.connected": true
@@ -69,12 +70,10 @@ Template.globalVision.helpers({
   },
 
   "getTotalDurationExercice": function(booleanString) {
-    var users = Meteor.users.find({
-      "profile.connected": true
+    var users        = Meteor.users.find({
+    "profile.connected": true
     }).fetch();
-
-    var exercices = Exercices.find().fetch();
-
+    var exercices    = Exercices.find().fetch();
     var timeAverrage = 0;
     for (var i = 0; i < users.length; i++) {
       var current = users[i];
@@ -96,28 +95,22 @@ Template.globalVision.helpers({
       }
       var theText = ""+ minutes + ":" + (seconds < 10 ? '0' : '') + seconds+""
       t = 1
-      // console.log("text : ",theText);
-      // tm = new TimelineMax paused: true#, repeat: -1, yoyo: true, repeatDelay: 3.0
       tm = new TimelineMax({paused: true});
       tm.to($("#time"), 3,{autoAlpha: 1, scrambleText:{text:theText, chars:"0123456789", revealDelay:0.5, tweenLength:false, ease:Linear.easeNone}},t+=.3);
       tm.play()
-      // return minutes + ":" + (seconds < 10 ? '0' : '') + seconds
     }
     else{
       var theText = timeAverrage
       t = 1
-      // console.log("text : ",theText);
-      // tm = new TimelineMax paused: true#, repeat: -1, yoyo: true, repeatDelay: 3.0
       tm = new TimelineMax({paused: true});
       tm.to($("#time"), 3,{autoAlpha: 1, scrambleText:{text:theText, chars:"0123456789", revealDelay:0.5, tweenLength:false, ease:Linear.easeNone}},t+=.3);
       tm.play()
-      // return timeAverrage;
     }
   },
 
   "getNumberHelpExercice": function(the_exercice_id) {
-    var users = Meteor.users.find({
-      "profile.connected": true
+    var users      = Meteor.users.find({
+    "profile.connected": true
     }).fetch();
     var numberHelp = 0;
     for (var i = 0; i < users.length; i++) {
@@ -135,8 +128,8 @@ Template.globalVision.helpers({
 
   "isStudentNeedHelp": function(student) {
     var image_name = student.username.replace(/\s/g,"_");
-    var avatar = $ ("#avatar-"+image_name);
-    var currentEx = 0;
+    var avatar     = $ ("#avatar-"+image_name);
+    var currentEx  = 0;
     var t, tm;
 
     tm = new TimelineMax({paused: true,repeat: 3, yoyo: false, repeatDelay: 3.0});
@@ -155,7 +148,6 @@ Template.globalVision.helpers({
             tm.to($("#help_anim_"+index), 0.015, {autoAlpha:1, ease: Ease.easeIn}, t+= 0.015);
             tm.to($("#help_anim_"+index), 0.015, {autoAlpha:0, ease: Ease.easeIn}, t+= 0.015);
           }
-
           tm.play();
           
           // only for test
@@ -191,18 +183,17 @@ Template.globalVision.helpers({
     "profile.account": "student",
     "username": "Abla Louna"
     }, {sort: { username: 1} }).fetch();
-    console.log("users : ",users);
     for(var j = 0; j < parseInt(users.length); j++){
       var student = users[j];
       if(student){
         var student_image_name;
         student_image_name = student.username.replace(/\s/g, "_");
-        var avatar = $("#avatar-"+student_image_name);
-        var currentEx = 0;       
-        t = 0;
-        timeline = new TimelineMax({paused: true});
-        var scaleValue = 1;
-        var opacity = 1;
+        var avatar         = $("#avatar-"+student_image_name);
+        var currentEx      = 0;       
+        t                  = 0;
+        timeline           = new TimelineMax({paused: true});
+        var scaleValue     = 1;
+        var opacity        = 1;
         
         for(var i = 0; i < student.profile.answers.length; i++){
           if(currentEx < student.profile.answers[i].currentEx){
@@ -214,28 +205,11 @@ Template.globalVision.helpers({
             scaleValue = scaleValue + 0.05 * student.profile.answers[l].attempt;
           }
         }
-        // if(currentEx == 0){
-        //   //bug 
-        // }
-        // else{
-        //   if(currentEx < 3 ){
-        //     opacity = 1;
-        //   }
-        //   if(3 <= currentEx < 6 ){
-        //     scaleValue = scaleValue - 0.3;
-        //     opacity = 0.5;
-        //   }
-        //   if(6 <= currentEx ){
-        //     scaleValue = scaleValue - 0.6;
-        //     opacity = 0.25;
-        //   }
-        // }
         opacity = scaleValue;
         timeline.to(avatar, 1, {scale: scaleValue, autoAlpha: opacity, ease: Ease.easeIn}, t+= 0.1);
         timeline.play();
       }
     }
-
 
 
     // FAKING DATA /!\
@@ -257,10 +231,6 @@ Template.globalVision.helpers({
           var avatar = $("#avatar-"+student_image_name);
           t = 0;
           timeline = new TimelineMax({paused: true});
-          // setTimeout(function(){
-
-          // },1000);
-          // setInterval(function () {
           if(currentEx == 0){
             // scaleValue = Math.random() * (1.4 - 0.5) + 0.5;
           }
@@ -279,14 +249,10 @@ Template.globalVision.helpers({
 
           timeline.to(avatar, 13, {scale: scaleValue, autoAlpha: opacity, ease: Ease.easeIn}, t+= 0.1);
           timeline.play();
-
-          // }, 300);
         }
       }
     }
-
   },
-
 
   "popupGetNameWithUnderscore": function(){
     var popUp = PopupEvents.findOne({name: 'student'});
@@ -304,6 +270,7 @@ Template.globalVision.helpers({
       return "";
     }
   },
+
   "popupGetName": function(){
     var popUp = PopupEvents.findOne({name: 'student'});
     if(popUp){
@@ -332,8 +299,7 @@ Template.globalVision.helpers({
         var exercicesNumber = Exercices.find().fetch().length;
         return parseInt((currentEx/exercicesNumber)*100);        
       }
-
-      }
+    }
     else{
       return "";
     }
@@ -342,15 +308,14 @@ Template.globalVision.helpers({
   "popupExerciceTimeline":function(){
     var current, currentEx, currentExNumber, i, item, j;
     var exercicesNumber = Exercices.find().fetch().length;
-    var popUp = PopupEvents.findOne({name: 'student'});
-    currentExNumber = 0;
-    i = 0;
+    var popUp           = PopupEvents.findOne({name: 'student'});
+    currentExNumber     = 0;
+    i                   = 0;
     if(popUp){
       var user = Meteor.users.find({
       "_id": popUp.user_id
       }).fetch();
 
-      
       if(user[0]){
         var student = user[0];
         while (i < student.profile.answers.length) {
@@ -381,9 +346,9 @@ Template.globalVision.helpers({
   "popupgetStatementExercice":function(){
     var current, currentEx, currentExNumber, i, item, j;
     var exercicesNumber = Exercices.find().fetch().length;
-    var popUp = PopupEvents.findOne({name: 'student'});
-    currentExNumber = 0;
-    i = 0;
+    var popUp           = PopupEvents.findOne({name: 'student'});
+    currentExNumber     = 0;
+    i                   = 0;
     if(popUp){
       var user = Meteor.users.find({
       "_id": popUp.user_id
@@ -413,9 +378,9 @@ Template.globalVision.helpers({
   "popupgetGoodAnswerExercice":function(){
     var current, currentEx, currentExNumber, i, item, j;
     var exercicesNumber = Exercices.find().fetch().length;
-    var popUp = PopupEvents.findOne({name: 'student'});
-    currentExNumber = 0;
-    i = 0;
+    var popUp           = PopupEvents.findOne({name: 'student'});
+    currentExNumber     = 0;
+    i                   = 0;
     if(popUp){
       var user = Meteor.users.find({
       "_id": popUp.user_id
@@ -444,9 +409,9 @@ Template.globalVision.helpers({
   "popupGetStudentAnswerExercice":function(){
     var current, currentEx, currentExNumber, i, item, j;
     var exercicesNumber = Exercices.find().fetch().length;
-    var popUp = PopupEvents.findOne({name: 'student'});
-    currentExNumber = 0;
-    i = 0;
+    var popUp           = PopupEvents.findOne({name: 'student'});
+    currentExNumber     = 0;
+    i                   = 0;
     if(popUp){
       var user = Meteor.users.find({
         "_id": popUp.user_id
@@ -467,7 +432,6 @@ Template.globalVision.helpers({
             i++;
           }          
         }
-
         if(user[0].profile.answers[currentExNumber-1]){
           if(user[0].profile.answers[currentExNumber-1].answer == ""){
             return "Pas encore de réponse !";
@@ -483,9 +447,9 @@ Template.globalVision.helpers({
   "popupGetAttemps":function(){
     var current, currentEx, currentExNumber, i, item, j;
     var exercicesNumber = Exercices.find().fetch().length;
-    var popUp = PopupEvents.findOne({name: 'student'});
-    currentExNumber = 0;
-    i = 0;
+    var popUp           = PopupEvents.findOne({name: 'student'});
+    currentExNumber     = 0;
+    i                   = 0;
     if(popUp){
       var user = Meteor.users.find({
         "_id": popUp.user_id
@@ -516,43 +480,35 @@ Template.globalVision.helpers({
       }
     }
   },
-  "fakeTimer":function(){
 
-  },
   "getAllStudentsProgress": function(){
     var numberTotalExCurrent = 0;
-    var users = Meteor.users.find({
+    var users                = Meteor.users.find({
     "profile.account": "student"
     }, {sort: { username: 1} }).fetch();
     
     for(var l = 0; l < users.length; l ++){
-      var student = users[l];
+      var student   = users[l];
       var currentEx = 0;
       for(var i = 0; i < student.profile.answers.length; i++){
         if(currentEx < student.profile.answers[i].currentEx){
-          currentEx = student.profile.answers[i].currentEx;
-          numberTotalExCurrent+=currentEx;
+          currentEx            = student.profile.answers[i].currentEx;
+          numberTotalExCurrent +=currentEx;
         }
       }
     }
     var exercicesNumber = Exercices.find().fetch().length;
-    var returned = (numberTotalExCurrent/(exercicesNumber*users.length))*100;
+    var returned        = (numberTotalExCurrent/(exercicesNumber*users.length))*100;
     
 
     setTimeout(function(){
-      var bar = $(".bar") ;
-      var t = 0;
-      var tm = new TimelineMax({paused: true});
+      var bar           = $(".bar") ;
+      var t             = 0;
+      var tm            = new TimelineMax({paused: true});
       var progressValue = (returned)*100/1024;
-      // console.log("progress",progressValue);
 
       tm.to(bar, 0.8, {width: progressValue*50+"px", ease: Ease.easeInOut, delay: t});
       tm.play();      
     }, 1000);
-
-
-  
-
-    // return Math.round(returned);
   }
 });
