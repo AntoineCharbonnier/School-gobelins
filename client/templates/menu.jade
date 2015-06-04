@@ -17,7 +17,7 @@ template(name='menu')
               |Manuel scolaire
         li
           if isTeacher currentUser
-            a(href, id="display-exercice" class="selected")
+            a(href, id="display-exercice" )
               |Espace classe
         li.burger
           a(href, id="display-menu")
@@ -31,3 +31,4 @@ template(name='menu')
               .clear
             .clear
       .bottom--bar
+      {{isDisplayingSelected}}

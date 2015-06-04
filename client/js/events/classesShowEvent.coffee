@@ -14,5 +14,5 @@ Template.classesShow.events
     newAppEvents = {}
     # console.log 'NEW APP EVENTS', newAppEvents
     AppEvents.update { _id: appEvents._id }, $inc: indexClasses: 1
-    # console.log 'LOGGG', AppEvents.find().fetch()
+    console.log 'LOGGG', AppEvents.find().fetch()
     return

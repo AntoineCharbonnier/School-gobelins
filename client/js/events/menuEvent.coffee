@@ -74,26 +74,27 @@ Template.menu.events
   'click #display-menu': (e)->
 
     if(!$("#display-menu").hasClass("cross"))
-      prevent   = no
-      reversed  = no
-      btn       = $ '#display-menu'
-
-      line1     = $ ".svg--burger .line-1"
-      line2     = $ ".svg--burger .line-2"
-      line3     = $ ".svg--burger .line-3"
-      line4     = $ ".svg--burger .line-4"
+      prevent     = no
+      reversed    = no
+      btn         = $ '#display-menu'
       
-
-      li  = $ ".container-menu nav ul li" 
-      logOut = $ ".log-out"
-      burger = $ ".container-menu nav ul .burger"
-      burgerH2 = $ ".container-menu nav ul .burger .log-out .log-out__text h3"
+      line1       = $ ".svg--burger .line-1"
+      line2       = $ ".svg--burger .line-2"
+      line3       = $ ".svg--burger .line-3"
+      line4       = $ ".svg--burger .line-4"
+      
+      
+      li          = $ ".container-menu nav ul li" 
+      logOut      = $ ".log-out"
+      burger      = $ ".container-menu nav ul .burger"
+      burgerH2    = $ ".container-menu nav ul .burger .log-out .log-out__text h3"
       burgerAHREF = $ ".container-menu nav ul .burger .log-out .log-out__text a"
-      SVGburger = $ ".svg--burger"
+      SVGburger   = $ ".svg--burger"
 
       TweenLite.set line4, transform: "rotate(90deg)"
       TweenLite.set burgerH2, autoAlpha: 0
       TweenLite.set burgerAHREF, autoAlpha: 0
+      TweenLite.set logOut, width: 0
 
       t = 0
       lines = r: 0
@@ -118,7 +119,8 @@ Template.menu.events
       TweenLite.to li, .2, width: "192px", delay: t
       TweenLite.to burger, .2, width: "25%", delay: t+=.5
       TweenLite.to SVGburger, .2, margin: "0", delay: t
-      TweenLite.to logOut, .2, className: "-=hide", delay: t
+      TweenLite.to logOut, .2, className: "-=hide", delay: t+=.2
+      TweenLite.to logOut, .2, width: "calc(100% - 25px)", delay: t
       TweenLite.to burgerH2, .2, autoAlpha: 1, delay: t
       TweenLite.to burgerAHREF, .2, autoAlpha: 1, delay: t
 
@@ -130,16 +132,15 @@ Template.menu.events
     prevent   = no
     reversed  = no
     btn       = $ '#display-menu'
-
     line1     = $ ".svg--burger .line-1"
     line2     = $ ".svg--burger .line-2"
     line3     = $ ".svg--burger .line-3"
     line4     = $ ".svg--burger .line-4"
-
+    
     SVGburger = $ ".svg--burger"
-    burger = $ ".container-menu nav ul .burger"
-    li  = $ ".container-menu nav ul li"
-    logOut = $ ".log-out"
+    burger    = $ ".container-menu nav ul .burger"
+    li        = $ ".container-menu nav ul li"
+    logOut    = $ ".log-out"
 
     TweenLite.set line4, transform: "rotate(90deg)"
     if($("#display-menu").hasClass("cross"))

@@ -6,9 +6,9 @@ template(name='login')
         |Merci de saisir vos identifiants 
         |pour vous connecter
       .clear
-      input(type='email', name='email', placeholder='Identifiant', value='', class='input',required)
+      input(type='email', name='email', placeholder='Identifiant', value='', class='input',required, id="login-mail")
       br
-      input(type='password', name='password', placeholder='Mot de passe', value='', class='input',required)
+      input(type='password', name='password', placeholder='Mot de passe', value='', class='input',required, id="login-password")
       br
       input(type='submit', value='Valider', id="logger")
     a(href, id="create-account")
