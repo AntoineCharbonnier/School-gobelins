@@ -13,8 +13,7 @@ Template.sendExercices.helpers
     # console.log image_name
     return image_name
 
-  # 'isConnected': (student) ->
-  #   if(student.profile.connected)
-  #     return true
-  #   else 
-  #     return false
+  'numberStudentsConnected': () ->
+    students = Meteor.users.find({ 'profile.account': 'student', "profile.connected": true }).count()
+    console.log students
+    return students

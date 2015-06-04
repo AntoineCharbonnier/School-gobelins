@@ -75,7 +75,7 @@
       @include border-radius(25px,25px);
       h3{
         margin: 3px;
-        font : normal 400 15px "Mikado";
+        font : normal 400 15px "MikadoRegular";
       }
     }
     .send-exercices{
@@ -88,7 +88,7 @@
       border: 1px solid #f0445c;
       h3{
         margin: 3px;
-        font : normal 400 15px "Mikado";
+        font : normal 400 15px "MikadoRegular";
       }
     }
     .points-connected{
@@ -110,7 +110,7 @@
       margin: 35px 0 0 0;
       a{
         color: $link-student-color;
-        font : normal 500 12px "Mikado";
+        font : normal 500 12px "MikadoRegular";
         img{
           @include border-radius(38px);
           position: relative;
