@@ -179,12 +179,15 @@ Template.globalVision.helpers({
   },
 
   "updateStudentSwitchProgress": function(){
-    var users = Meteor.users.find({
+    var realUsers = Meteor.users.find({
     "profile.account": "student",
-    "username": "Abla Louna"
-    }, {sort: { username: 1} }).fetch();
-    for(var j = 0; j < parseInt(users.length); j++){
-      var student = users[j];
+    "username": {"$in": ["Abla Louna", "Begidis Alban", "Bihannic Etienne"]}
+    }).fetch();
+
+    console.log("THE MULTIPLE USERS : ",realUsers);
+
+    for(var j = 0; j < parseInt(realUsers.length); j++){
+      var student = realUsers[j];
       if(student){
         var student_image_name;
         student_image_name = student.username.replace(/\s/g, "_");
