@@ -172,7 +172,7 @@ Meteor.startup ->
    profile:
      account: 'student'
      scale: 1
-     connected: true
+     connected: false
      currentExercice: null
      answers: []
 
@@ -183,7 +183,7 @@ Meteor.startup ->
    profile:
      account: 'student'
      scale: 1
-     connected: true
+     connected: false
      currentExercice: null
      answers: []
 
@@ -227,7 +227,7 @@ Meteor.startup ->
    profile:
      account: 'student'
      scale: 1
-     connected: false
+     connected: true
      currentExercice: null
      answers: []
   
@@ -249,7 +249,7 @@ Meteor.startup ->
    profile:
      account: 'student'
      scale: 1
-     connected: false
+     connected: true
      currentExercice: null
      answers: []
   
@@ -359,7 +359,7 @@ Meteor.startup ->
    profile:
      account: 'student'
      scale: 1
-     connected: false
+     connected: true
      currentExercice: null
      answers: []
   

@@ -142,11 +142,12 @@ Template.globalVision.helpers({
       if(currentEx == student.profile.answers[l].currentEx){
         if(student.profile.answers[l].needHelp){
           console.log("need help");
+          console.log("IS STUDENT NEED HELP : ",image_name);
           t = 0;
           for(var index = 0; index < 65; index++){
 
-            tm.to($("#help_anim_"+index), 0.015, {autoAlpha:1, ease: Ease.easeIn}, t+= 0.015);
-            tm.to($("#help_anim_"+index), 0.015, {autoAlpha:0, ease: Ease.easeIn}, t+= 0.015);
+            tm.to($("#"+student._id+"_help_anim_"+index), 0.015, {autoAlpha:1, ease: Ease.easeIn}, t+= 0.015);
+            tm.to($("#"+student._id+"_help_anim_"+index), 0.015, {autoAlpha:0, ease: Ease.easeIn}, t+= 0.015);
           }
           tm.play();
           
@@ -205,6 +206,16 @@ Template.globalVision.helpers({
         }
         for(var l = 0; l < student.profile.answers.length; l ++){
           if(currentEx == student.profile.answers[l].currentEx){
+            // scaleValue = scaleValue + 0.05 * student.profile.answers[l].attempt;
+            if(currentEx < 3 ){
+              scaleValue =  0.8;
+            }
+            if(3 <= currentEx < 6 ){
+              scaleValue =  0.5;
+            }
+            if(6 <= currentEx ){
+              scaleValue = 0.25;
+            }
             scaleValue = scaleValue + 0.05 * student.profile.answers[l].attempt;
           }
         }
@@ -228,7 +239,7 @@ Template.globalVision.helpers({
       scaleValue = opacity = 1;
       var student = users[j];
       if(student){
-        if(student.username != "Abla Louna"){
+        if(student.username != "Abla Louna" && student.username != "Begidis Alban" && student.username != "Bihannic Etienne" ){
           var student_image_name;
           student_image_name = student.username.replace(/\s/g, "_");
           var avatar = $("#avatar-"+student_image_name);
