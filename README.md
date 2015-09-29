@@ -32,11 +32,15 @@ Et avec le professeur, dans un autre naviagteur, pour voir en temps réel les in
 
 ### RUN 
 
-1. ```curl https://install.meteor.com/ | sh```
+```shell
+curl https://install.meteor.com/ | sh
+```
 
-2. ```npm install```
+```shell
+npm install
+```
 
-3. ```shell
+```shell
 meteor
 ```
 
