@@ -32,7 +32,7 @@ Et avec le professeur, dans un autre naviagteur, pour voir en temps réel les in
 
 
 
-TO DO : 
+### TO DO : 
 
 1. Fix bug signal help : ne pas avoir a valider sa réponse pour actualiser l'affichage du Help chez le professeur
 2. Animation intro
@@ -41,3 +41,14 @@ TO DO :
 5. ~~Pouvoir rouvrir la fenetre de visualisation de l'enfant sur la partie Espace classe~~
 6. Couleur pour le triage des eleves une fois les exercices terminer
 7. Fix bug formation de groupes
+
+
+### RUN : 
+
+```curl https://install.meteor.com/ | sh```
+```npm install ```
+```meteor```
+
+#### RESET : 
+
+cf [server.coffee](https://github.com/AntoineCharbonnier/School-gobelins/blob/master/server/server.coffee)
