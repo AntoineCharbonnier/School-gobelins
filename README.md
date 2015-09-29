@@ -34,7 +34,7 @@ Et avec le professeur, dans un autre naviagteur, pour voir en temps réel les in
 
 1. ```curl https://install.meteor.com/ | sh```
 
-2 .```npm install```
+2. ```npm install```
 
 3. ```meteor```
 
