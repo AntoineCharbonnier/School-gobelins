@@ -36,7 +36,9 @@ Et avec le professeur, dans un autre naviagteur, pour voir en temps réel les in
 
 2. ```npm install```
 
-3. ```meteor```
+3. ```shell
+meteor
+```
 
 #### RESET : 
 
