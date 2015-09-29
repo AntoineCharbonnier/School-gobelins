@@ -46,7 +46,9 @@ Et avec le professeur, dans un autre naviagteur, pour voir en temps réel les in
 ### RUN : 
 
 ```curl https://install.meteor.com/ | sh```
+
 ```npm install ```
+
 ```meteor```
 
 #### RESET : 
