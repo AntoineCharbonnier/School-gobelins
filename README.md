@@ -1,10 +1,8 @@
 # Projet Hep! : 
-===============
 
 ![alt text][logo]
 
 ## Student project create at Gobelins
-====================================
 
 L'application s'utilise en classe de CM1 et au début d’une notion. 
 Le professeur fait son cours (rendu interactif grâce à la tablette) et adresse une suite d'exercices aux élèves de sa classe. 
