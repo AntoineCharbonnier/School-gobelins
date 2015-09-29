@@ -12,4 +12,4 @@ Le professeur suit en temps réel l'avancée de la classe et son niveau de compr
 la vitesse d'apprentissage de chacun et peut cibler les élèves en réelle difficulté (l’élève peut débloquer un indice en actionnant un « HELP »).
 
 
-[logo]: https://github.com/AntoineCharbonnier/School-gobelins/blob/master/public/logo/logo_couleur.svg "HEP!"
+[logo]: https://github.com/AntoineCharbonnier/School-gobelins/blob/master/public/logo/Logo_hep.png "HEP!"
