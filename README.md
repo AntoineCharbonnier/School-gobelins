@@ -38,6 +38,6 @@ TO DO :
 2. Animation intro
 3. Dots de connections sur la tablette du professeur dans l'espace classe
 4. Actualiser le temps du professeur pas en additionnant le temps des eleves
-~~5. Pouvoir rouvrir la fenetre de visualisation de l'enfant sur la partie Espace classe~~~
+5. ~Pouvoir rouvrir la fenetre de visualisation de l'enfant sur la partie Espace classe~~
 6. Couleur pour le triage des eleves une fois les exercices terminer
 7. Fix bug formation de groupes
