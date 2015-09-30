@@ -63,6 +63,11 @@ meteor
   * Meteor
   * MongoDB
 
+### LIBRARY
+  * GSAP
+  * JQuery
+
+
 #### RESET : 
 
 cf [server.coffee](https://github.com/AntoineCharbonnier/School-gobelins/blob/master/server/server.coffee)
