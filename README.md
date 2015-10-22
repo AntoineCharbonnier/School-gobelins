@@ -37,6 +37,13 @@ Et avec le professeur, dans un autre naviagteur, pour voir en temps réel les in
 [Repositorie](https://github.com/AntoineCharbonnier/School-gobelins-landing-page)
 
 
+## EN VIDEO
+
+[Teaser Video](https://vimeo.com/143251261)
+[Student Part Motion Video](https://vimeo.com/143251262)
+[Teacher Part Motion Video](https://vimeo.com/143251260)
+
+
 
 ### RUN 
 
@@ -60,10 +67,12 @@ meteor
   * CoffeeScript / JS
 
 ### BACK-END LANGUAGE
+
   * Meteor
   * MongoDB
 
 ### LIBRARY
+
   * GSAP
   * JQuery
 
